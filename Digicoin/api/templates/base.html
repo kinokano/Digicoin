@@ -7,6 +7,11 @@
     <title>{% block title %}Meu Site{% endblock %}</title>
 </head>
 <body>
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
     
     <script src="{% static 'js/utils.js' %}"></script>
 </body>
