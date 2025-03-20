@@ -9,3 +9,6 @@ def home(request):
     return render(request, 'UserHtml/home.html')
 def primeiroAcesso(request):
     return render(request, 'primeiroAcesso.html')
+
+def perfilUsuario(request):
+    return render(request, 'UserHtml/perfilUsuario.html')
