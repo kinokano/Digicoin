@@ -3,5 +3,6 @@ from .views.api_views import *
 from .views.web_views import *
 
 urlpatterns = [
-path('', login, name="login"),
+    path('', login, name="login"),
+    path('home/', home, name="home")
 ]
