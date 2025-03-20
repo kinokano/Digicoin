@@ -7,5 +7,7 @@ def login(request):
 
 def home(request):
     return render(request, 'UserHtml/home.html')
+def historicoCompra(request):
+    return render(request, 'UserHtml/historicoCompra.html')
 def primeiroAcesso(request):
     return render(request, 'primeiroAcesso.html')

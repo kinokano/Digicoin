@@ -6,4 +6,5 @@ urlpatterns = [
     path('', login, name="login"),
     path('home/', home, name="home"),
     path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
+    path('historicoCompra', historicoCompra, name="historicoCompra"),
 ]
