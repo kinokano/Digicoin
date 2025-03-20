@@ -4,5 +4,6 @@ from .views.web_views import *
 
 urlpatterns = [
     path('', login, name="login"),
-    path('home/', home, name="home")
+    path('home/', home, name="home"),
+    path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
 ]

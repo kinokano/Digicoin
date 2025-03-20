@@ -7,3 +7,5 @@ def login(request):
 
 def home(request):
     return render(request, 'UserHtml/home.html')
+def primeiroAcesso(request):
+    return render(request, 'primeiroAcesso.html')
