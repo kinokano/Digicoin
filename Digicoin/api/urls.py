@@ -4,4 +4,5 @@ from .views.web_views import *
 
 urlpatterns = [
 path('', login, name="login"),
+path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
 ]

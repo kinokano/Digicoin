@@ -3,3 +3,6 @@ from api.models import *
 
 def login(request):
     return render(request, 'index.html')
+
+def primeiroAcesso(request):
+    return render(request, 'primeiroAcesso.html')
