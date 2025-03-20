@@ -3,6 +3,7 @@ from .views.api_views import *
 from .views.web_views import *
 
 urlpatterns = [
-path('', login, name="login"),
-path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
+    path('', login, name="login"),
+    path('home/', home, name="home"),
+    path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
 ]
