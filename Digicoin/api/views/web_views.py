@@ -11,3 +11,6 @@ def historicoCompra(request):
     return render(request, 'UserHtml/historicoCompra.html')
 def primeiroAcesso(request):
     return render(request, 'primeiroAcesso.html')
+
+def perfilUsuario(request):
+    return render(request, 'UserHtml/perfilUsuario.html')

@@ -7,4 +7,6 @@ urlpatterns = [
     path('home/', home, name="home"),
     path('primeiroAcesso', primeiroAcesso, name="primeiroAcesso"),
     path('historicoCompra', historicoCompra, name="historicoCompra"),
+    path('perfilUsuario', perfilUsuario, name="perfilUsuario"),
+
 ]
