@@ -1,0 +1,149 @@
+
+:root {
+    --laranja: #FC671D;
+    --magenta: #D34AF4;/* cor do botão */
+    --cinza: #faf6f7;
+    --cinza-escuro:#888;
+    --ciano: #0BC0D3;
+    --base: #2c006a;
+    --branco: #fff;
+    --preto: #000;
+    --roxo: #4D2C87;  /* fundo roxo */
+    --sombra-base:rgba(44, 0, 106, 0.4);
+    --sombra-preta:rgba(0, 0, 0, 0.4);
+    --cinzaPlaceHolder:#9E9E9E;
+    --cinzaDatas: #D9D9D9;
+  }
+
+
+body{
+      background: var(--roxo);
+      margin: 0px 100px;
+}
+
+.header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 100px;
+  }
+
+.botao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconeX{
+    
+    width: 32px;
+    height: 32px;
+}
+
+
+
+.cadastrarDesafio{
+    
+    font-size: 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    color: var(--branco);
+    background-color: var(--magenta);
+    width: 260px;
+    height: 60px;
+    margin-right: 25px;
+    
+}
+
+
+.nomeDesafioDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nomeDesafioDiv input{
+
+    border-radius: 4px;
+    border: none;
+    width: 558px;
+    height: 55px;   
+    background-color: var(--branco);
+    font-size: 20px;
+    color: var(--base);
+    margin-bottom: 40px;
+
+}
+
+
+span{
+    font-size: 15px;
+    color: var(--branco);
+    
+}
+
+label{
+    color: var(--branco);
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.nomeDesafioDiv input::placeholder{
+
+    color: var(--cinzaPlaceHolder);
+    padding-left: 20px;
+}
+
+.statusDesafioDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+
+}
+
+.statusDesafio{
+
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--magenta);
+    border-radius: 5px; 
+    background-color: white;
+    margin:0px;  
+    transition: background-color 0.3s ease;
+    
+ 
+}
+.statusDesafio:checked{
+
+    background-color: var(--laranja);
+  
+}
+
+
+.dataDesafioDiv{
+    display: flex;
+    gap: 25px;
+}
+
+.dataDesafioInterno{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.dataDesafioInterno input{
+    height: 35px;
+    width: 95px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--cinzaDatas);
+   
+}

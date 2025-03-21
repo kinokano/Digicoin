@@ -17,3 +17,6 @@ def perfilUsuario(request):
 
 def listaProdutos(request):
     return render(request, 'UserHtml/listaProdutos.html')
+
+def cadastrarDesafio(request):
+    return render(request, 'AdmHtml/cadastrarDesafio.html')
