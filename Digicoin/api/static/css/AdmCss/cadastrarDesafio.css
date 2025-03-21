@@ -92,12 +92,13 @@ label{
     margin-bottom: 15px;
 }
 
-.nomeDesafioDiv input::placeholder{
+.nomeDesafioDiv input:read-write
+{
 
-    color: var(--cinzaPlaceHolder);
+    color: var(--base);
     padding-left: 20px;
-}
 
+}
 .statusDesafioDiv {
     display: flex;
     align-items: center;
