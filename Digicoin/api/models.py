@@ -6,6 +6,8 @@ from django.db import models
 class CustomUser(AbstractUser):
     is_adm = models.BooleanField(default=False)
     ra = models.CharField(max_length=30, null=False, blank=False, default=False)
+    imgPerfil = models.CharField(max_length=100, default=False)
+    saldo = models.IntegerField(default=0)
 
 class Campanha(models.Model):
     nome = models.CharField(max_length=30, null=False, blank=False)
