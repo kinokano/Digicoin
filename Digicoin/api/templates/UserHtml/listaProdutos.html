@@ -1,0 +1,100 @@
+{% extends 'base.html'%}
+{% load static%}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/UserCss/listaProdutos.css'%}">
+
+{% include "components/user/menuUser.html" %}
+
+<body>
+    <div id="menuColaborador"></div>
+    <div class="container">
+        <div class="produtos">
+            <div class="produtosDigix">
+                <div class="ProdBarra">
+                    <h1>Produtos Digix</h1>
+                    <div class="barra"></div>
+                </div>
+                <div class="search">
+                    <i id="lupa" class="fa fa-search" aria-hidden="true"></i>
+                    <input class="searchBar" type="search">
+                </div>
+            </div>
+
+            <div class="imagensDigix">
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}"
+                            alt='Copo Stanley'></button>
+                </div>
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/mouse pad.png' %}"
+                            alt='Mouse Pad'></button>
+                </div>
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/iphone.png' %}"
+                            alt='Iphone'></button>
+                </div>
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}"
+                            alt='Teclado'></button>
+                </div>
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/caderno5.png' %}"
+                            alt='Caderno'></button>
+                </div>
+                <div class='imgD'>
+                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/caderno 1.png' %}"
+                            alt='Caderno'></button>
+                </div>
+            </div>
+        </div>
+
+
+        <dialog id="modal">
+            <div class="container">
+                <div class="flip">
+                    <div class="frente">
+                        <div class="topo">
+                            <div class="NProduto">Copo Stanley</div>
+                            <button id="fechar" class="X">X</button>
+                        </div>
+                        <div class="imagemCard">
+                            <img class="ImProduto" src="{% static 'img/imgProdutos/copo.png' %}" alt="copo">
+                        </div>
+                        <div class="preco">
+                            <p>DG$</p>
+                            <span>9999</span>
+                        </div>
+                        <div class="btn-refresh">
+                            <button class="Adquirir">adquirir</button>
+                            <i id="refresh" class="fa fa-refresh" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="tras">
+                        <div class="topo">
+                            <div class="NProduto">Copo Stanley</div>
+                            <button id="fechar2" class="X">X</button>
+                        </div>
+                        <div class="quantidade">
+                            <p>Quantidade: </p>
+                            <span>999</span>
+                        </div>
+                        <div class="descricao">
+                            <p>Sobre: </p>
+                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, dolorem.</span>
+                        </div>
+                        <i id="refresh2" class="fa fa-refresh" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </div>
+    <script src="{% static 'js/UserJs/listaProdutos.js' %}"></script>
+
+</body>
+
+{% endblock %}

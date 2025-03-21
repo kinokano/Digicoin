@@ -14,3 +14,6 @@ def primeiroAcesso(request):
 
 def perfilUsuario(request):
     return render(request, 'UserHtml/perfilUsuario.html')
+
+def listaProdutos(request):
+    return render(request, 'UserHtml/listaProdutos.html')
