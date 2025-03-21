@@ -16,6 +16,14 @@ body{
 
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .parteinferior{
     display: flex;
     flex-direction: column;

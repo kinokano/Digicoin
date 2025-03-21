@@ -1,6 +1,5 @@
 {% extends 'base.html'%}
 {% load static%}
-
 {%block content%}
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,17 +19,19 @@
         <div class="logoDigix">
             <img class="logo" src="{%static 'img/digixlogo.png'%}" alt="">
         </div>
-            <form action="" method="POST">
+            <form action="" method="POST" id='loginForm'>
                 <div class="inputs">
+                    {% csrf_token %}
                     <h3 class="textoTelaBranca">Email</h3>
-                    <input name="email" class="inputTelaBranca" type="email">
+                    <input id="email"  class="inputTelaBranca" type="name">
     
-                    <h3 class="textoTelaBranca">Senha</h3>
-                    <input name="senha" class="inputTelaBranca" type="password">
+                    <h3  class="textoTelaBranca">Senha</h3>
+                    <input id="senha"  class="inputTelaBranca" type="password">
     
                 </div>
+                <button type="submit"  class="botaoTelaBranca">ENTRAR</button>
             </form>
-            <button class="botaoTelaBranca">ENTRAR</button>
+            
 
             <div class="linhaInferior">
                 <a class="linkInferior1" href="#1"> Primeiro Acesso</a>
@@ -42,5 +43,6 @@
 </body>
 
 </html>
+<script src="{%static 'js/index.js'%}"></script>
 
 {%endblock%}

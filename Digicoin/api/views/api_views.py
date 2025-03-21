@@ -58,11 +58,11 @@ class User(APIView):
         
 class Login(APIView):
     def post(self, request):
-        nome = request.data.get('nome')
-        senha = request.data.get('senha')
+        email = request.data.get('username')
+        senha = request.data.get('password')
 
-        usuario = authenticate(username=nome, password=senha)
-
+        usuario = authenticate(username=email, password=senha)
+        print(email, senha)
         if(usuario):
             login(request, usuario)
             return Response({"status": status.HTTP_200_OK})
