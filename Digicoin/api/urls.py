@@ -24,4 +24,5 @@ urlpatterns = [
     path('listaProdutos', listaProdutos, name="listaProdutos"),
     path('ranking', ranking, name="ranking"),
 
+    path('listaEstoque/', listaEstoque, name='listaEstoque')
 ]

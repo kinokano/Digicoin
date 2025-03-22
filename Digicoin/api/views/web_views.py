@@ -20,3 +20,5 @@ def listaProdutos(request):
 
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
+def listaEstoque(request):
+    return render(request, 'AdmHtml/listaEstoque.html')
