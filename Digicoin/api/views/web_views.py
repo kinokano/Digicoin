@@ -20,3 +20,5 @@ def listaProdutos(request):
 
 def cadastrarDesafio(request):
     return render(request, 'AdmHtml/cadastrarDesafio.html')
+def ranking(request):
+    return render(request, 'UserHtml/ranking.html')

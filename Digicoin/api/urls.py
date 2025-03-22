@@ -23,5 +23,6 @@ urlpatterns = [
     path('perfilUsuario', perfilUsuario, name="perfilUsuario"),
     path('listaProdutos', listaProdutos, name="listaProdutos"),
     path('cadastrarDesafio', cadastrarDesafio, name="cadastrarDesafio"),
+    path('ranking', ranking, name="ranking"),
 
 ]
