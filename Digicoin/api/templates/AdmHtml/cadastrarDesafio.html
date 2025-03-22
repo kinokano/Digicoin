@@ -1,9 +1,10 @@
-<body>
+
     {% extends "base.html" %}
     {% load static %}
     {% block content %}
     <link rel="stylesheet" href="{% static 'css/AdmCss/cadastrarDesafio.css'%}">
     
+    <body>
     <div class="header">
         <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
         <div class="botao">
@@ -42,5 +43,6 @@
            
         </div> 
     </form>
-    {% endblock content %}
+ 
 </body>
+{% endblock content %}

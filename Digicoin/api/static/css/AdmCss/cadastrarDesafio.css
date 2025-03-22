@@ -17,8 +17,10 @@
 
 
 body{
-      background: var(--roxo);
-      margin: 0px 100px;
+    background: var(--roxo);
+    margin: 0px 100px;
+    
+
 }
 
 .header{
