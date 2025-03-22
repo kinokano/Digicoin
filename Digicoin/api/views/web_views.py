@@ -17,3 +17,6 @@ def perfilUsuario(request):
 
 def listaProdutos(request):
     return render(request, 'UserHtml/listaProdutos.html')
+
+def ranking(request):
+    return render(request, 'UserHtml/ranking.html')
