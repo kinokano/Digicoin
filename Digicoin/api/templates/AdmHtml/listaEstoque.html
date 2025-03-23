@@ -2,8 +2,89 @@
 {% load static%}
 {%block content%}
 
-<div>
-    {% include 'components/adm/menuAdm.html'%}
-</div>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="{% static 'css/AdmCss/listaEstoque.css' %}">
+</head>
+<body>
+
+    <!-- <div>
+        {% include 'components/adm/menuAdm.html'%}
+    </div> -->
+
+    <header>
+        <div class="perfil">
+            <span class="icone-perfil">&#128100;</span>
+            <span class="usuario">FULANO - ADM</span>
+        </div>
+    </header>
+    <main>
+        <div class="estoque-container">
+            <h2>Estoque</h2>
+            <div class="busca-adicionar">
+                <input type="text" placeholder="Pesquisar produto" class="pesquisa">
+                <button class="btn-adicionar">+ Adicionar Produto</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Qtd</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mouse Gamer</td>
+                        <td>49</td>
+                        <td>
+                            <button class="editar">EDITAR</button>
+                            <button class="deletar">DELETAR</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Headset telecom</td>
+                        <td>32</td>
+                        <td>
+                            <button class="editar">EDITAR</button>
+                            <button class="deletar">DELETAR</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mouse-pad DIGIX</td>
+                        <td>15</td>
+                        <td>
+                            <button class="editar">EDITAR</button>
+                            <button class="deletar">DELETAR</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fones de ouvido</td>
+                        <td>20</td>
+                        <td>
+                            <button class="editar">EDITAR</button>
+                            <button class="deletar">DELETAR</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Água com gás</td>
+                        <td>230</td>
+                        <td>
+                            <button class="editar">EDITAR</button>
+                            <button class="deletar">DELETAR</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
+
 
 {%endblock%}
