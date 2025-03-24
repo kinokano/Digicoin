@@ -32,8 +32,8 @@
                     alt="">Desafios</h2>
             <div class="line"></div>
             <div class="listaDesafios" id="listaDesafios">
-
-                <ul class="desafios">
+                {% include "components/user/listarDesafios.html" %}
+                {% comment %} <ul class="desafios">
                     <div class="desafiosFlex" id="desafiosFlex">
                         <!-- fiz isso para poder dar display flex na lista de desafios -->
                         <li>Desafio1</li>
@@ -56,7 +56,7 @@
                         <li>Desafio5</li>
                     </div>
 
-                </ul>
+                </ul> {% endcomment %}
             </div>
         </div>
     </div>
