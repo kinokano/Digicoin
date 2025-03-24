@@ -7,13 +7,17 @@ def login(request):
 
 def home(request):
     
-    user = CustomUser.objects.all()
+    user = CustomUser.objects.all().order_by("-saldo")[:5]
+    desafios = Desafio.objects.all()
     context = {
         'usuarios': user[1:],
-        'primeiro_usuario': user[0] if user else None
+        'primeiro_usuario': user[0] if user else None,
+        'desafios': desafios       
     }
     return render(request, 'UserHtml/home.html', context)
-    
+
+
+
 def historicoCompra(request):
     return render(request, 'UserHtml/historicoCompra.html')
 def primeiroAcesso(request):
