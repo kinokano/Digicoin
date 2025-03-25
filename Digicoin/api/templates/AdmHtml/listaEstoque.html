@@ -13,76 +13,80 @@
 </head>
 <body>
 
-    <!-- <div>
+    <div>
         {% include 'components/adm/menuAdm.html'%}
-    </div> -->
+    </div>
 
-    <header>
-        <div class="perfil">
-            <span class="icone-perfil">&#128100;</span>
-            <span class="usuario">FULANO - ADM</span>
-        </div>
-    </header>
-    <main>
-        <div class="estoque-container">
-            <h2>Estoque</h2>
-            <div class="busca-adicionar">
-                <input type="text" placeholder="Pesquisar produto" class="pesquisa">
-                <button class="btn-adicionar">+ Adicionar Produto</button>
+
+    <div class="principal">
+        <header>
+            <div class="perfil">
+                <span class="icone-perfil">&#128100;</span>
+                <span class="usuario">FULANO - ADM</span>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Qtd</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mouse Gamer</td>
-                        <td>49</td>
-                        <td>
-                            <button class="editar">EDITAR</button>
-                            <button class="deletar">DELETAR</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Headset telecom</td>
-                        <td>32</td>
-                        <td>
-                            <button class="editar">EDITAR</button>
-                            <button class="deletar">DELETAR</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mouse-pad DIGIX</td>
-                        <td>15</td>
-                        <td>
-                            <button class="editar">EDITAR</button>
-                            <button class="deletar">DELETAR</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fones de ouvido</td>
-                        <td>20</td>
-                        <td>
-                            <button class="editar">EDITAR</button>
-                            <button class="deletar">DELETAR</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Água com gás</td>
-                        <td>230</td>
-                        <td>
-                            <button class="editar">EDITAR</button>
-                            <button class="deletar">DELETAR</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+        </header>
+        <main>
+            <div class="estoque-container">
+                <h2>Estoque</h2>
+                <div class="busca-adicionar">
+                    <input type="text" placeholder="Pesquisar produto" class="pesquisa">
+                    <button class="btn-adicionar">+ Adicionar Produto</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><div class="iconesort">Nome <img class="imagemsort" src="{% static 'img/imgRanking/sort.png' %}" alt="Sort"></div></th>
+                            <th>Qtd</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mouse Gamer</td>
+                            <td>49</td>
+                            <td>
+                                <button class="editar">EDITAR</button>
+                                <button class="deletar">DELETAR</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Headset telecom</td>
+                            <td>32</td>
+                            <td>
+                                <button class="editar">EDITAR</button>
+                                <button class="deletar">DELETAR</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mouse-pad DIGIX</td>
+                            <td>15</td>
+                            <td>
+                                <button class="editar">EDITAR</button>
+                                <button class="deletar">DELETAR</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fones de ouvido</td>
+                            <td>20</td>
+                            <td>
+                                <button class="editar">EDITAR</button>
+                                <button class="deletar">DELETAR</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Água com gás</td>
+                            <td>230</td>
+                            <td>
+                                <button class="editar">EDITAR</button>
+                                <button class="deletar">DELETAR</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+   
 </body>
 </html>
 
