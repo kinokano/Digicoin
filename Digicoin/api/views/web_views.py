@@ -33,3 +33,6 @@ def cadastrarDesafio(request):
     return render(request, 'AdmHtml/cadastrarDesafio.html')
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
+
+def desafiosCampanha(request):
+    return render(request, 'UserHtml/desafios.html')
