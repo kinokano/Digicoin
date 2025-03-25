@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/AdmCss/listaDePedidos.css'%}">
+
+{% include 'components/adm/menuAdm.html' %}
+
+<div class="Conteiner">
+
+    <div class="Pedidos">
+        <h1>Pedidos Pendentes</h1>
+    </div>
+    <div class="Produto">
+        <table>
+            <thead>
+                <tr>
+                    <td>Teste</td>
+                    <td>Teste</td>
+                    <th>Teste2</th>
+                    <th>Teste3</th>
+                </tr>
+            </thead>
+            
+        </table>
+    </div>
+        
+</div>
+
+{% endblock content %}

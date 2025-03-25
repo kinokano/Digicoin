@@ -1,0 +1,14 @@
+.Conteiner{
+    margin-left: 350px;
+    color: black;
+    font-size: 35px;
+}
+.Pedidos{
+
+}
+
+.Produto{
+    display: flex;
+    flex-direction: row;
+    
+}

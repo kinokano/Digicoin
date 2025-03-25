@@ -36,3 +36,6 @@ def ranking(request):
 
 def desafiosCampanha(request):
     return render(request, 'UserHtml/desafios.html')
+
+def listaDePedidos(request):
+    return render(request, 'AdmHtml/listaDePedidos.html')
