@@ -25,5 +25,5 @@ urlpatterns = [
     path('cadastrarDesafio', cadastrarDesafio, name="cadastrarDesafio"),
     path('ranking', ranking, name="ranking"),
     path('desafiosCampanha', desafiosCampanha, name="desafiosCampanha"),
-
+    path('carrinho/', carrinho, name="carrinho"),
 ]
