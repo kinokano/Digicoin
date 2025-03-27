@@ -25,64 +25,40 @@
                 <span class="usuario">FULANO - ADM</span>
             </div>
         </header>
-        <main>
+        <main class="menucentro">
             <div class="estoque-container">
-                <h2>Estoque</h2>
-                <div class="busca-adicionar">
-                    <input type="text" placeholder="Pesquisar produto" class="pesquisa">
+                <div class="barra-pesquisa"><input type="text" placeholder="Pesquisar produto" class="pesquisa"></div>
+                <div class="cabecalho">
+                    <h2><span class="traco">Est</span>oque</h2>
                     <button class="btn-adicionar">+ Adicionar Produto</button>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th><div class="iconesort">Nome <img class="imagemsort" src="{% static 'img/imgRanking/sort.png' %}" alt="Sort"></div></th>
-                            <th>Qtd</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Mouse Gamer</td>
-                            <td>49</td>
-                            <td>
-                                <button class="editar">EDITAR</button>
-                                <button class="deletar">DELETAR</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Headset telecom</td>
-                            <td>32</td>
-                            <td>
-                                <button class="editar">EDITAR</button>
-                                <button class="deletar">DELETAR</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mouse-pad DIGIX</td>
-                            <td>15</td>
-                            <td>
-                                <button class="editar">EDITAR</button>
-                                <button class="deletar">DELETAR</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fones de ouvido</td>
-                            <td>20</td>
-                            <td>
-                                <button class="editar">EDITAR</button>
-                                <button class="deletar">DELETAR</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Água com gás</td>
-                            <td>230</td>
-                            <td>
-                                <button class="editar">EDITAR</button>
-                                <button class="deletar">DELETAR</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tabela">
+                    <div class="tabela-head">
+                        <div class="tabela-row header">
+                            <div class="tabela-cell nome">Nome <img class="sort-icon" src="{% static 'img/imgRanking/sort.png' %}" alt="Sort"></div>
+                            <div class="tabela-cell quantidade">Qtd</div>
+                            <div class="tabela-cell acoes"></div>
+                        </div>
+                    </div>
+                    <div class="tabela-body">
+                        {% for item in estoque %}
+                        <div class="tabela-row">
+                            <div class="tabela-cell nome">
+                                <img class="icone" src="{% static 'img/gerenciarEstoqueBlack.png' %}" alt="">
+                                {{item.nome}}
+                            </div>
+                            <div class="tabela-cell quantidade">{{item.qtd}}</div>
+                            <div class="tabela-cell acoes">
+                                <button class="editar"><img src="{% static 'img/iconeEditar.png' %}" alt="editar"></button>
+                                <button class="deletar"><img src="{% static 'img/iconeDeletar.png' %}" alt="deletar"></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                </div>
+                
             </div>
         </main>
     </div>
