@@ -34,8 +34,13 @@ def cadastrarDesafio(request):
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
 
+
+def homeListaDeUsuarios(request):
+    return render(request, 'AdmHtml/homeListaDeUsuarios.html')
+
 def desafiosCampanha(request):
     return render(request, 'UserHtml/desafios.html')
 
 def carrinho(request):
     return render(request, 'UserHtml/carrinhoCompra.html')
+
