@@ -11,17 +11,23 @@
 <body>
     <div class="container">
         <div class="titulo">
-            <div class="icone">
-                <img src="{% static 'img/imgRanking/carrinho.png' %}" alt="Carrinho">
-            </div>
+
             Ranking
+
+            <div class="icone">
+              Ranking
+          
+            </div>
+
         </div>
         <table>
           <thead>
             <tr>
+
               <th width="120px"><img src="{% static 'img/imgRanking/posicao.png' %}" alt="posicao"> Posicao</th>
-              <th>Nome <img onclick="ordenarItens(this,'nome')" class="sort-asc" src="{% static 'img/imgRanking/sort.png' %}" alt="sort"></th>
+              <th>Nome <img onclick="ordenarItens(this,'nome')" class="sort-asc"></th>
               <th width="100px">Valores</th>
+
             </tr>
           </thead>
           <tbody id="cart-items">
