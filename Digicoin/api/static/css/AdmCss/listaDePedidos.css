@@ -1,14 +1,80 @@
+.principal{
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.detalhe{
+    margin-left: 350px;
+    background-color: aqua;
+    width: 60%;
+}
+
 .Conteiner{
     margin-left: 350px;
+
     color: black;
     font-size: 35px;
-}
-.Pedidos{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+
+}
+.Titulo{
+    display: flex;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 150px;
+    
+
+
+    
+}
+
+.underline{
+    border-bottom: 5px solid orange;
 }
 
 .Produto{
+    margin-top: 30px;
+
+}
+
+.iconedigix{
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    width: 60px;
+    height: 34px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    border: none;
+    width: 100%;
+    min-width: 600px;
     
 }
+
+td {
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 5px;
+    padding-right: 10px;
+    line-height: 10px;
+    width: 75px;
+    border-radius: 10px;
+}
+
+tbody tr {
+    border-radius: 10px;
+    box-shadow: 10px 4px 8px rgba(44, 0, 106, 0.4);
+    width: 100%;
+    height: 60px;
+
+}
+

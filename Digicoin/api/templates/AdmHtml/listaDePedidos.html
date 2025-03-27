@@ -6,25 +6,99 @@
 
 {% include 'components/adm/menuAdm.html' %}
 
-<div class="Conteiner">
+<div class="principal">
+    <div class="detalhe">
+        <h1 class="Titulo">
+            <p class="underline">Ped</p>idos Pendentes
+        </h1>
 
-    <div class="Pedidos">
-        <h1>Pedidos Pendentes</h1>
-    </div>
-    <div class="Produto">
-        <table>
-            <thead>
-                <tr>
-                    <td>Teste</td>
-                    <td>Teste</td>
-                    <th>Teste2</th>
-                    <th>Teste3</th>
-                </tr>
-            </thead>
-            
-        </table>
-    </div>
-        
+        <div class="Produto">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>Mouse-Pad Digix</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>texto</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                    </tr>
+
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/'%}" alt="icone"></td>
+                        <td>texto</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>  
 </div>
+
+<!-- <div class="Conteiner">
+    <div>
+        <h1 class="Titulo">
+            <p class="underline">Ped</p>idos Pendentes
+        </h1>
+
+        <div class="Produto">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>Mouse-Pad Digix</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>texto</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                    </tr>
+
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/'%}" alt="icone"></td>
+                        <td>texto</td>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div>
+
+        <h1 class="Titulo">
+            <p class="underline"> Pe</p>didos Concluídos
+        </h1>
+
+        <div class="Produto">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>texto</td>
+
+                    </tr>
+
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>texto</td>
+
+                    </tr>
+
+                    <tr>
+                        <td><img class="iconedigix" src="{% static 'img/digixlogo.png'%}" alt="icone"></td>
+                        <td>texto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> -->
 
 {% endblock content %}
