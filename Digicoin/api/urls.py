@@ -26,4 +26,5 @@ urlpatterns = [
     path('ranking', ranking, name="ranking"),
     path('desafiosCampanha', desafiosCampanha, name="desafiosCampanha"),
     path('carrinho/', carrinho, name="carrinho"),
+    path('relatorio/', relatorio, name="relatorio"),
 ]

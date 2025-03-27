@@ -39,3 +39,6 @@ def desafiosCampanha(request):
 
 def carrinho(request):
     return render(request, 'UserHtml/carrinhoCompra.html')
+
+def relatorio(request):
+    return render(request, 'components/user/relatorio.html')
