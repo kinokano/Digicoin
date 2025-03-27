@@ -2,6 +2,11 @@
     margin: 0;
 }
 
+.main{
+    display: flex;
+    flex-direction:row;
+}
+
 .menuAdmin{
     background-color: #2c006a;
     width: 350px;
@@ -13,6 +18,30 @@
     padding-top: 10px;
     padding-bottom: 10px;
     position: fixed;
+}
+
+.top{
+    margin-left: 350px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: right;
+    height: 150px;
+    gap: 150px;
+    box-shadow: 10px 4px 8px rgba(0,0,0,0.4);
+    background-color: white;
+}
+
+.adm{
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+    height: 70px;
+    gap: 20px;
+}
+
+.adm img{
+    width: 70px;
 }
 
 .logoAdmin{
