@@ -73,6 +73,10 @@ def homeListaDeUsuarios(request):
 def desafiosCampanha(request):
     return render(request, 'UserHtml/desafios.html')
 
+
+def listaDePedidos(request):
+    return render(request, 'AdmHtml/listaDePedidos.html')
+
 def carrinho(request):
     return render(request, 'UserHtml/carrinhoCompra.html')
 
