@@ -114,14 +114,33 @@ header {
 }
 
 
-.tabela-cell.quantidade{
-    text-align: end;
-}
+
 
 .traco{
     border-bottom: solid 3px #FC671D;
 }
 
+.search-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+}
+
+.search-container img {
+    width: 16px;
+    height: 16px;
+}
 
 
 
