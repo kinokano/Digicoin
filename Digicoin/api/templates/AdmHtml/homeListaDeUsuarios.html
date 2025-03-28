@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'css/AdmCss/homeListaDeUsuarios.css'%}">
 
+{% include "components/adm/menuAdm.html" %}
+
 <body>
 
     <div class="principal">
@@ -20,7 +22,7 @@
 
             <div class="cabecalho">
 
-                    <h2><span class="traco">Usu</span>ários</h2>
+                <h2><span class="traco">Usu</span>ários</h2>
 
                 <div class="btns">
                     <div class="btn btn-moedas">
@@ -32,9 +34,61 @@
                             Adicionar Usuários</button>
                     </div>
                 </div>
-            </div>            
+            </div>
 
-            <table>
+            <div class="tabela">
+
+                <div class="checkbox">
+                    <input type="checkbox" class="btn-check">
+                    <div class="user-card">
+                        <div class="avatar"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="user-info">
+                            <div class="user-name">Fulano Junior Pereira</div>
+                            <div class="status">Desativado</div>
+                        </div>
+                        <div class="edit-icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" class="btn-check">
+                    <div class="user-card">
+                        <div class="avatar"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="user-info">
+                            <div class="user-name">Fulano Junior Pereira</div>
+                            <div class="status"></div>
+                        </div>
+                        <div class="edit-icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" class="btn-check">
+                    <div class="user-card">
+                        <div class="avatar"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="user-info">
+                            <div class="user-name">Fulano Junior Pereira</div>
+                            <div class="status"></div>
+                        </div>
+                        <div class="edit-icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" class="btn-check">
+                    <div class="user-card">
+                        <div class="avatar"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="user-info">
+                            <div class="user-name">Fulano Junior Pereira</div>
+                            <div class="status">Ativo</div>
+                        </div>
+                        <div class="edit-icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <table>
                 <thead>
                     <tr>
                         <th></th>
@@ -50,57 +104,12 @@
                         <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
-
     </div>
 
-    <!-- <div class="container">
-        <div class="a">
-            <div class="search">
-                <i id="lupa" class="fa fa-search" aria-hidden="true"></i>
-                <input class="searchBar" type="search">
-            </div>
-        </div>
-        <header>
-            <div class="usuario">
-                <h2>Usuários</h2>
-                <div class="barra"></div>
-            </div>
-            <div class="btns">
-                <div class="btn btn-moedas">
-                    <button class="add-moedas"><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        Adicionar Moedas</button>
-                </div>
-                <div class=" btn btn-usuario">
-                    <button class="add-usuario"><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        Adicionar Usuários</button>
-                </div>
-            </div>
-        </header>
-        <div></div>
-        <h2>Nome</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                </tr>
-            </thead>
-            <tbody id="cart-items">
-                <tr>
-                    <th class="th-user"><i class="fa fa-user" aria-hidden="true"></i> Fulano</th>
-                    <th>ativo</th>
-                    <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
-                </tr>
-            </tbody>
-        </table> -->
-
-
-
-
-    </div>
     <script src="{% static 'js/AdmJs/homeListaDeUsuarios.js' %}"></script>
+
 </body>
 
 </html>
