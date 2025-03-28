@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const botaoFinalizar = document.getElementById("botaoFinalizarPedido");
       const valorTotal = document.getElementById("valorTotal");
-      if (valorTotalCarrinho > 1000) {
-        botaoFinalizar.disabled = true;
-      } else {
+      if (valorTotalCarrinho > 0) {
         botaoFinalizar.disabled = false;
+      } else {
+        botaoFinalizar.disabled = true;
       }
       valorTotal.textContent = valorTotalCarrinho;
     }
