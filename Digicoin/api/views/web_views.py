@@ -42,3 +42,6 @@ def carrinho(request):
 
 def relatorio(request):
     return render(request, 'components/user/relatorio.html')
+
+def campanhas(request):
+    return render(request, 'components/user/campanhas.html')
