@@ -1,24 +1,22 @@
 import Grid from '../grid.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = [ // Simula o carrinho
-    {
-      id: 1,
-      nome: "Produto 1",
-      valor: "2900",
-      qtd: 2,
-      qtd_estoque: 2,
-      tipo_fisico: true
-    },
-    {
-      id: 2,
-      nome: "Produto 2",
-      valor: "4900",
-      qtd: 1,
-      qtd_estoque: 5,
-      tipo_fisico: false
-    }
-  ];
+  // Verifica se o local storage já contém produtos
+  if (!localStorage.getItem('listaProdutos') || (JSON.parse(localStorage.getItem('listaProdutos')).listaGrid || []).length === 0) {
+    // Adiciona 5 produtos de exemplo ao local storage
+    const produtosExemplo = [
+      { id: 1, nome: "Produto 1", valor: "2900", qtd: 2, qtd_estoque: 2, tipo_fisico: false },
+      { id: 2, nome: "Produto 2", valor: "4900", qtd: 1, qtd_estoque: 5, tipo_fisico: false },
+      { id: 3, nome: "Produto 3", valor: "1500", qtd: 3, qtd_estoque: 10, tipo_fisico: false },
+      { id: 4, nome: "Produto 4", valor: "3200", qtd: 1, qtd_estoque: 4, tipo_fisico: false },
+      { id: 5, nome: "Produto 5", valor: "2100", qtd: 2, qtd_estoque: 6, tipo_fisico: false }
+    ];
+    localStorage.setItem('listaProdutos', JSON.stringify({ listaGrid: produtosExemplo }));
+  }
+
+  // Recupera a lista de produtos do local storage
+  const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
+  const grid = storedData.listaGrid || [];
 
   const config = {
     idGrid: "itensGrid", // ID do contêiner onde a grid será renderizada
@@ -51,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (botaoRemover) {
           botaoRemover.addEventListener('click', () => {
             grid.removerItensGrid(item.id);
+            localStorage.setItem('listaProdutos', JSON.stringify({ listaGrid: grid.listaGrid }));
           });
         }
       });
@@ -65,10 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const botaoFinalizar = document.getElementById("botaoFinalizarPedido");
       const valorTotal = document.getElementById("valorTotal");
-      if (valorTotalCarrinho > 1000) {
-        botaoFinalizar.disabled = true;
-      } else {
+      if (valorTotalCarrinho > 0) {
         botaoFinalizar.disabled = false;
+      } else {
+        botaoFinalizar.disabled = true;
       }
       valorTotal.textContent = valorTotalCarrinho;
     }

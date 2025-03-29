@@ -35,13 +35,15 @@
     </div>
     <div class="total">
         <h4>Total de Digicoins: <span id="valorTotal">0</span></h4>
-        <button id="botaoFinalizarPedido" class="checkout-button" onclick="finalizarPedido()">Finalizar Pedido</button>
+        <button id="botaoFinalizarPedido" class="checkout-button">Finalizar Pedido</button>
     </div>
       <script>
         const imgRemoverSrc = "{% static 'img/remover.png' %}";
+        const imgFecharPopupSrc = "{% static 'img/bt_closed.png' %}";
+        const cssPopup = "{% static 'css/UserCss/popUp.css' %}";
       </script>
       <script type="module" src="{% static 'js/UserJs/carrinhoCompra.js' %}"></script>
-
+      <script type="module" src="{% static 'js/UserJs/finalizarCompra.js' %}"></script>
 </body>
 </html>
 

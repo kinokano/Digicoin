@@ -1,0 +1,199 @@
+import Popup from '../popup.js';
+
+function desativarEnderecoForm(acao) {
+    const enderecoForm = document.getElementById('endereco');
+    if (acao) {
+        console.log('desativar');
+        const camposForms = enderecoForm.querySelectorAll('input, select');
+        [].forEach.call(camposForms, function (el) {
+            el.setAttribute('disabled', 'disabled');
+        });
+        enderecoForm.classList.remove('form-endereco-ativo');
+        enderecoForm.classList.add('form-endereco-desativado');
+    } else {
+        console.log('ativar');
+        // ativa inputs e selects
+        const camposForms = enderecoForm.querySelectorAll('input, select');
+        [].forEach.call(camposForms, function (el) {
+            el.removeAttribute('disabled');
+        });
+        enderecoForm.classList.remove('form-endereco-desativado');
+        enderecoForm.classList.add('form-endereco-ativo');
+    }
+}
+
+function enviarDadosParaApi(form=null) {
+    // código para enviar os dados para a API
+    if (form != null) {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        console.log(data);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = new Popup();
+
+    function abrirPopup() {
+        const titulo = 'Finalizar Pedido';
+        const body = `<form class="form" id="formTipoEntraga"> 
+        <label class="input-label">Selecione o tipo de entrega</label>
+        <div class="form-group">
+            <div class="input-container">
+                <label>
+                    <input checked class="input-radio" id="option1" type="radio" name="tipo_entrega" value="digix">
+                    Retirar na Digix
+                </label>
+            </div>
+            <div class="input-container">
+                <label>
+                    <input class="input-radio" id="option2" type="radio" name="tipo_entrega" value="endereco">
+                    Entregar no endereço
+                </label>
+            </div>
+        </div>
+        <div class="form-endereco-desativado" id="endereco">
+            <span class="obs"><span class="asterisco">*</span> Campos obrigatórios</span>
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="cep">Cep<span class="asterisco">*</span></label>
+                    <input
+                        class="input-text required"
+                        type="text"
+                        name="cep"
+                        disabled
+                    />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="cidade">Cidade<span class="asterisco">*</span></label>
+                    <input
+                        class="input-text required"
+                        type="text"
+                        name="cidade"
+                        disabled
+                    />
+                </div>
+                <div class="input-container">
+                    <label for="estado">Estado<span class="asterisco">*</span></label>
+                    <select disabled class="input-select required" name="estado">
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="bairro">Bairro<span class="asterisco">*</span></label>
+                    <input
+                        class="input-text required"
+                        type="text"
+                        name="bairro"
+                        disabled
+                    />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="rua">Rua<span class="asterisco">*</span></label>
+                   <input
+                        class="input-text required"
+                        type="text"
+                        name="rua"
+                        disabled
+                    />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="numero">Número<span class="asterisco">*</span></label>
+                    <input
+                        class="input-text required"
+                        type="text"
+                        name="numero"
+                        disabled
+                    />
+                </div>
+                <div class="input-container">
+                    <label for="complemento">Complemento</label>
+                    <input
+                        class="input-text"
+                        type="text"
+                        name="complemento"
+                        disabled
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="input-button" type="submit" id="botaoConcluirPedido">Concluir Pedido</button>
+        </div>
+        </form>`;
+
+        popup.showPopup(body, titulo);
+
+        // Usar MutationObserver para associar eventos onclick após o popup ser exibido
+        const observer = new MutationObserver(() => {
+            const option1 = document.getElementById('option1');
+            const option2 = document.getElementById('option2');
+            const submitButton = document.getElementById('botaoConcluirPedido');
+            const form = document.getElementById('formTipoEntraga');
+            if (option1 && option2 && submitButton) {
+                option1.onclick = () => desativarEnderecoForm(true);
+                option2.onclick = () => desativarEnderecoForm(false);
+                form.onsubmit = (event) => {
+                    event.preventDefault(); // Prevenir o comportamento padrão do formulário
+                    enviarDadosParaApi(form);
+                };
+                observer.disconnect(); // Desconectar o observer após encontrar os elementos
+            }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    document.getElementById('botaoFinalizarPedido').addEventListener('click', () => {
+        const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
+        const grid = storedData.listaGrid || [];
+        console.log(grid);
+        let temProdutosFisicos = false;
+        grid.forEach((item) => {
+            if (item.tipo_fisico) {
+                temProdutosFisicos = true;
+            }
+        });
+        if(temProdutosFisicos){
+            abrirPopup();
+        }else{
+            enviarDadosParaApi();
+        }
+    });
+});
