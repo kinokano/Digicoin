@@ -80,3 +80,5 @@ def listaDePedidos(request):
 def carrinho(request):
     return render(request, 'UserHtml/carrinhoCompra.html')
 
+def teste(request):
+    return render(request, 'AdmHtml/teste.html')

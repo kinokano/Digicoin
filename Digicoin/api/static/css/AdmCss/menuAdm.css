@@ -1,8 +1,10 @@
-*{
+body{
     margin: 0;
+    padding: 0;
 }
 
 .main{
+    
     display: flex;
     flex-direction:row;
 }
@@ -59,7 +61,7 @@
 
 }
 
-.botoesMenu button{
+.botoesMenu .botaoMenu{
     border: none;
     background-color: rgba(252, 103, 29, 1);
     box-shadow: 2px 2px 10px 0px rgba(252, 103, 29, 0.45);
@@ -100,7 +102,7 @@
     margin-right: 30px;
 }
 
-.botoesMenu button:hover{
+.botoesMenu .botaoMenu:hover{
     cursor: pointer;
     background-color: rgba(252, 103, 29, 0.89);
 }
