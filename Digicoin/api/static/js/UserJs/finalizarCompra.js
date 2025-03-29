@@ -22,12 +22,24 @@ function desativarEnderecoForm(acao) {
     }
 }
 
+function enviarDadosParaApi(form=null) {
+    // código para enviar os dados para a API
+    if (form != null) {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        console.log(data);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const popup = new Popup();
 
     function abrirPopup() {
         const titulo = 'Finalizar Pedido';
-        const body = `<form class="form"> 
+        const body = `<form class="form" id="formTipoEntraga"> 
         <label class="input-label">Selecione o tipo de entrega</label>
         <div class="form-group">
             <div class="input-container">
@@ -142,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
         <div class="form-group">
-            <button class="input-button" type="submit">Concluir Pedido</button>
+            <button class="input-button" type="submit" id="botaoConcluirPedido">Concluir Pedido</button>
         </div>
         </form>`;
 
@@ -152,9 +164,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const observer = new MutationObserver(() => {
             const option1 = document.getElementById('option1');
             const option2 = document.getElementById('option2');
-            if (option1 && option2) {
+            const submitButton = document.getElementById('botaoConcluirPedido');
+            const form = document.getElementById('formTipoEntraga');
+            if (option1 && option2 && submitButton) {
                 option1.onclick = () => desativarEnderecoForm(true);
                 option2.onclick = () => desativarEnderecoForm(false);
+                form.onsubmit = (event) => {
+                    event.preventDefault(); // Prevenir o comportamento padrão do formulário
+                    enviarDadosParaApi(form);
+                };
                 observer.disconnect(); // Desconectar o observer após encontrar os elementos
             }
         });
@@ -163,7 +181,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.getElementById('botaoFinalizarPedido').addEventListener('click', () => {
-        console.log('finalizar compra');
-        abrirPopup();
+        const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
+        const grid = storedData.listaGrid || [];
+        console.log(grid);
+        let temProdutosFisicos = false;
+        grid.forEach((item) => {
+            if (item.tipo_fisico) {
+                temProdutosFisicos = true;
+            }
+        });
+        if(temProdutosFisicos){
+            abrirPopup();
+        }else{
+            enviarDadosParaApi();
+        }
     });
 });
