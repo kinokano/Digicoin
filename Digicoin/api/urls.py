@@ -24,6 +24,11 @@ urlpatterns = [
     path('listaProdutos', listaProdutos, name="listaProdutos"),
     path('cadastrarDesafio', cadastrarDesafio, name="cadastrarDesafio"),
     path('ranking', ranking, name="ranking"),
+    path('homeListaDeUsuarios', homeListaDeUsuarios, name="homeListaDeUsuarios"),
     path('desafiosCampanha', desafiosCampanha, name="desafiosCampanha"),
+    path('listaDePedidos', listaDePedidos, name='listaDePedidos'),
     path('carrinho/', carrinho, name="carrinho"),
+    path('listaEstoque/', listaEstoque, name='listaEstoque'),
+    path('teste/', teste, name='teste'),
+
 ]

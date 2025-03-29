@@ -13,7 +13,7 @@ class Campanha(models.Model):
     nome = models.CharField(max_length=30, null=False, blank=False)
     is_active = models.BooleanField(default=True)
     dataInicio = models.DateField(default=False)
-    dafaFim = models.DateField(default=False)
+    dataFim = models.DateField(default=False)
     descricao = models.TextField()
 
 class Produto(models.Model):
@@ -32,7 +32,7 @@ class Desafio(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
     valor = models.IntegerField(null=False, blank=False)
     dataInicio = models.DateField(default=False)
-    dafaFim = models.DateField(default=False)
+    dataFim = models.DateField(default=False)
     is_active = models.BooleanField(default=True)
     idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, default=False)
 

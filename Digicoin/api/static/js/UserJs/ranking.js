@@ -53,7 +53,7 @@ function preencherRanking(ranking) {
     itemRow.innerHTML = `
         <td data-label="Posicao">${posicao}</td>
         <td data-label="Nomes">${nome}</td>
-        <td data-label="Valor">${valor}</td>
+        <td data-label="Valor" class="valor_tag">${valor}</td >
       `;
     cartItemsContainer.appendChild(itemRow);
   });
