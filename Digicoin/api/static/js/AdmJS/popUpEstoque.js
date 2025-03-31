@@ -59,14 +59,45 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    
+// Função para validar Físico e Virtual
+    function checkFisicoVirtualRequired() {
+        const fisicoCheckbox = document.getElementById('Fisico');
+        const virtualCheckbox = document.getElementById('Virtual');
+
+        if (!fisicoCheckbox.checked && !virtualCheckbox.checked) {
+            return false;
+        } else {
+            ShowSucesso(fisicoCheckbox);
+            return true;
+        }
+    }
+
+    document.getElementById('Fisico').addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('Virtual').checked = false;
+        }
+        checkFisicoVirtualRequired();
+    });
+
+    document.getElementById('Virtual').addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('Fisico').checked = false;
+        }
+        checkFisicoVirtualRequired();
+    });
+
+
     // Eventos para abrir e fechar popups
     buttonOpen.addEventListener("click", () => modalPrimeiro.showModal());
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
-        if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired()) {
+        if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
             modalSegundo.showModal();
         }
     });
+
+
     buttonClose2.addEventListener("click", () => modalSegundo.close());
     buttonLinkCampanha.addEventListener("click", () => modalTerceiro.showModal());
     buttonClose3.addEventListener("click", () => modalTerceiro.close());
