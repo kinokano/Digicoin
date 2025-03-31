@@ -1,0 +1,245 @@
+.menucentro{
+    display: flex;
+    justify-content: center;
+}
+
+.principal{
+    margin-left: 351px;
+}
+
+.imagemsort{
+    height: 15px;
+}
+
+/* header {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.perfil {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    padding-right: 75px;
+}
+
+.icone-perfil {
+    margin-right: 15px;
+}
+
+.barra-pesquisa{
+    display: flex;
+    justify-content: end;
+
+}
+.estoque-container {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-top: 40px;
+}
+
+.imagemestoque{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    padding-right: 10px;
+
+    
+}
+
+
+.pesquisa {
+    padding: 8px;
+    width: 25%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.nome-produto{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.imagemedicao, .imagemdelete{
+    display: flex;
+    height: 25px;
+    width: 25px;
+}
+
+
+
+.btn-adicionar {
+    background-color: #d133ff;
+    height: 40px;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.iconesort{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; 
+}
+
+
+
+.editar, .deletar {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.tabela-cell-quantidade{
+    text-align: end;
+}
+
+
+
+
+.traco{
+    border-bottom: solid 3px #FC671D;
+}
+
+.search-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 5px;
+}
+
+.search-container img {
+    width: 16px;
+    height: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tabela {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.tabela-head {
+    background: white;
+    font-weight: bold;
+    padding: 10px;
+    /* border-bottom: 2px solid #ddd; */
+}
+
+.tabela-row {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.tabela-row.header {
+    font-weight: bold;
+    background: white;
+    box-shadow: none;
+    text-align: left;
+}
+
+.tabela-cell {
+    flex: 1;
+    padding: 5px;
+    text-align: left;
+}
+
+.nome {
+    display: flex;
+    align-items: center;
+}
+
+.icone {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.sort-icon {
+    width: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.editar img, .deletar img {
+    width: 20px;
+    height: 20px;
+}
