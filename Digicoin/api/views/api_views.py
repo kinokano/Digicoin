@@ -79,6 +79,8 @@ class GetDadosUsuarioLogado(APIView):
 
         return Response(usuarioId)
     
+
+    
 class CampanhaViewSet(viewsets.ModelViewSet):
     queryset = Campanha.objects.all()
     serializer_class = CampanhaSerializer

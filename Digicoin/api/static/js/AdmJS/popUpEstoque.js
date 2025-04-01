@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    
-// Função para validar Físico e Virtual
+
+    // Função para validar Físico e Virtual
     function checkFisicoVirtualRequired() {
         const fisicoCheckbox = document.getElementById('Fisico');
         const virtualCheckbox = document.getElementById('Virtual');
@@ -73,14 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    document.getElementById('Fisico').addEventListener('change', function() {
+    document.getElementById('Fisico').addEventListener('change', function () {
         if (this.checked) {
             document.getElementById('Virtual').checked = false;
         }
         checkFisicoVirtualRequired();
     });
 
-    document.getElementById('Virtual').addEventListener('change', function() {
+    document.getElementById('Virtual').addEventListener('change', function () {
         if (this.checked) {
             document.getElementById('Fisico').checked = false;
         }
@@ -93,6 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
         if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
+
+
+
             modalSegundo.showModal();
         }
     });
@@ -102,47 +105,71 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonLinkCampanha.addEventListener("click", () => modalTerceiro.showModal());
     buttonClose3.addEventListener("click", () => modalTerceiro.close());
 
-    // Evento para adicionar uma nova campanha
-    const formCampanha = document.querySelector("#CriacaoDeCampanhaForm");
-    if (formCampanha) {
-        formCampanha.addEventListener("submit", function (event) {
-            event.preventDefault();
-            let nome = nomeCampanha.value.trim();
-            let inicio = new Date(dataInicio.value);
-            let fim = new Date(dataFim.value);
 
-            if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio) {
-                alert("Preencha todos os campos corretamente.");
-                return;
-            }
 
-            let idCampanha = nome.toLowerCase().replace(/\s+/g, "_");
-            if (document.getElementById(idCampanha)) {
-                alert("Essa campanha já existe!");
-                return;
-            }
 
-            let novaCampanha = document.createElement("div");
-            novaCampanha.classList.add("checkbox-item");
+    async function EventoCampanha(event) {
+        event.preventDefault();
 
-            let checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.id = idCampanha;
-            checkbox.classList.add("campanha-checkbox");
+        let nome = document.getElementById('nomeCampanha').value;
+        let inicio = document.getElementById('dataInicio').value;
+        let fim = document.getElementById('dataFim').value;
+        let descricaoCampanha = document.getElementById('descricaoCampanha').value;
+        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
 
-            let label = document.createElement("label");
-            label.htmlFor = idCampanha;
-            label.textContent = nome;
+        if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio) {
+            alert("Preencha todos os campos corretamente.");
+            return;
+        }
 
-            novaCampanha.appendChild(checkbox);
-            novaCampanha.appendChild(label);
-            campanhaLista.appendChild(novaCampanha);
+        const evento = {
+            nome: nome,
+            is_active: true,
+            dataInicio: dataInicio.value,
+            dataFim: dataFim.value,
+            descricao: descricaoCampanha
+        };
 
+
+
+
+        const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
+
+
+        if (response.id) {
             alert("Campanha criada com sucesso!");
-            modalTerceiro.close();
-            formCampanha.reset();
-        });
+        } else {
+            alert("Erro ao criar campanha.");
+        }
     }
+
+    document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
+
+    // if (document.getElementById(idCampanha)) {
+    //     alert("Essa campanha já existe!");
+    //     return;
+    // }
+
+    // let novaCampanha = document.createElement("div");
+    // novaCampanha.classList.add("checkbox-item");
+
+    // let checkbox = document.createElement("input");
+    // checkbox.type = "checkbox";
+    // checkbox.id = idCampanha;
+    // checkbox.classList.add("campanha-checkbox");
+
+    // let label = document.createElement("label");
+    // label.htmlFor = idCampanha;
+    // label.textContent = nome;
+
+    // novaCampanha.appendChild(checkbox);
+    // novaCampanha.appendChild(label);
+    // campanhaLista.appendChild(novaCampanha);
+
+    // alert("Campanha criada com sucesso!");
+    // modalTerceiro.close();
+    // formCampanha.reset();
+
 
     // Delegação de evento para checkboxes do segundo popup
     modalSegundo.addEventListener("change", function (event) {
@@ -168,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
             reader.readAsDataURL(file);
         }
     });
-});
 
+});
 
 
