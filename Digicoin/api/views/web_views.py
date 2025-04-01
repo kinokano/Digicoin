@@ -90,3 +90,5 @@ def campanhas(request):
 def teste(request):
     return render(request, 'AdmHtml/teste.html')
 
+def cadastrarUsuario(request):
+    return render(request, 'AdmHtml/cadastrarUsuario.html')
