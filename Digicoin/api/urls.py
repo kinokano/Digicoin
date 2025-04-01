@@ -28,12 +28,11 @@ urlpatterns = [
     path('desafiosCampanha', desafiosCampanha, name="desafiosCampanha"),
     path('listaDePedidos', listaDePedidos, name='listaDePedidos'),
     path('carrinho/', carrinho, name="carrinho"),
-
     path('relatorio/', relatorio, name="relatorio"),
     path('campanhas/', campanhas, name="campanhas"),
-
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
-    path('teste/', teste, name='teste'),
+    path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario')
+
 
 
 ]
