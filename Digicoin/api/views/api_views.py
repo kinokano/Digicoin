@@ -21,7 +21,10 @@ class User(APIView):
     def post(self, request):
         nome = request.data.get('nome')
         senha = request.data.get('senha')
-
+        ra = request.data.get('ra')
+        fistName = request.data.get('fist_name')
+        isAdm = request.data.get('is_adm')
+        
         if not nome or not senha:
             return Response({"error": "Todos os campos são obrigatórios!", "status": status.HTTP_400_BAD_REQUEST}, status= status.HTTP_400_BAD_REQUEST)
 
@@ -29,7 +32,8 @@ class User(APIView):
             username = nome,
             password = make_password(senha),
             is_active = True,
-            is_aluno = True
+            # is_aluno = True
+            ra = ra
         )
         return Response({"message":"Usuário criado com sucesso!", "id":usuario.id, "status": status.HTTP_201_CREATED}, status= status.HTTP_201_CREATED)
 
