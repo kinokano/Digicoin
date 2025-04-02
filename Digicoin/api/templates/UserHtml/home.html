@@ -5,11 +5,12 @@
 
 
 <link
-    href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/UserCss/home.css' %}">
 <body>
 
+    {% include "components/user/menuUser.html" %}
+    
     <div id="menuColaborador"></div>
 
     <div class="botaoCampanha" id="botaoCampanha">
@@ -33,30 +34,6 @@
             <div class="line"></div>
             <div class="listaDesafios" id="listaDesafios">
                 {% include "components/user/listarDesafios.html" %}
-                {% comment %} <ul class="desafios">
-                    <div class="desafiosFlex" id="desafiosFlex">
-                        <!-- fiz isso para poder dar display flex na lista de desafios -->
-                        <li>Desafio1</li>
-                        <p>Recompensa: DG$200</p>
-                    </div>
-
-                    <div class="desafiosFlex" id="desafiosFlex">
-                        <li>Desafio2</li>
-                    </div>
-
-                    <div class="desafiosFlex" id="desafiosFlex">
-                        <li>Desafio3</li>
-                    </div>
-
-                    <div class="desafiosFlex" id="desafiosFlex">
-                        <li>Desafio4</li>
-                    </div>
-
-                    <div class="desafiosFlex" id="desafiosFlex">
-                        <li>Desafio5</li>
-                    </div>
-
-                </ul> {% endcomment %}
             </div>
         </div>
     </div>

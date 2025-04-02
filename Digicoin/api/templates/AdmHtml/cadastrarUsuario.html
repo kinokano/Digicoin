@@ -4,7 +4,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/AdmCss/cadastrarUsuario.css'%}">
 
-<body >
+
 <div class="header">
     <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
     <img class="iconeX" src="{% static 'img/iconeX.png' %}" alt="">
@@ -34,9 +34,9 @@
         <input type="text" id="senha" class="senha" placeholder="Rw9!K$2@qPb">
     </div>
     
-    <button type="submit" class="cadastrarUsuario">Concluído</button>
+    <button type="submit" id="cadastrarUsuario" class="cadastrarUsuario">Concluído</button>
 
 </form>
 
-</body>
+<script src="{% static 'js/AdmJS/cadastrarUsuario.js' %}"></script>
 {% endblock content %}
