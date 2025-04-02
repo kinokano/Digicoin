@@ -8,10 +8,18 @@
     align-items: center;
     justify-content: center;
     height: 100px;
-    gap: 150px;
+    /* gap: 150px; */
     box-shadow: 10px 4px 8px rgba(0,0,0,0.4);
     background-color: white;
-    
+   
+}
+
+.menuEsquerda{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
 }
 
 .buttonNavBar{
@@ -35,6 +43,7 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
+    margin-right: 20px;
 }
 
 .userInfo{
