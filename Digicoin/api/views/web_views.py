@@ -35,6 +35,9 @@ def ranking(request):
     return render(request, 'UserHtml/ranking.html')
 
 def listaEstoque(request):
+    eventos = Campanha.objects.filter(is_active=True)
+             
+
     estoque = [ 
 
     {
@@ -63,7 +66,9 @@ def listaEstoque(request):
     }
   
     ]
-    return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque})
+
+    
+    return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque, 'eventos': eventos})
 
 
 

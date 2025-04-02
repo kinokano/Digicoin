@@ -103,26 +103,13 @@
 
                 <div class="temaCampanhaCorpo">
                     
+                    {% for evento in eventos %}
                     <div>
-                        <input type="checkbox" id="Padrão">
-                        <label for="Padrão">Padrão</label>
+                        <input type="checkbox" value="{{evento.id}}" class="listaCampanha">
+                        <label for="{{evento.id}}">{{evento.nome}}</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="Carnaval">
-                        <label for="Carnaval">Carnaval</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="IndependenciaDoBrasil">
-                        <label for="IndependenciaDoBrasil">Independência do Brasil</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Natal">
-                        <label for="Natal">Natal</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Reveillon">
-                        <label for="Reveillon">Réveillon</label>
-                    </div>
+                    {% endfor %}
+                    
                 
                 </div>
             </div>

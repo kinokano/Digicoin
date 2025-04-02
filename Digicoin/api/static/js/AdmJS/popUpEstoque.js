@@ -107,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
     async function EventoCampanha(event) {
         event.preventDefault();
 
@@ -131,13 +130,35 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
 
-
-
         const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
 
 
         if (response.id) {
-            alert("Campanha criada com sucesso!");
+
+            let novaCampanha = document.createElement("div");
+            novaCampanha.classList.add("checkbox-item");
+
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.classList.add("listaCampanha");
+
+            let label = document.createElement("label");
+            label.textContent = response.nome;
+
+            novaCampanha.appendChild(checkbox);
+            novaCampanha.appendChild(label);
+            campanhaLista.appendChild(novaCampanha);
+            modalTerceiro.close();
+
+            let formCampanha = document.getElementById("CriacaoDeCampanhaForm");
+            if (formCampanha) {
+                formCampanha.reset();
+            } else {
+                alert("Erro ao criar campanha.");
+            }
+
+            
+
         } else {
             alert("Erro ao criar campanha.");
         }
@@ -145,30 +166,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
 
-    // if (document.getElementById(idCampanha)) {
-    //     alert("Essa campanha já existe!");
-    //     return;
-    // }
 
-    // let novaCampanha = document.createElement("div");
-    // novaCampanha.classList.add("checkbox-item");
 
-    // let checkbox = document.createElement("input");
-    // checkbox.type = "checkbox";
-    // checkbox.id = idCampanha;
-    // checkbox.classList.add("campanha-checkbox");
 
-    // let label = document.createElement("label");
-    // label.htmlFor = idCampanha;
-    // label.textContent = nome;
+    async function EventoProduto(event) {
+        event.preventDefault(event);
 
-    // novaCampanha.appendChild(checkbox);
-    // novaCampanha.appendChild(label);
-    // campanhaLista.appendChild(novaCampanha);
+        
 
-    // alert("Campanha criada com sucesso!");
-    // modalTerceiro.close();
-    // formCampanha.reset();
+        let nome = document.getElementById('Produto').value;
+        let quantidade = document.getElementById('Quantidade').value;
+        let preco = document.getElementById('Preco').value;
+
+        let idCampanha = null; 
+        
+        let checkboxes = document.getElementsByClassName('listaCampanha');
+    
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                idCampanha = checkboxes[i].value; 
+                break; 
+            }
+        } 
+        console.log(idCampanha);
+
+        let fisico = document.getElementById("Fisico");
+            let virtual = document.getElementById("Virtual");
+            let tipo = "";
+
+        if (fisico.checked) {
+            tipo = fisico.value;
+        } else if (virtual.checked) {
+            tipo = virtual.value;  
+        } else {
+            tipo = null; 
+        }
+
+
+        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+        const chaveEstrangeira = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, { 'X-CSRFToken': csrf });
+
+        console.log(chaveEstrangeira);
+
+
+
+        const produto = {
+
+            nome: nome, 
+            img1: "",
+            img2: "",
+            img3: "",
+            valor: preco,
+            quantidade: quantidade,
+            tipo: tipo,
+            is_active: chaveEstrangeira.is_active, 
+            idCampanha: chaveEstrangeira.id, 
+            dataInicio: chaveEstrangeira.dataInicio,  
+            dataFim: chaveEstrangeira.dataFim,
+            descricao: chaveEstrangeira.descricao  
+
+
+        }
+
+        // const response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
+
+        // if (response.id) {
+
+        //     alert("Produto criado com sucesso!");
+
+            
+
+        // } else {
+        //     alert("Erro ao criar campanha.");
+        // }
+
+        
+    }
+
+    document.getElementById("produtoForm2").addEventListener("submit", EventoProduto);
+
+
 
 
     // Delegação de evento para checkboxes do segundo popup
@@ -181,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     document.getElementById("imagem").addEventListener("change", function (event) {
-        console.log("wdadw")
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
