@@ -22,8 +22,8 @@ class User(APIView):
         nome = request.data.get('nome')
         senha = request.data.get('senha')
         ra = request.data.get('ra')
-        fistName = request.data.get('fist_name')
-        isAdm = request.data.get('is_adm')
+        fistName = request.data.get('first_name')
+        # isAdm = request.data.get('is_adm')
         
         if not nome or not senha:
             return Response({"error": "Todos os campos são obrigatórios!", "status": status.HTTP_400_BAD_REQUEST}, status= status.HTTP_400_BAD_REQUEST)
@@ -32,7 +32,8 @@ class User(APIView):
             username = nome,
             password = make_password(senha),
             is_active = True,
-            # is_aluno = True
+            first_name = fistName,
+            
             ra = ra
         )
         return Response({"message":"Usuário criado com sucesso!", "id":usuario.id, "status": status.HTTP_201_CREATED}, status= status.HTTP_201_CREATED)
@@ -62,11 +63,11 @@ class User(APIView):
         
 class Login(APIView):
     def post(self, request):
-        email = request.data.get('username')
-        senha = request.data.get('password')
+        nome = request.data.get('nome')
+        senha = request.data.get('senha')
 
-        usuario = authenticate(username=email, password=senha)
-        print(email, senha)
+        usuario = authenticate(username=nome, password=senha)
+        print(nome, senha)
         if(usuario):
             login(request, usuario)
             return Response({"status": status.HTTP_200_OK})
