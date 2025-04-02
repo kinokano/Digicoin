@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem('listaProdutos') || (JSON.parse(localStorage.getItem('listaProdutos')).listaGrid || []).length === 0) {
     // Adiciona 5 produtos de exemplo ao local storage
     const produtosExemplo = [
-      { id: 1, nome: "Produto 1", valor: "2900", qtd: 2, qtd_estoque: 2, tipo_fisico: false },
-      { id: 2, nome: "Produto 2", valor: "4900", qtd: 1, qtd_estoque: 5, tipo_fisico: false },
+      { id: 1, nome: "Produto 1", valor: "2900", qtd: 2, qtd_estoque: 2, tipo_fisico: true },
+      { id: 2, nome: "Produto 2", valor: "4900", qtd: 1, qtd_estoque: 5, tipo_fisico: true },
       { id: 3, nome: "Produto 3", valor: "1500", qtd: 3, qtd_estoque: 10, tipo_fisico: false },
       { id: 4, nome: "Produto 4", valor: "3200", qtd: 1, qtd_estoque: 4, tipo_fisico: false },
       { id: 5, nome: "Produto 5", valor: "2100", qtd: 2, qtd_estoque: 6, tipo_fisico: false }

@@ -25,12 +25,12 @@ function desativarEnderecoForm(acao) {
 function enviarDadosParaApi(form=null) {
     // código para enviar os dados para a API
     if (form != null) {
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
+        const DadosFormulario = new FormData(form);
+        const campos = {};
+        DadosFormulario.forEach((value, key) => {
+            campos[key] = value;
         });
-        console.log(data);
+        console.log(campos);
     }
 }
 
@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         class="input-text required"
                         type="text"
                         name="cep"
+                        id="cep"
                         disabled
                     />
                 </div>
@@ -75,12 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         class="input-text required"
                         type="text"
                         name="cidade"
+                        id="cidade"
                         disabled
                     />
                 </div>
                 <div class="input-container">
                     <label for="estado">Estado<span class="asterisco">*</span></label>
-                    <select disabled class="input-select required" name="estado">
+                    <select disabled class="input-select required" name="estado" id="estado">
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -117,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         class="input-text required"
                         type="text"
                         name="bairro"
+                        id="bairro"
                         disabled
                     />
                 </div>
@@ -128,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         class="input-text required"
                         type="text"
                         name="rua"
+                        id="rua"
                         disabled
                     />
                 </div>
@@ -164,11 +168,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const observer = new MutationObserver(() => {
             const option1 = document.getElementById('option1');
             const option2 = document.getElementById('option2');
+            const onblurCep = document.getElementById('cep');
             const submitButton = document.getElementById('botaoConcluirPedido');
             const form = document.getElementById('formTipoEntraga');
-            if (option1 && option2 && submitButton) {
+            if (option1 && option2 && onblurCep && submitButton) {
                 option1.onclick = () => desativarEnderecoForm(true);
                 option2.onclick = () => desativarEnderecoForm(false);
+                onblurCep.onblur = () => buscarEndereco('cep', 'rua', 'bairro', 'cidade', 'estado');
                 form.onsubmit = (event) => {
                     event.preventDefault(); // Prevenir o comportamento padrão do formulário
                     enviarDadosParaApi(form);
