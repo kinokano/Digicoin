@@ -98,3 +98,6 @@ def editarUsuario(request):
 
 def adicionarMoedas(request):
     return render(request, 'AdmHtml/adicionarMoedas.html')
+
+def indexUser(request):
+    return render(request, 'UserHtml/index.html')

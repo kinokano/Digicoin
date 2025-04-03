@@ -33,7 +33,8 @@ urlpatterns = [
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
     path('editarUsuario/', editarUsuario, name='editarUsuario'),
-    path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas')
+    path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
+    path('indexUser/', indexUser, name='indexUser')
 
 
 ]
