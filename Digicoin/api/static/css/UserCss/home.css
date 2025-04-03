@@ -61,6 +61,7 @@ body{
     align-content: center;
     margin-bottom: 50px;
     margin-top: 90px;
+   
 }
 
 .desafiosCampanha{
@@ -70,6 +71,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    text-decoration: none;
 }
 
 .desafiosCampanha:hover{
@@ -119,9 +121,27 @@ body{
     padding: 2px;
     border-radius: 20px;
 
+
+}
+.pagination{
+    margin-bottom: 40px;
+}
+.pagination a {
+    font-size: 24px;
+    text-decoration: none;
+    
 }
 
+.pagination div{
+    margin-top: 20px;
+    display: flex;
+}
 
+.pagination img{
+    transform: rotate(180deg);
+    width: 32px;
+    height: 32px;
+}
 
 .primeiro li{
     width: 100%;
