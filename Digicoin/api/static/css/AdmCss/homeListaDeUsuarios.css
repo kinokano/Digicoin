@@ -53,7 +53,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 0px 20px 0px 20px;
 }
 
 .cabecalho h2 {
@@ -180,6 +180,21 @@ header {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    accent-color: var(--laranja);
+}
+
+.nomeSort {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 0px 20px;
+}
+
+.nomeSort h2 {
+    font-size: 20px;
+}
+
+.sort {
+    width: 30px;
 }
 
 .avatar {
@@ -220,7 +235,6 @@ header {
     margin-right: 15px;
     margin-top: 10px;
 }
-
 
 
 /* table {
