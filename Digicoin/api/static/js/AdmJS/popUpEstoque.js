@@ -107,16 +107,102 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+    async function EventoProduto(event) {
+
+        event.preventDefault();
+
+
+
+        let nome = document.getElementById('Produto').value;
+        let quantidade = document.getElementById('Quantidade').value;
+        let preco = document.getElementById('Preco').value;
+        let imagem = document.getElementById('imagem');
+
+
+        let idCampanha = null;
+
+        let checkboxes = document.getElementsByClassName('listaCampanha');
+
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                idCampanha = checkboxes[i].value;
+                break;
+            }
+        }
+        console.log(idCampanha);
+
+        let fisico = document.getElementById("Fisico");
+        let virtual = document.getElementById("Virtual");
+        let tipo = "";
+
+        if (fisico.checked) {
+            tipo = "Físico";
+        } else if (virtual.checked) {
+            tipo = "Virtual";
+        } else {
+            tipo = null;
+        }
+        console.log('teste: ' + tipo);
+
+
+        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+        const chaveEstrangeira = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, { 'X-CSRFToken': csrf });
+
+        console.log(chaveEstrangeira);
+
+
+
+        const produto = {
+
+            nome: nome,
+            img1: "1",
+            img2: "2",
+            img3: "3",
+            valor: preco,
+            quantidade: quantidade,
+            tipo: tipo,
+            is_active: chaveEstrangeira.is_active,
+            idCampanha: chaveEstrangeira.id,
+            dataInicio: chaveEstrangeira.dataInicio,
+            dataFim: chaveEstrangeira.dataFim,
+            descricao: chaveEstrangeira.descricao
+
+
+        }
+
+        const response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
+
+        console.log(response);
+        if (response.id) {
+
+            window.location.href = '/listaEstoque/'; // Recarrega a página manualmente
+
+
+
+        } else {
+            alert("Erro ao criar campanha.");
+        }
+
+
+    }
+
+    document.getElementById("produtoForm2").addEventListener("submit", EventoProduto);
+
     async function EventoCampanha(event) {
         event.preventDefault();
 
         let nome = document.getElementById('nomeCampanha').value;
-        let inicio = document.getElementById('dataInicio').value;
-        let fim = document.getElementById('dataFim').value;
+        let inicio = new Date(document.getElementById('dataInicio').value + "T00:00:00"); // Garante o horário correto
+        let fim = new Date(document.getElementById('dataFim').value + "T00:00:00");
         let descricaoCampanha = document.getElementById('descricaoCampanha').value;
         const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
 
-        if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio) {
+        const hoje = new Date()
+        hoje.setHours(0, 0, 0, 0);
+       
+
+        if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio || inicio.getTime() < hoje.getTime()) {
             alert("Preencha todos os campos corretamente.");
             return;
         }
@@ -132,15 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
 
-
+        let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
         if (response.id) {
 
             let novaCampanha = document.createElement("div");
-            novaCampanha.classList.add("checkbox-item");
+
 
             let checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.classList.add("listaCampanha");
+            checkbox.value = response.id;
 
             let label = document.createElement("label");
             label.textContent = response.nome;
@@ -148,16 +235,12 @@ document.addEventListener("DOMContentLoaded", function () {
             novaCampanha.appendChild(checkbox);
             novaCampanha.appendChild(label);
             campanhaLista.appendChild(novaCampanha);
+
             modalTerceiro.close();
+            formCampanhaTerceiro.reset();
 
-            let formCampanha = document.getElementById("CriacaoDeCampanhaForm");
-            if (formCampanha) {
-                formCampanha.reset();
-            } else {
-                alert("Erro ao criar campanha.");
-            }
 
-            
+
 
         } else {
             alert("Erro ao criar campanha.");
@@ -165,86 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
-
-
-
-
-    async function EventoProduto(event) {
-        event.preventDefault(event);
-
-        
-
-        let nome = document.getElementById('Produto').value;
-        let quantidade = document.getElementById('Quantidade').value;
-        let preco = document.getElementById('Preco').value;
-
-        let idCampanha = null; 
-        
-        let checkboxes = document.getElementsByClassName('listaCampanha');
-    
-        for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                idCampanha = checkboxes[i].value; 
-                break; 
-            }
-        } 
-        console.log(idCampanha);
-
-        let fisico = document.getElementById("Fisico");
-            let virtual = document.getElementById("Virtual");
-            let tipo = "";
-
-        if (fisico.checked) {
-            tipo = fisico.value;
-        } else if (virtual.checked) {
-            tipo = virtual.value;  
-        } else {
-            tipo = null; 
-        }
-
-
-        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
-
-        const chaveEstrangeira = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, { 'X-CSRFToken': csrf });
-
-        console.log(chaveEstrangeira);
-
-
-
-        const produto = {
-
-            nome: nome, 
-            img1: "",
-            img2: "",
-            img3: "",
-            valor: preco,
-            quantidade: quantidade,
-            tipo: tipo,
-            is_active: chaveEstrangeira.is_active, 
-            idCampanha: chaveEstrangeira.id, 
-            dataInicio: chaveEstrangeira.dataInicio,  
-            dataFim: chaveEstrangeira.dataFim,
-            descricao: chaveEstrangeira.descricao  
-
-
-        }
-
-        // const response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
-
-        // if (response.id) {
-
-        //     alert("Produto criado com sucesso!");
-
-            
-
-        // } else {
-        //     alert("Erro ao criar campanha.");
-        // }
-
-        
-    }
-
-    document.getElementById("produtoForm2").addEventListener("submit", EventoProduto);
 
 
 
@@ -272,6 +275,8 @@ document.addEventListener("DOMContentLoaded", function () {
             reader.readAsDataURL(file);
         }
     });
+
+    
 
 });
 
