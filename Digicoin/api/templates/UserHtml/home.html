@@ -1,21 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-
-
 <link
     href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/UserCss/home.css' %}">
-<body>
-
     {% include "components/user/menuUser.html" %}
     
     <div id="menuColaborador"></div>
 
     <div class="botaoCampanha" id="botaoCampanha">
-        <button class="desafiosCampanha" id="desafiosCampanha"><img src="{% static 'img/iconeAlvo.png' %}" alt="">
-            Desafios da Campanha </button>
+        <a href="{% url 'desafiosCampanha' %}" class="desafiosCampanha" id="desafiosCampanha"><img src="{% static 'img/iconeAlvo.png' %}" alt="">
+            Desafios da Campanha </a>
     </div>
 
     <div class="parteDeBaixo" id="parteDeBaixo">
@@ -24,7 +19,7 @@
             <div class="line"></div>
 
             <ul class="numero1" id="numero1">
-                {% include 'components/user/rankingUser.html' with usuarios=usuarios primeiro_usuario=primeiro_usuario%}
+                {% include 'components/user/rankingUser.html' %}
             </ul>
         </div>
         
@@ -37,11 +32,5 @@
             </div>
         </div>
     </div>
-
-
-    <script src="Home.js"></script>
-    <script src="components/menu/menu_colaborador/.js"></script>
-</body>
-
 </html>
 {% endblock %}
