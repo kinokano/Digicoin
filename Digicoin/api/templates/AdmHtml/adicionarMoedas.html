@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/AdmCss/adicionarMoedas.css'%}">
+
+<div class="main">
+    <div class="header">
+        <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
+        <img class="iconeX" src="{% static 'img/iconeX.png' %}" alt="">
+    </div>
+
+    <div class="gerenciar">
+        <h1>Gerenciar digicoins</h1>
+
+        <div class="quantidade">
+        <label>Quantidade a ser adicionada ou removida</label>
+        <input type="number" placeholder="5.000">
+        </div>
+
+        <div class="botoes">
+            <button class="adicionar">Adicionar</button>
+            <button class="remover">Remover</button>
+        </div>
+
+    </div>
+
+
+
+</div>
+<script src="{% static 'js/AdmJS/adicionarMoedas.js' %}"></script>
+
+{% endblock content %}

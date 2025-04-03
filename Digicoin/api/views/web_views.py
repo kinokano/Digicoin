@@ -92,3 +92,9 @@ def teste(request):
 
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
+
+def editarUsuario(request):
+    return render(request, 'AdmHtml/editarUsuario.html')
+
+def adicionarMoedas(request):
+    return render(request, 'AdmHtml/adicionarMoedas.html')
