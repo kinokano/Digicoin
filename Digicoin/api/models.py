@@ -14,11 +14,11 @@ class Campanha(models.Model):
     is_active = models.BooleanField(default=True)
     dataInicio = models.DateField(default=False)
     dataFim = models.DateField(default=False)
-    descricao = models.TextField()
+    descricao = models.TextField(default=False)
 
 class Produto(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
-    img1 =  models.CharField(max_length=100, null=False, blank=False)
+    img1 =  models.CharField(max_length=100)
     img2 =  models.CharField(max_length=100)
     img3 =  models.CharField(max_length=100)
     valor = models.IntegerField(null=False, blank=False)
@@ -48,8 +48,9 @@ class Compra(models.Model):
     numero = models.CharField(max_length=100, default=False)
     pedido_choices = [("Pendente", "Pendente"), ("Concluído","Concluído")]
     pedido = models.CharField(max_length=10, choices=pedido_choices, default='Pendente')
+    idUsuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, blank=False)
 
 class ItensCompra(models.Model):
     qtdProduto = models.IntegerField(null=False, blank=False)
-    idProduto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    idCompra = models.ForeignKey(Compra, on_delete=models.CASCADE)
+    idProduto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=False, blank=False)
+    idCompra = models.ForeignKey(Compra, on_delete=models.CASCADE, null=False, blank=False) 
