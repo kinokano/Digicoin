@@ -82,10 +82,10 @@ def carrinho(request):
 
 
 def relatorio(request):
-    return render(request, 'components/user/relatorio.html')
+    return render(request, 'components/adm/relatorio.html')
 
 def campanhas(request):
-    return render(request, 'components/user/campanhas.html')
+    return render(request, 'components/adm/campanhas.html')
 
 def teste(request):
     return render(request, 'AdmHtml/teste.html')
