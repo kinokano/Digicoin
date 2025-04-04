@@ -1,33 +1,31 @@
-
-
-
+{% load static %}
 
 {% for desafio in desafios  %}
 
     <ul class="desafios">
         <div class="desafiosFlex" id="desafiosFlex">
-            <!-- fiz isso para poder dar display flex na lista de desafios -->
+            <!-- <li>{{desafio.id}}</li>  -->
             <li>{{desafio.nome}}</li>
             <p>Recompensa: DG${{desafio.valor}}</p>
         </div>
       
-        {% comment %} <div class="desafiosFlex" id="desafiosFlex">
-            <li>Desafio2</li>
-        </div>
-        
-        <div class="desafiosFlex" id="desafiosFlex">
-            <li>Desafio3</li>
-        </div>
-        
-        <div class="desafiosFlex" id="desafiosFlex">
-            <li>Desafio4</li>
-        </div>
-        
-        <div class="desafiosFlex" id="desafiosFlex">
-            <li>Desafio5</li>
-        </div>    {% endcomment %}
     </ul> 
 
 {% endfor %}
 
 
+<div class="pagination">
+    {% if desafios.has_previous %}
+    <div >  
+        <a style="font-size: 20px; margin-right: 10px;" href="?desafio_page={{ desafios.previous_page_number }}">Anterior</a>
+    </div>      
+    {% endif %}
+ 
+    {% if desafios.has_next %}
+    <div >
+        <a style="font-size: 20px;" href="?desafio_page={{ desafios.next_page_number }}">Próxima</a>
+    </div>
+    {% endif %}
+    <span>Página {{ desafios.number }} de {{ desafios.paginator.num_pages }}</span class="span">
+
+</div>

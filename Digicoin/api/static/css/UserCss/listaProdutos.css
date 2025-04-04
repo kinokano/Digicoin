@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .search {
@@ -121,6 +121,7 @@ dialog {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: white;
     padding: 0;
+    margin: 0;
 }
 
 dialog::backdrop {
@@ -249,14 +250,14 @@ dialog::backdrop {
 
 .tras .quantidade span {
     margin: 0px;
-    padding-left: 10px;
-    padding-top: 25px;
-}
+    padding: 25px 0px 0px 10px;
+}   
 
 .tras .descricao {
     display: flex;
     padding: 30px;
     margin-bottom: 90px;
+    gap: 5px;
 }
 
 .tras .quantidade p {
@@ -267,6 +268,7 @@ dialog::backdrop {
 .tras .descricao p {
     font-weight: bold;
     color: var(--laranja);
+    gap: 5px;
 }
 
 @media (max-width: 768px) {
@@ -305,10 +307,15 @@ dialog::backdrop {
         left: 50%;
         transform: translate(-50%, -50%);
         border: none;
-        padding: 5px;
-        border-radius: 8px;
+        border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: white;
+        padding: 0;
+        margin: 0;  
+    }
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
     }
 }
 

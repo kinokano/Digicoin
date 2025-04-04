@@ -1,21 +1,29 @@
 from django.shortcuts import render, redirect
 from api.models import *
+from django.core.paginator import Paginator
 
 def login(request):
     return render(request, 'index.html')
 
 
-def home(request):
-    
-    user = CustomUser.objects.all().order_by("-saldo")[:5]
-    desafios = Desafio.objects.all()
-    context = {
-        'usuarios': user[1:],
-        'primeiro_usuario': user[0] if user else None,
-        'desafios': desafios       
-    }
-    return render(request, 'UserHtml/home.html', context)
 
+
+def home(request):
+   
+    users = CustomUser.objects.all().order_by("-saldo")[:4]
+    
+    desafio_list = Desafio.objects.all()
+    desafio_paginator = Paginator(desafio_list, 5) 
+    desafio_page = request.GET.get('desafio_page') 
+    desafios = desafio_paginator.get_page(desafio_page)  
+
+    context = {
+        'usuarios': users,  
+        'primeiro_usuario': users[0] if users else None,  
+        'desafios': desafios,  
+    }
+
+    return render(request, 'UserHtml/home.html', context)
 
 
 def historicoCompra(request):
@@ -58,5 +66,22 @@ def listaDePedidos(request):
 def carrinho(request):
     return render(request, 'UserHtml/carrinhoCompra.html')
 
+
+def relatorio(request):
+    return render(request, 'components/adm/relatorio.html')
+
+def campanhas(request):
+    return render(request, 'components/adm/campanhas.html')
+
 def teste(request):
     return render(request, 'AdmHtml/teste.html')
+
+def cadastrarUsuario(request):
+    return render(request, 'AdmHtml/cadastrarUsuario.html')
+
+def editarUsuario(request):
+    return render(request, 'AdmHtml/editarUsuario.html')
+
+def adicionarMoedas(request):
+    return render(request, 'AdmHtml/adicionarMoedas.html')
+
