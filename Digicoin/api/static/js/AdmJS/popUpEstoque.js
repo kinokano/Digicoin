@@ -14,11 +14,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const produto = document.getElementById("Produto");
     const quantidade = document.getElementById("Quantidade");
+    quantidade.addEventListener("input", function () {
+        mascaraInteiro(preco);
+    });
+    
+    quantidade.addEventListener("keydown", function (event) {
+        bloqueiaVirgulaPonto(event);
+    });
+
     const preco = document.getElementById("Preco");
+    preco.addEventListener("input", function () {
+        mascaraInteiro(preco);
+    });
+    
+    preco.addEventListener("keydown", function (event) {
+        bloqueiaVirgulaPonto(event);
+    });
+
     const campanhaCheckbox = document.getElementById("Campanha");
 
     const checkboxlist = document.getElementById("checkboxlist");
     const campanhaLista = document.querySelector(".temaCampanhaCorpo");
+
 
     // Função para exibir erros
     function ShowError(input, mensagem) {
@@ -281,3 +298,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function mascaraInteiro(input) {
+    // Remove tudo que não for número
+    input.value = input.value.replace(/\D/g, ""); 
+}
+
+function bloqueiaVirgulaPonto(event) {
+    const caracteresBloqueados = [",", ".", "-", "+"];
+
+    if (caracteresBloqueados.includes(event.key)) {
+        event.preventDefault();
+        return false;
+    }
+}

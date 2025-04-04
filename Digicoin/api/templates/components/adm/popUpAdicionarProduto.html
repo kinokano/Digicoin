@@ -30,12 +30,14 @@
                 </div>
                 <div class="FormQuantidade">
                     <label for="Quantidade">Quantidade:</label>
-                    <input type="number" id="Quantidade" placeholder="Quantidade">
+                    <input type="number" id="Quantidade" placeholder="Quantidade" oninput="mascaraInteiro(this)" 
+                    onkeydown="return bloqueiaCaracteresIndesejados(event)">
                     <small class="alerta">Mensagem de erro</small>
                 </div>
                 <div class="FormPreco">
                     <label for="Preco">Preço:</label>
-                    <input type="number" id="Preco" placeholder="R$ 99,99">
+                    <input type="number" id="Preco" placeholder=" 999" oninput="mascaraInteiro(this)" 
+                    onkeydown="return bloqueiaCaracteresIndesejados(event)">
                     <small class="alerta">Mensagem de erro</small>
                 </div>
                 <div class="FormTipo">
@@ -180,4 +182,5 @@
     </dialog>
     
     <script src="{% static 'js/AdmJS/popUpEstoque.js' %}"></script>
+    
 </body>
