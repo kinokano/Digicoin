@@ -79,7 +79,7 @@ body{
 
 }
 
-/* referente aos outros colocados */
+
 
 .outrosColocados{
     background: rgb(77,44,135);
@@ -109,7 +109,6 @@ body{
     height: 40px;
 }
 
-/* referente ao primeiro colocado */
 
 .primeiro{
     margin-top: 15px;
@@ -125,6 +124,7 @@ body{
 }
 .pagination{
     margin-bottom: 40px;
+    display: flex;
 }
 .pagination a {
     font-size: 24px;
@@ -141,6 +141,12 @@ body{
     transform: rotate(180deg);
     width: 32px;
     height: 32px;
+}
+
+.pagination span{
+    margin-top: 23px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .primeiro li{
@@ -210,8 +216,6 @@ body{
     cursor: pointer;
  }
 
-
-
  .desafiosFlex li{
     margin-left:10px ;
     font-size: x-large;
@@ -221,3 +225,55 @@ body{
     margin-right: 10px;
     font-size: large;
 }    
+
+@media (min-width: 0px) and (max-width: 430px) {
+
+    .botaoCampanha{
+        margin-top: 40px;
+    }
+
+    .botaoCampanha a{
+        margin-top: 40px;
+        font-size: 25px;
+    }
+
+    .desafiosCampanha{
+        height: 190px;
+        width: 390px;
+    }
+
+    .parteDeBaixo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .desafiosFlex{
+        width: 390px;
+    }
+
+    .outrosColocados{
+        width: 340px;
+    }
+
+    .primeiro{
+        width: 340px;
+    }
+
+    .listaDesafios p{
+        font-size: 12px;
+    }
+
+    .listaDesafios li{
+        font-size: 20px;
+    }
+
+    .pagination{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .pagination span{
+        text-align: center;
+    }
+}
