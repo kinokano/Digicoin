@@ -2,40 +2,37 @@
 
 <link rel="stylesheet" href="{% static 'css/UserCss/menuUser.css' %}">
 
-<div class="menuColaborador" id="menuColaborador">
-    
-    <div class="iconGroup displayOff">
-        <img src=" {% static 'img/group.png' %}" alt="logoDigix" class="group">
-    </div>
+<div class="menu">
 
-    <div class="divLogo">
 
-        <img src=" {% static 'img/logo.png' %}" alt="logoDigix" class="logo">
 
-    </div>
-    
-    <div class="divNavBar">
+        <div class="group">
+            <img src="{% static 'img/group.png'%}" alt="" class="imgGroup">
+        </div>
+        
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="" class="imgLogo">
+        </div>
 
-        <a href="" class="buttonNavBar">Home</a>
-        <a href="" class="buttonNavBar">Produtos</a>
-        <a href="" class="buttonNavBar">Ranking</a>
-        <a href="" class="buttonNavBar">Carrinho</a>
+        <div class="navbar">
+            <a href="">Home</a>
+            <a href="">Produtos</a>
+            <a href="">Ranking</a>
+            <a href="">Carrinho</a>
+        </div>
 
-    </div>
-
-    <div class="perfilColaborador" id="perfilColaborador">
-
-            <img src=" {% static 'img/iconeUsuario.png' %} " alt="" class="iconeUsuario">
-
-            <div class="userInfo">
+        <div class="perfil">
+            <img src="{% static 'img/icone.png'%}" alt="" class="imgPerfil">
+            
+            <div class="usuario">
                 <p>Fulano</p>
-                <p class="saldo"><strong class="digicoin">DG$</strong> 9999</p>
+                <p class="digicoin">DG$ <spam class="valor">9999</spam> </p>
             </div>
-            <img src="{% static 'img/sino.png' %}" alt="" class="sino">
+            <img src="{% static 'img/sino.png'%}" alt="" class="imgSino">
+            <img src="{% static 'img/flecha.png'%}" alt="" class="imgFlecha">
 
-            <img src="{% static 'img/flecha.png' %}" alt="" class="flecha" id="flecha">
+        </div>
 
 
-    </div>
 
 </div>

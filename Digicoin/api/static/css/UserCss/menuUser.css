@@ -3,101 +3,92 @@ body{
    
 }
 
-.menuColaborador{
-    display: flex;
-    height: 100px;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding-right: 200px;
-    padding-left: 200px;
-    box-shadow: 0px 4px 10px -2px black;
-    background-color: white;
-    /* padding-left: 200px;
-    padding-right: 200px; */
-    
-    
-
-    
-}
-
-.iconGroup{
+.group{
     display: none;
 }
 
-.divNavBar{
-    display: flex;
-    gap: 100px;
-    
+.imgGroup:hover{
+    cursor: pointer;
 }
 
-.buttonNavBar{
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-
-.buttonNavBar:hover{
-    color: #fc671d
-}
-
-.logo{
+.imgLogo{
+    height: 80px;
     width: 150px;
 }
 
-.group{
-    height: 23px;
-    width: 23px;
-}
-
-.perfilColaborador{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.iconeUsuario{
-    width: 50px;
+.imgPerfil{
     height: 50px;
+    width: 50px;
 }
 
+.imgPerfil:hover{
+    cursor: pointer;
+}
 
-.userInfo p{
+.navbar a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.navbar a:hover{
+    color: rgba(252, 103, 29, 1);
+}
+
+.usuario p{
     font-size: 20px;
     margin: 0;
-}
-
-.saldo{
-    color: rgba(11, 192, 211, 1);
 }
 
 .digicoin{
     color: rgba(252, 103, 29, 1);
 }
 
-@media (max-width: 600px) {
-    .menuColaborador{
-        padding-left: 50px;
-        padding-right: 50px;
+.valor{
+    color: rgba(11, 192, 211, 1);
+}
+
+.menu{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
+
+
+.navbar{
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 1000px) {
+    .navbar{
+        display: none;
+    }
+    .usuario{
+        display: none;
+    }
+    .imgSino{
+        display: none;
+    } 
+    .imgFlecha{
+        display: none;
     }
 
-    .divNavBar{
-        display: none;
+    .group{  
+      display: block;
     }
-    .iconGroup{
-        display: block;
-    }
-    .userInfo{
-        display: none;
-    }
-    .sino{
-        display: none;
-    }
-    .flecha{
-        display: none;
-    }
-
   }
