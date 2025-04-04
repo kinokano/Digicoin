@@ -16,22 +16,16 @@
 
 <div class="pagination">
     {% if desafios.has_previous %}
-    <div>
-        <!-- <a  href="?desafio_page=1">Primeira</a> -->
-       
-        <a  href="?desafio_page={{ desafios.previous_page_number }}">Anterior</a>
-    </div>
-        
+    <div >  
+        <a style="font-size: 20px; margin-right: 10px;" href="?desafio_page={{ desafios.previous_page_number }}">Anterior</a>
+    </div>      
     {% endif %}
-
-    
+ 
     {% if desafios.has_next %}
-    <div>
-        <a  href="?desafio_page={{ desafios.next_page_number }}">Próxima</a>
-        
-        <!-- <a  href="?desafio_page={{ desafios.paginator.num_pages }}">Última</a> -->
+    <div >
+        <a style="font-size: 20px;" href="?desafio_page={{ desafios.next_page_number }}">Próxima</a>
     </div>
     {% endif %}
+    <span>Página {{ desafios.number }} de {{ desafios.paginator.num_pages }}</span class="span">
 
-    <span>Página {{ desafios.number }} de {{ desafios.paginator.num_pages }}</span>
 </div>
