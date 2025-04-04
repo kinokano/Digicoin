@@ -15,20 +15,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const produto = document.getElementById("Produto");
     const quantidade = document.getElementById("Quantidade");
     quantidade.addEventListener("input", function () {
-        mascaraInteiro(preco);
+        mascaraMilhar(preco);
     });
     
     quantidade.addEventListener("keydown", function (event) {
-        bloqueiaVirgulaPonto(event);
+        bloqueiaCaracteresIndesejados(event);
     });
 
     const preco = document.getElementById("Preco");
     preco.addEventListener("input", function () {
-        mascaraInteiro(preco);
+        mascaraMilhar(preco);
     });
     
     preco.addEventListener("keydown", function (event) {
-        bloqueiaVirgulaPonto(event);
+        bloqueiaCaracteresIndesejados(event);
     });
 
     const campanhaCheckbox = document.getElementById("Campanha");
@@ -132,7 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let nome = document.getElementById('Produto').value;
         let quantidade = document.getElementById('Quantidade').value;
+        quantidade = parseInt(quantidade);
         let preco = document.getElementById('Preco').value;
+        preco = parseInt(preco);
         let imagem = document.getElementById('imagem');
 
 
@@ -173,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const produto = {
 
             nome: nome,
-            img1: "1",
-            img2: "2",
-            img3: "3",
+            img1: "",
+            img2: "",
+            img3: "",
             valor: preco,
             quantidade: quantidade,
             tipo: tipo,
@@ -298,14 +300,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function mascaraInteiro(input) {
+function mascaraMilhar(input) {
     // Remove tudo que não for número
-    input.value = input.value.replace(/\D/g, ""); 
+    let valor = input.value.replace(/\D/g, "");
+
+    // Aplica separador de milhar
+    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    input.value = valor;
 }
 
-function bloqueiaVirgulaPonto(event) {
-    const caracteresBloqueados = [",", ".", "-", "+"];
-
+function bloqueiaCaracteresIndesejados(event) {
+    // Bloqueia vírgula, ponto digitado, sinais etc.
+    const caracteresBloqueados = [",", ".", "-", "+", "e"]; // "e" evita casos tipo 1e10
     if (caracteresBloqueados.includes(event.key)) {
         event.preventDefault();
         return false;

@@ -294,7 +294,8 @@ footer, .rodaPeModal {
     content: "D$";
     display: flex;
     position: absolute;
-    margin-top: 4px;
+    margin-top: 3px;
+    margin-right: 2px;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
