@@ -60,3 +60,24 @@ body{
     }
 
 
+@media (max-width: 430px) {
+        .telaBranca{
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #faf6f7;
+    width: 500px;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    
+
+}}
+.inputTelaBranca{
+    border: 2px solid;
+    width:180px;
+    height: 37px;
+    border-radius: 15px;
+    border-color: #2C006A;
+}
