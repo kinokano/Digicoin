@@ -1,137 +1,94 @@
 body{
     margin: 0;
+   
 }
 
-.menuColaborador{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    gap: 150px;
-    box-shadow: 10px 4px 8px rgba(0,0,0,0.4);
-    background-color: white;
-    
-}
-
-.buttonNavBar{
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-}
-
-
-.buttonNavBar:hover{
-    color: #fc671d
-}
-
-.logo{
-    width: 150px;
-}
-
-.perfilColaborador{
-    display: flex;
-    height: 70px;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-}
-
-.userInfo{
-    font-size: 10px;
-    font-weight: 100;
-}
-
-.saldo{
-    color: #0BC0D3;
-}
-
-.digicoin{
-    color: #fc671d
-}
-
-.iconeUsuario{
-    width: 50px;
-    height: 50px;
-}
-
-.sino{
-    width: 30px;
-    height: 30px;
-}
-
-.flecha{
-    width: 30px;
-    height: 18px;
-}
-
-.displayOff{
+.group{
     display: none;
 }
 
-.displayOn{
-    display: block;
-}
-
-.sino:hover{
+.imgGroup:hover{
     cursor: pointer;
 }
 
-.flecha:hover{
+.imgLogo{
+    height: 80px;
+    width: 150px;
+}
+
+.imgPerfil{
+    height: 50px;
+    width: 50px;
+}
+
+.imgPerfil:hover{
     cursor: pointer;
 }
 
-.flechaCima{
-    width: 30px;
-    height: 18px;
-}
-
-.flechaCima:hover{
-    cursor: pointer;
-}
-
-.dropMenu{
-    position: absolute;
-    margin-top: 310px;
-
-}
-
-.dropMenuConteudo{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(44, 0, 106, 1);
-    border-radius: 5px;
-    width: 250px;
-    height: 200px;
-    background-color: white;
-
-}
-
-
-.itemMenu{
-    padding: 20px;
-    display: flex;
-    align-items: center;
-
-}
-
-.itemMenu img{
-    width: 28px;
-    height: 28px;
-
-}
-
-.itemMenu a{
+.navbar a{
     text-decoration: none;
     color: black;
-    font-weight: 400;
-    margin-left: 30px;
+    font-size: 20px;
 }
 
-.itemMenu a:hover{
-    color: #fc671d;
-    transition: 0.5s;
+.navbar a:hover{
+    color: rgba(252, 103, 29, 1);
 }
 
-.menuColaborador{
-    width: 100%;
+.usuario p{
+    font-size: 20px;
+    margin: 0;
 }
+
+.digicoin{
+    color: rgba(252, 103, 29, 1);
+}
+
+.valor{
+    color: rgba(11, 192, 211, 1);
+}
+
+.menu{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10vw;
+    padding-left: 10vw;
+}
+
+
+.navbar{
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 1000px) {
+    .navbar{
+        display: none;
+    }
+    .usuario{
+        display: none;
+    }
+    .imgSino{
+        display: none;
+    } 
+    .imgFlecha{
+        display: none;
+    }
+
+    .group{  
+      display: block;
+    }
+  }
