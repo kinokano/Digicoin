@@ -30,12 +30,16 @@
                 </div>
                 <div class="FormQuantidade">
                     <label for="Quantidade">Quantidade:</label>
-                    <input type="number" id="Quantidade" placeholder="Quantidade">
+                    <input type="text" id="Quantidade" placeholder="Quantidade" 
+                        oninput="mascaraMilhar(this)" 
+                        onkeydown="return bloqueiaCaracteresIndesejados(event)" maxlength="9" >
                     <small class="alerta">Mensagem de erro</small>
                 </div>
                 <div class="FormPreco">
                     <label for="Preco">Preço:</label>
-                    <input type="number" id="Preco" placeholder="R$ 99,99">
+                    <input type="text" id="Preco" placeholder="999" 
+                        oninput="mascaraMilhar(this)" 
+                        onkeydown="return bloqueiaCaracteresIndesejados(event)" maxlength="15" >
                     <small class="alerta">Mensagem de erro</small>
                 </div>
                 <div class="FormTipo">
@@ -103,26 +107,13 @@
 
                 <div class="temaCampanhaCorpo">
                     
+                    {% for evento in eventos %}
                     <div>
-                        <input type="checkbox" id="Padrão">
-                        <label for="Padrão">Padrão</label>
+                        <input type="checkbox" value="{{evento.id}}" class="listaCampanha">
+                        <label for="{{evento.id}}">{{evento.nome}}</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="Carnaval">
-                        <label for="Carnaval">Carnaval</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="IndependenciaDoBrasil">
-                        <label for="IndependenciaDoBrasil">Independência do Brasil</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Natal">
-                        <label for="Natal">Natal</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Reveillon">
-                        <label for="Reveillon">Réveillon</label>
-                    </div>
+                    {% endfor %}
+                    
                 
                 </div>
             </div>
@@ -155,7 +146,7 @@
             </div>
         </header>
         <div class="ModalContainerModal">
-            <form id="CriacaoDeCampanhaForm">
+            <form id="CriacaoDeCampanhaForm" >
                 <div class="cadastroEvento">
                     <div class="miniContainer">
                     <div class="cadastroEventoTema">
@@ -193,4 +184,5 @@
     </dialog>
     
     <script src="{% static 'js/AdmJS/popUpEstoque.js' %}"></script>
+    
 </body>
