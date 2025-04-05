@@ -34,6 +34,7 @@ urlpatterns = [
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
     path('editarUsuario/', editarUsuario, name='editarUsuario'),
     path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
+    path('indexAdm/', indexAdm, name='indexAdm')
 
 
 ]
