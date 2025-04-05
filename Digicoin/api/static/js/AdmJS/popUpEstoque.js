@@ -175,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const produto = {
 
             nome: nome,
-            img1: "",
-            img2: "",
-            img3: "",
+            img1: "1",
+            img2: "2",
+            img3: "3",
             valor: preco,
             quantidade: quantidade,
             tipo: tipo,
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
 
-        console.log(response);
+        console.log(response.id);
         if (response.id) {
 
             window.location.href = '/listaEstoque/'; // Recarrega a página manualmente

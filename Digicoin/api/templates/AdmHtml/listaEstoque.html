@@ -54,7 +54,7 @@
                             <div class="tabela-cell quantidade">{{item.quantidade}}</div>
                             <div class="tabela-cell acoes">
                                 <button class="editar"><img src="{% static 'img/iconeEditar.png' %}" alt="editar"></button>
-                                <button class="deletar" onclick="deletar({{item.id}})"><img src="{% static 'img/iconeDeletar.png' %}" alt="deletar"></button>
+                                <button class="deletar" onclick="inativar({{item.id}})"><img src="{% static 'img/iconeDeletar.png' %}" alt="deletar"></button>
                             </div>
                         </div>
                         {% endfor %}
