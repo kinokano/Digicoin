@@ -24,14 +24,31 @@ function desativarEnderecoForm(acao) {
 
 function enviarDadosParaApi(form=null) {
     // código para enviar os dados para a API
+    let dadosCompra = {};
     if (form != null) {
         const DadosFormulario = new FormData(form);
-        const campos = {};
         DadosFormulario.forEach((value, key) => {
-            campos[key] = value;
+            if(key == 'tipo_entrega'){
+                if(value == 'digix'){
+                    dadosCompra[key] = 'Retirar';
+                }else{
+                    dadosCompra[key] = 'Entrega';
+                }
+            }else{
+                dadosCompra[key] = value;
+            }
         });
-        console.log(campos);
     }
+    const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
+    const grid = storedData.listaGrid || [];
+
+    let totalProduto = 0;
+    grid.forEach(item => {
+        totalProduto += parseFloat(item.valor);
+    });
+    dadosCompra['totalCompra'] = totalProduto;
+    console.log(dadosCompra);
+    retorno = apiRequest('api/finalizar-compra/', 'POST', dadosCompra).then(response => {});
 }
 
 document.addEventListener("DOMContentLoaded", () => {
