@@ -5,17 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function inativar (elemento) {
-    const id = elemento
-    const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
-    console.log(elemento)
-    const produtos = await apiRequest(`/api/produto/${id}/`, 'GET', null, { 'X-CSRFToken': csrf });
-    console.log(produtos);
 
-    const status = produtos.is_active;
-    
+    const confirmar = window.confirm('Tem certeza que deseja inativar este produto?');
+
+    if(!confirmar){
+        return
+    }
+
+    const id = elemento
+
+    const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
+
+    const produto = await apiRequest(`/api/produto/${id}/`, 'GET', null, { 'X-CSRFToken': csrf });
+
+    const status = produto.is_active;
 
     const novoStatus = !status
-    
+
     const produtoAtualizado = {
         nome: produto.nome,
         img1: produto.img1,
@@ -24,11 +30,12 @@ async function inativar (elemento) {
         valor: produto.valor,
         quantidade: produto.quantidade,
         tipo: produto.tipo,
-        is_active: !produto.is_active,
+        is_active: novoStatus,
         idCampanha: produto.idCampanha
     };
 
     const resultado = await apiRequest(`/api/produto/${id}/`, 'PUT', produtoAtualizado, { 'X-CSRFToken': csrf });
+    window.location.href = '/listaEstoque/';
 
     console.log(resultado);
 }
