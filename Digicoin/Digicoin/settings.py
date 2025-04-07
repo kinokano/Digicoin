@@ -141,3 +141,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5,  # Número de itens por página
 }
+
+import os
+
+MEDIA_URL = '/midia/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'midia')
