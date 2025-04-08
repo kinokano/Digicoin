@@ -11,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const img = this.querySelector("img");
             const modalImg = document.querySelector(".ImProduto");
             const nomeProduto = document.querySelectorAll(".NProduto"); 
-            
+    
+            flipCard.classList.remove("virado", "virado2");
+    
             modalImg.src = img.src;
             nomeProduto.forEach(el => el.textContent = img.alt);
-            
+    
             dialog.showModal();
         });
     });
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fecharBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             dialog.close();
-            flipCard.classList.remove("virado", "virado2"); // Reseta para a primeira página
+            flipCard.classList.remove("virado", "virado2");
         });
     });
 
