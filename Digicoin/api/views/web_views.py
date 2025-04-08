@@ -58,7 +58,7 @@ def listaEstoque(request):
     eventos = Campanha.objects.filter(is_active=True)
              
 
-    estoque = Produto.objects.all()
+    estoque = Produto.objects.filter(is_active=True)
 
     
     return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque, 'eventos': eventos})
