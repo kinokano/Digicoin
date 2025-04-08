@@ -176,9 +176,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const produto = {
 
             nome: nome,
-            img1: "1",
-            img2: "2",
-            img3: "3",
+            img1: null,
+            img2: null,
+            img3: null,
             valor: preco,
             quantidade: quantidade,
             tipo: tipo,
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         
-        window.location.href = '/listaEstoque/';
+        // window.location.href = '/listaEstoque/';
 
 
     }
