@@ -8,9 +8,10 @@
     rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/UserCss/listaProdutos.css'%}">
 
-{% include "components/user/menuUser.html" %}
 
 <body>
+    {% include "components/user/menuUser.html" %}
+
     <div id="menuColaborador"></div>
     <div class="container">
         <div class="produtos">
@@ -56,6 +57,7 @@
 
         <dialog id="modal">
             <div class="container">
+                {% for produto in produtos %}
                 <div class="flip">
                     <div class="frente">
                         <div class="topo">
@@ -67,12 +69,12 @@
                         </div>
                         <div class="preco">
                             <p>DG$</p>
-                            <span>9999</span>   
+                            <span>{{produto.valor}}</span>
                         </div>
                         <div class="btn-refresh">
                             <button class="Adquirir">adquirir</button>
-                            <i id="refresh" class="fa fa-refresh" aria-hidden="true"></i>
                         </div>
+                        <i id="refresh" class="fa fa-refresh" aria-hidden="true"></i>
                     </div>
                     <div class="tras">
                         <div class="topo">
@@ -81,16 +83,17 @@
                         </div>
                         <div class="quantidade">
                             <p>Quantidade: </p>
-                            <span>999</span>
+                            <span>{{produto.qtd}}</span>
                         </div>
                         <div class="descricao">
                             <p>Sobre: </p>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, dolorem.</span>
-                        </div>
+                            <span>{{produto.descricao}}</span>
+                        </div>                       
                         <i id="refresh2" class="fa fa-refresh" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </dialog>
     </div>
     <script src="{% static 'js/UserJs/listaProdutos.js' %}"></script>
