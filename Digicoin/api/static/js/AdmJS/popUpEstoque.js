@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         
-        // window.location.href = '/listaEstoque/';
+        window.location.href = '/listaEstoque/';
 
 
     }

@@ -24,9 +24,9 @@ async function inativar (elemento) {
 
     const produtoAtualizado = {
         nome: produto.nome,
-        img1: produto.img1,
-        img2: produto.img2,
-        img3: produto.img3,
+        img1: null,
+        img2: null,
+        img3: null,
         valor: produto.valor,
         quantidade: produto.quantidade,
         tipo: produto.tipo,
