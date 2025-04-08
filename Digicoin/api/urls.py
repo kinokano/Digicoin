@@ -32,7 +32,7 @@ urlpatterns = [
     path('campanhas/', campanhas, name="campanhas"),
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
-    path('editarUsuario/', editarUsuario, name='editarUsuario'),
+    path('editarUsuario/<int:id>/', editarUsuario, name='editarUsuario'),
     path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
 
 

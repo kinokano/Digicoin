@@ -1,13 +1,13 @@
 :root {
     --laranja: #FC671D;
-    --magenta: #D34AF4;/* cor do botão */
+    --magenta: #D34AF4;
     --cinza: #faf6f7;
     --cinza-escuro:#888;
     --ciano: #0BC0D3;
     --base: #2c006a;
     --branco: #fff;
     --preto: #000;
-    --roxo: #4D2C87;  /* fundo roxo */
+    --roxo: #4D2C87;  
     --sombra-base:rgba(44, 0, 106, 0.4);
     --sombra-preta:rgba(0, 0, 0, 0.4);
     --cinzaPlaceHolder:#9E9E9E;
@@ -167,4 +167,10 @@
 .buttonSubmit:hover{
     background-color: rgb(137, 47, 160);
     transition: 0.5s;
+}
+
+.nome, .ra, .email:read-write {
+
+    padding-left: 10px;
+
 }

@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/AdmCss/editarUsuario.css'%}">
-
 <div class="main">
     <div class="header">
         <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
@@ -13,7 +12,9 @@
 
         {% csrf_token %}
         <div class="left">
-            <div class="input">
+            
+            <input type="hidden" id="id"  value="{%if userId%}{{userId.id}}{%endif%}">
+            <div class="input" type="hidden">
                 <label for="">Nome do Usuário</label>
                 <input type="text" id="nome" class="nome" placeholder="Digite o nome do usuário">
             </div>
@@ -34,7 +35,7 @@
                 <div class="saldo">
                 <button class="adicionar">
                 <img src="{% static 'img/iconMais.png' %}" alt=""></button>
-                <input type="number" id="ra" class="ra" placeholder="99999">
+                <input type="number" id="saldo" class="ra" placeholder="99999">
                 <button class="subtrair">
                 <img src="{% static 'img/iconMenos.png' %}" alt="" >
                 </button>
@@ -50,16 +51,11 @@
             </div>
 
             <div class="submit botao">
-                <button type="submit" class="buttonSubmit botao">Concluído</button>
+                <button onclick="editar(event)" type="submit" class="buttonSubmit botao">Concluído</button>
             </div>
 
         </div>
-
     </form>
-
 </div>
-
-
-
-<script src="{% static 'js/AdmJS/editarUsuario.js' %}"></script>
+<script src="{% static 'js/AdmJS/cadastrarUsuario.js' %}"></script>
 {% endblock content %}

@@ -79,8 +79,11 @@ def teste(request):
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
 
-def editarUsuario(request):
-    return render(request, 'AdmHtml/editarUsuario.html')
+def editarUsuario(request, id):
+    
+    userId = CustomUser.objects.filter(id=id).first()
+    return render(request, 'AdmHtml/editarUsuario.html', {'userId': userId})
+
 
 def adicionarMoedas(request):
     return render(request, 'AdmHtml/adicionarMoedas.html')
