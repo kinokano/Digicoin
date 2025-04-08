@@ -22,33 +22,46 @@ function desativarEnderecoForm(acao) {
     }
 }
 
-function enviarDadosParaApi(form=null) {
-    // código para enviar os dados para a API
+function enviarDadosParaApi(form = null) {
+    // Código para enviar os dados para a API
     let dadosCompra = {};
+    let itensCompra = [];
+
     if (form != null) {
         const DadosFormulario = new FormData(form);
         DadosFormulario.forEach((value, key) => {
-            if(key == 'tipo_entrega'){
-                if(value == 'digix'){
-                    dadosCompra[key] = 'Retirar';
-                }else{
-                    dadosCompra[key] = 'Entrega';
-                }
-            }else{
+            if (key === 'tipo_entrega') {
+                dadosCompra['entrega'] = value === 'digix' ? 'Retirar' : 'Entrega';
+            } else {
                 dadosCompra[key] = value;
             }
         });
     }
+
     const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
     const grid = storedData.listaGrid || [];
-
     let totalProduto = 0;
+
     grid.forEach(item => {
-        totalProduto += parseFloat(item.valor);
+        totalProduto += parseFloat(item.valorProduto) * parseInt(item.qtdProduto);
+        itensCompra.push({
+            qtdProduto: item.qtdProduto || 1,
+            idProduto: item.idProduto
+        });
     });
-    dadosCompra['totalCompra'] = totalProduto;
-    console.log(dadosCompra);
-    retorno = apiRequest('api/finalizar-compra/', 'POST', dadosCompra).then(response => {});
+
+    dadosCompra['total'] = totalProduto;
+    const dadosParaApi = {
+        compra: dadosCompra,
+        itens: itensCompra
+    };
+
+    console.log(dadosParaApi);
+
+    // Enviar dados para a API
+    apiRequest('/api/cadastrarCompra/', 'POST', dadosParaApi).then(response => {
+        console.log(response);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -209,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(grid);
         let temProdutosFisicos = false;
         grid.forEach((item) => {
-            if (item.tipo_fisico) {
+            if (item.fisicoPrduto) {
                 temProdutosFisicos = true;
             }
         });

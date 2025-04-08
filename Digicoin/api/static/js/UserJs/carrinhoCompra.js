@@ -1,15 +1,16 @@
 import Grid from '../grid.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+  localStorage.clear();
   // Verifica se o local storage já contém produtos
   if (!localStorage.getItem('listaProdutos') || (JSON.parse(localStorage.getItem('listaProdutos')).listaGrid || []).length === 0) {
     // Adiciona 5 produtos de exemplo ao local storage
     const produtosExemplo = [
-      { id: 1, nome: "Produto 1", valor: "2900", tipo_fisico: true },
-      { id: 2, nome: "Produto 2", valor: "4900", tipo_fisico: true },
-      { id: 3, nome: "Produto 3", valor: "1500", tipo_fisico: false },
-      { id: 4, nome: "Produto 4", valor: "3200", tipo_fisico: false },
-      { id: 5, nome: "Produto 5", valor: "2100", tipo_fisico: false }
+      { id:1, idProduto: 1, nomeProduto: "Produto 1", valorProduto: "2900", qtdProduto: 1, fisicoPrduto: true },
+      { id:2, idProduto: 2, nomeProduto: "Produto 2", valorProduto: "4900", qtdProduto: 1, fisicoPrduto: true },
+      { id:3, idProduto: 3, nomeProduto: "Produto 3", valorProduto: "1500", qtdProduto: 1, fisicoPrduto: false },
+      { id:4, idProduto: 4, nomeProduto: "Produto 4", valorProduto: "3200", qtdProduto: 1, fisicoPrduto: false },
+      { id:5, idProduto: 5, nomeProduto: "Produto 5", valorProduto: "2100", qtdProduto: 1, fisicoPrduto: false }
     ];
     localStorage.setItem('listaProdutos', JSON.stringify({ listaGrid: produtosExemplo }));
   }
@@ -25,29 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // idPaginacao: "paginacao", // ID do contêiner de paginação
     itensPorPagina: 15, // Quantidade de itens por pagina
     formatarGrid: (item) => {
-      let valor = parseFloat(item.valor); // passa o valor para float
+      let valor = parseFloat(item.valorProduto); // passa o valor para float
       let qtd = parseInt(1); // passa a quantidade para int
       let totalProduto = qtd * valor;
       let gridRow = `
-        <td data-label="Produto">${item.nome}</td>
+        <td data-label="Produto">${item.nomeProduto}</td>
         <td data-label="Valor"><span class="cor-moeda">D$</span> <span class="cor-valor">${totalProduto}</span></td>
-        <td data-label="Ações"><button class="botao-remover" data-id="${item.id}"><img src="${imgRemoverSrc}"></button></td>
+        <td data-label="Ações"><button class="botao-remover" data-id="${item.idProduto}"><img src="${imgRemoverSrc}"></button></td>
       `;
       return gridRow;
     },
     addEventosGrid: (listaGrid,grid) => {
       listaGrid.forEach((item) => {
-        const inputQtd = document.querySelector(`input[data-id="${item.id}"]`);
-        const botaoRemover = document.querySelector(`button[data-id="${item.id}"]`);
+        const inputQtd = document.querySelector(`input[data-id="${item.idProduto}"]`);
+        const botaoRemover = document.querySelector(`button[data-id="${item.idProduto}"]`);
         if (inputQtd) {
           inputQtd.addEventListener('change', (event) => {
             verificarValorMaxInput(event.target);
-            grid.atualizarQtdItensGrid(item.id, event.target.value);
+            grid.atualizarQtdItensGrid(item.idProduto, event.target.value);
           });
         }
         if (botaoRemover) {
           botaoRemover.addEventListener('click', () => {
-            grid.removerItensGrid(item.id);
+            grid.removerItensGrid(item.idProduto);
+            console.log(grid);
             localStorage.setItem('listaProdutos', JSON.stringify({ listaGrid: grid.listaGrid }));
           });
         }
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     atualizarTotal: () => {
       let valorTotalCarrinho = 0;
       grid.forEach((item) => {
-        let valor = parseFloat(item.valor);
+        let valor = parseFloat(item.valorProduto);
         let qtd = parseInt(1);
         let totalProduto = qtd * valor;
         valorTotalCarrinho += totalProduto;
