@@ -69,7 +69,10 @@ def homeListaDeUsuarios(request):
     return render(request, 'AdmHtml/homeListaDeUsuarios.html')
 
 def desafiosCampanha(request):
-    return render(request, 'UserHtml/desafios.html')
+
+    desafios = Desafio.objects.filter(idCampanha=True)
+
+    return render(request, 'UserHtml/desafiosCampanha.html', {'desafios': desafios})
 
 
 def listaDePedidos(request):
