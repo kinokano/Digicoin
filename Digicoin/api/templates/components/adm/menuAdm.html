@@ -3,7 +3,8 @@
 <div class="main">
 
     <div class="menuMobile">
-        <img src="{% static 'img/groupAdmin.png' %}" alt="" class="groupAdmin">
+        
+        <img src="{% static 'img/groupAdmin.png' %}" alt="" class="groupAdmin" id="groupAdmin">
 
         <img src="{% static 'img/logoAdmin.png' %}" alt="" class="logoAdminMob">
 
@@ -11,9 +12,15 @@
 
     </div>
 
-    <div class="lateral">
+    <div class="lateral displayOff" id="lateral">
+
+        <div class="arrowLeftDiv">
+            <img src="{% static 'img/arrow-left.png' %}" alt="" class="arrowLeft" id="arrowLeft">
+        </div>
 
         <img src="{% static 'img/logoAdmin.png' %}" alt="" class="logoAdminDesk">
+
+        <hr>
 
         <div class="buttons">
             <a href="" class="menuA">
@@ -80,3 +87,5 @@
     </div>
 
 </div>
+
+<script src="{% static 'js/AdmJs/menuAdm.js' %}"></script>

@@ -7,6 +7,10 @@ body{
     display: none;
 }
 
+hr{
+    display: none;
+}
+
 .lateral{
     background-color: rgba(77, 44, 135, 1);
     width: 350px;
@@ -19,19 +23,21 @@ body{
     padding-top: 20px;
 }
 
-
+.arrowLeftDiv{
+    display: none;
+}
 
 .logoAdminDesk{
     width: 180px;
     height: 100px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 .buttons{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .menuA{
@@ -110,10 +116,80 @@ body{
     width: 50px;
 }
 
+.displayOn{
+    display: flex;
+}
+
 @media (max-width: 1000px) {
     .lateral{
+        width: 235px;
+        top: 0;
+    }
+    
+    .arrowLeftDiv{
+        width: 235px;
+        padding-left: 30px;
+        display: flex;
+        justify-content: left;
+    }
+
+    .arrowLeft:hover{
+        cursor: pointer;
+    }
+
+    hr{
+        display: flex;
+        width: 190px;
+    }
+
+    .logoAdminDesk{
+        width: 110px;
+        height: 65px;
+        margin-bottom: 0;
+    }
+
+    .buttons{
+        gap: 50px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+   
+    .buttonL{
+        width: 190px;
+        height: 36px;
+        font-size: 11px;
+     
+    }
+    .buttonL img{
+        width: 20px;
+        height: 20px;
+    }
+
+   
+
+    .buttonSair{
+        width: 190px;
+        height: 36px;
+        font-size: 12px;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        gap: 10px;
+        
+    }
+    .buttonSair img{
+        width: 20px;
+        height: 20px;
+    }
+  
+
+    .displayOn{
+        display: flex;
+    }
+    .displayOff{
         display: none;
     }
+
     .top{
         display: none;
     }
@@ -130,10 +206,20 @@ body{
         height: 35px;
         width: 35px;
     }
+
+    .groupAdmin:hover{
+        cursor: pointer;
+    }
+
     .iconeUser{
         height: 35px;
         width: 35px;
     }
+
+    .iconeUser:hover{
+        cursor: pointer;
+    }
+
     .logoAdminMob{
         width: 110px;
         height: 64px;
