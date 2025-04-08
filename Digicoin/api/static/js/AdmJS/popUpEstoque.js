@@ -1,5 +1,8 @@
+
+
 // Selecionando os elementos do popup e formulário
 document.addEventListener("DOMContentLoaded", function () {
+
 
     const modalPrimeiro = document.querySelector("#popupEditarProduto");
     const modalSegundo = document.querySelector("#popupConcluir");
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     quantidade.addEventListener("input", function () {
         mascaraMilhar(preco);
     });
-    
+
     quantidade.addEventListener("keydown", function (event) {
         bloqueiaCaracteresIndesejados(event);
     });
@@ -26,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     preco.addEventListener("input", function () {
         mascaraMilhar(preco);
     });
-    
+
     preco.addEventListener("keydown", function (event) {
         bloqueiaCaracteresIndesejados(event);
     });
@@ -124,10 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    async function EventoProduto(event) {
-
+    async function handleSubmit(event) {
         event.preventDefault();
-
 
 
         let nome = document.getElementById('Produto').value;
@@ -148,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
             }
         }
-        console.log(idCampanha);
+
 
         let fisico = document.getElementById("Fisico");
         let virtual = document.getElementById("Virtual");
@@ -161,23 +162,23 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             tipo = null;
         }
-        console.log('teste: ' + tipo);
+
 
 
         const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
 
         const chaveEstrangeira = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, { 'X-CSRFToken': csrf });
 
-        console.log(chaveEstrangeira);
+
 
 
 
         const produto = {
 
             nome: nome,
-            img1: "1",
-            img2: "2",
-            img3: "3",
+            img1: null,
+            img2: null,
+            img3: null,
             valor: preco,
             quantidade: quantidade,
             tipo: tipo,
@@ -190,23 +191,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        const response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
+        let editarValor = document.getElementById("valorEditar").value
 
-        console.log(response.id);
-        if (response.id) {
+        let response 
 
-            window.location.href = '/listaEstoque/'; // Recarrega a página manualmente
+        if (editarValor) {
 
+            response = await apiRequest(`/api/produto/${editarValor}/`, 'PUT', produto, { 'X-CSRFToken': csrf })
+            
 
 
         } else {
-            alert("Erro ao criar campanha.");
+            response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
+
         }
+
+        
+        // window.location.href = '/listaEstoque/';
 
 
     }
 
-    document.getElementById("produtoForm2").addEventListener("submit", EventoProduto);
+    
+    document.getElementById("produtoForm2").addEventListener("submit", handleSubmit);
 
     async function EventoCampanha(event) {
         event.preventDefault();
@@ -219,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const hoje = new Date()
         hoje.setHours(0, 0, 0, 0);
-       
+
 
         if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio || inicio.getTime() < hoje.getTime()) {
             alert("Preencha todos os campos corretamente.");
@@ -271,6 +278,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
     // Delegação de evento para checkboxes do segundo popup
     modalSegundo.addEventListener("change", function (event) {
         if (event.target.type === "checkbox") {
@@ -295,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    
+
 
 });
 
