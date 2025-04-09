@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.campanhasSelecionadas = [];
         preencherPopupConcluir([]);
 
-        // ✅ Limpa smalls de erro
+        // Limpa smalls de erro
         document.querySelectorAll('small.alerta').forEach(small => {
-            small.textContent = "";
+                
             small.classList.remove("error");
         });
     });
