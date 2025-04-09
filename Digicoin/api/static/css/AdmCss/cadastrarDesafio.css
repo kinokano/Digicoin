@@ -81,6 +81,18 @@ body{
 
 }
 
+.descricao{
+    width: 575px;
+    height: 100px;
+    border-radius: 4px;
+    border: none; 
+    background-color: var(--branco);
+    font-size: 20px;
+    color: var(--base);
+    margin-bottom: 40px;
+    resize: none;
+    
+}
 
 span{
     font-size: 15px;
