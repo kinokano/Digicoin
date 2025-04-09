@@ -51,7 +51,7 @@ function preencherRanking(ranking) {
       valor = `<span class="posicao1-tamanho-fonte">${valor}</span>`;
     }
     itemRow.innerHTML = `
-        <td data-label="Posicao">${posicao}</td>
+        <td data-label="Posicao" class="posicaocor"><span class="span_posicao"></span>${posicao}</td>
         <td data-label="Nomes">${nome}</td>
         <td data-label="Valor" class="valor_tag">${valor}</td >
       `;
