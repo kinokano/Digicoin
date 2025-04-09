@@ -35,7 +35,19 @@ def perfilUsuario(request):
     return render(request, 'UserHtml/perfilUsuario.html')
 
 def listaProdutos(request):
-    return render(request, 'UserHtml/listaProdutos.html')
+    produtos = [     
+
+    {
+        'id': 1,
+        'nome': "Produto 1 ",
+        'qtd': 2,
+        'valor': "200",
+        'descricao': "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    ]
+    return render(request, 'UserHtml/listaProdutos.html', {"produtos": produtos})
+
+
 
 def cadastrarDesafio(request):
     return render(request, 'AdmHtml/cadastrarDesafio.html')
@@ -46,7 +58,7 @@ def listaEstoque(request):
     eventos = Campanha.objects.filter(is_active=True)
              
 
-    estoque = Produto.objects.all()
+    estoque = Produto.objects.filter(is_active=True)
 
     
     return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque, 'eventos': eventos})
@@ -57,7 +69,10 @@ def homeListaDeUsuarios(request):
     return render(request, 'AdmHtml/homeListaDeUsuarios.html')
 
 def desafiosCampanha(request):
-    return render(request, 'UserHtml/desafios.html')
+
+    desafios = Desafio.objects.filter(idCampanha=True)
+
+    return render(request, 'UserHtml/desafiosCampanha.html', {'desafios': desafios})
 
 
 def listaDePedidos(request):
