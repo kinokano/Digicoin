@@ -37,9 +37,9 @@ class Produto(models.Model):
 class Desafio(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
     valor = models.IntegerField(null=False, blank=False)
-    dataInicio = models.DateField(default=False)
-    descricao = models.TextField(default=False)
-    dataFim = models.DateField(default=False)
+    dataInicio = models.DateField(null=True, blank=True)
+    descricao = models.TextField(null=True, blank=True)
+    dataFim = models.DateField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
 
