@@ -315,14 +315,14 @@ dialog::backdrop {
 
     .produtos {
         margin: 0 auto;
-        padding-top: 70px;
-        padding-left: 50px;
+        padding-left: 70px;
     }
 
     .produtosDigix {
-        display: block;
+        display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
     }
 
     .search {
