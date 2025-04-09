@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const produto = document.getElementById("Produto");
     const quantidade = document.getElementById("Quantidade");
     quantidade.addEventListener("input", function () {
-        mascaraMilhar(preco);
+        mascaraMilhar(quantidade);
     });
 
     quantidade.addEventListener("keydown", function (event) {
@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
         if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
+            console.log("passou, ou seja, entrou verdade");
 
 
 
@@ -132,10 +133,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         let nome = document.getElementById('Produto').value;
-        let quantidade = document.getElementById('Quantidade').value;
+        let quantidade = document.getElementById('Quantidade').value; 
+        quantidade = quantidade.replace(/\./g, '');
         quantidade = parseInt(quantidade);
+        
+
         let preco = document.getElementById('Preco').value;
+        preco = preco.replace(/\./g, '');
         preco = parseInt(preco);
+        
         let imagem = document.getElementById('imagem');
 
 

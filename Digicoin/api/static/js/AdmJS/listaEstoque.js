@@ -1,8 +1,128 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // Função para exibir erros
+    function ShowError(input, mensagem) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector("small");
+        if (small) {
+            small.textContent = mensagem;
+            small.classList.add("error");
+        }
+    }
 
+    // Função para remover erros
+    function ShowSucesso(input) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector("small");
+        if (small) {
+            // small.textContent = "";
+            small.classList.remove("error");
+        }
+    }
 
-});
+    // Valida campos obrigatórios
+    function checkRequired(inputs) {
+        return inputs.every(input => {
+            if (input.value.trim() === "") {
+                ShowError(input, "Campo obrigatório");
+                return false;
+            } else {
+                ShowSucesso(input);
+                return true;
+            }
+        });
+    }
+
+    // Valida checkbox campanha
+    function checkCampanhaRequired() {
+        const checkbox = document.getElementById('Campanha');
+        if (!checkbox.checked) {
+            ShowError(checkbox, "*");
+            return false;
+        } else {
+            ShowSucesso(checkbox);
+            return true;
+        }
+    }
+
+    // Valida Físico ou Virtual
+    function checkFisicoVirtualRequired() {
+        const fisico = document.getElementById('Fisico');
+        const virtual = document.getElementById('Virtual');
+        if (!fisico.checked && !virtual.checked) {
+            // ShowError(fisico, "Escolha uma opção");
+            return false;
+        } else {
+            ShowSucesso(fisico);
+            return true;
+        }
+    }
+
+    // Exclusividade entre Físico e Virtual
+    document.getElementById('Fisico').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('Virtual').checked = false;
+        }
+        checkFisicoVirtualRequired();
+    });
+
+    document.getElementById('Virtual').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('Fisico').checked = false;
+        }
+        checkFisicoVirtualRequired();
+    });
+
+    // Valida ao clicar em Concluir
+    document.querySelector('.buttonConcluir').addEventListener('click', () => {
+        const produto = document.getElementById('Produto');
+        const quantidade = document.getElementById('Quantidade');
+        const preco = document.getElementById('Preco');
+
+        const camposValidos = checkRequired([produto, quantidade, preco]) &&
+            checkCampanhaRequired() &&
+            checkFisicoVirtualRequired();
+
+        if (camposValidos) {
+            preencherPopupConcluir(window.campanhasSelecionadas);
+            document.getElementById('popupConcluir').showModal();
+        }
+    });
+
+    // Fecha todos os modais e limpa
+    document.querySelector('.buttonClose').addEventListener('click', () => {
+        document.getElementById('popupEditarProduto').close();
+        document.getElementById('popupConcluir').close();
+
+        document.getElementById('Produto').value = "";
+        document.getElementById('Quantidade').value = "";
+        document.getElementById('Preco').value = "";
+        document.getElementById('Campanha').checked = false;
+        document.getElementById('Fisico').checked = false;
+        document.getElementById('Virtual').checked = false;
+        window.campanhasSelecionadas = [];
+        preencherPopupConcluir([]);
+
+        // Limpa smalls de erro
+        document.querySelectorAll('small.alerta').forEach(small => {
+                
+            small.classList.remove("error");
+        });
+    });
+
+    // Fecha só o segundo modal
+    document.querySelector('.buttonClose2').addEventListener('click', () => {
+        document.getElementById('popupConcluir').close();
+    });
+
+}); // <-- Fim do DOMContentLoaded
+
+function preencherPopupConcluir(campanhasSelecionadas = []) {
+    document.querySelectorAll('.listaCampanha').forEach(checkbox => {
+        const valor = parseInt(checkbox.value);
+        checkbox.checked = campanhasSelecionadas.includes(valor);
+    });
+}
 
 async function inativar (elemento) {
 
@@ -35,22 +155,18 @@ async function inativar (elemento) {
     };
 
     const resultado = await apiRequest(`/api/produto/${id}/`, 'PUT', produtoAtualizado, { 'X-CSRFToken': csrf });
-    window.location.href = '/listaEstoque/';
+    window.location.reload();
 
     console.log(resultado);
 }
+
 async function Editar(idProduto) {
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const dados = await apiRequest(`/api/produto/${idProduto}/`, 'GET', null, { 'X-CSRFToken': csrf });
 
-    // Faz requisição GET para pegar os dados do produto
-    const dados = await apiRequest(`/api/produto/${idProduto}/`, 'GET', null, {
-        'X-CSRFToken': csrf
-    });
-
-    // Preenche o primeiro pop-up
     document.getElementById('Produto').value = dados.nome;
-    document.getElementById('Quantidade').value = dados.quantidade;
-    document.getElementById('Preco').value = dados.valor;
+    document.getElementById('Quantidade').value = aplicarMascaraMilhar(dados.quantidade.toString());
+    document.getElementById('Preco').value = aplicarMascaraMilhar(dados.valor.toString());
     document.getElementById('Campanha').checked = true;
 
     if (dados.tipo.toLowerCase() === "físico") {
@@ -59,54 +175,32 @@ async function Editar(idProduto) {
         document.getElementById('Virtual').checked = true;
     }
 
-    // Salva a campanha selecionada
     window.campanhasSelecionadas = [dados.idCampanha];
-
-    // Abre o primeiro modal (sem resetar ainda)
     document.getElementById('popupEditarProduto').showModal();
 
-    document.getElementById("valorEditar").value = idProduto
-    console.log(document.getElementById("valorEditar").value = idProduto)
-    
-    
+    document.getElementById("valorEditar").value = idProduto;
 }
 
-// Botão "Concluir" do primeiro modal → abre segundo modal por cima
-document.querySelector('.buttonConcluir').addEventListener('click', () => {
-    // Marca os checkboxes no segundo modal
-    preencherPopupConcluir(window.campanhasSelecionadas);
-
-    // Abre segundo modal sem fechar o primeiro
-    document.getElementById('popupConcluir').showModal();
-});
-
-// Função para marcar as campanhas selecionadas no segundo modal
-function preencherPopupConcluir(campanhasSelecionadas = []) {
-    document.querySelectorAll('.listaCampanha').forEach(checkbox => {
-        const valor = parseInt(checkbox.value);
-        checkbox.checked = campanhasSelecionadas.includes(valor);
-    });
+// Aplica ao digitar no campo
+function mascaraMilhar(input) {
+    input.value = aplicarMascaraMilhar(input.value);
 }
 
-// Botão "X" do primeiro modal → fecha tudo e limpa
-document.querySelector('.buttonClose').addEventListener('click', () => {
-    document.getElementById('popupEditarProduto').close();
-    document.getElementById('popupConcluir').close(); // garante fechamento
+// Para aplicar ao valor vindo do banco
+function aplicarMascaraMilhar(valor) {
+    valor = valor.replace(/\D/g, "");
+    return valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
-    // Limpa os campos
-    document.getElementById('Produto').value = "";
-    document.getElementById('Quantidade').value = "";
-    document.getElementById('Preco').value = "";
-    document.getElementById('Campanha').checked = false;
-    document.getElementById('Fisico').checked = false;
-    document.getElementById('Virtual').checked = false;
-    window.campanhasSelecionadas = [];
-    preencherPopupConcluir([]); // desmarca todas
-});
+// Se quiser usar antes de enviar pro banco:
+function removerMascaraMilhar(valor) {
+    return valor.replace(/\./g, "");
+}
 
-// Botão "X" do segundo modal → fecha só ele (volta pro primeiro sem perder dados)
-document.querySelector('.buttonClose2').addEventListener('click', () => {
-    document.getElementById('popupConcluir').close();
-});
-
-
+function bloqueiaCaracteresIndesejados(event) {
+    const caracteresBloqueados = [",", ".", "-", "+", "e"];
+    if (caracteresBloqueados.includes(event.key)) {
+        event.preventDefault();
+        return false;
+    }
+}
