@@ -70,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="form-group">
             <div class="input-container">
                 <label>
-                    <input checked class="input-radio" id="option1" type="radio" name="tipo_entrega" value="Retirar">
+                    <input checked class="input-radio" id="option1" type="radio" name="entrega" value="Retirar">
                     Retirar na Digix
                 </label>
             </div>
             <div class="input-container">
                 <label>
-                    <input class="input-radio" id="option2" type="radio" name="tipo_entrega" value="Entrega">
+                    <input class="input-radio" id="option2" type="radio" name="entrega" value="Entrega">
                     Entregar no endereço
                 </label>
             </div>
