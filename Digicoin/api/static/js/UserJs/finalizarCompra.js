@@ -33,6 +33,7 @@ function enviarDadosParaApi(form = null) {
             dadosCompra[key] = value;
         });
     }
+    dadosCompra['idUsuario'] = 1;
 
     const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
     const grid = storedData.listaGrid || [];
@@ -51,8 +52,6 @@ function enviarDadosParaApi(form = null) {
         compra: dadosCompra,
         itens: itensCompra
     };
-
-    console.log(dadosParaApi);
 
     // Enviar dados para a API
     apiRequest('/api/cadastrarCompra/', 'POST', dadosParaApi).then(response => {

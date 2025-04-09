@@ -110,8 +110,7 @@ class CadastrarCompraView(APIView):
     def post(self, request):
         dadosCompra = request.data.get('compra')
         itensCompra = request.data.get('itens')
-        print(dadosCompra)
-        print(itensCompra)
+
         # Cria a compra
         compraSerializer = CompraSerializer(data=dadosCompra)
         if compraSerializer.is_valid():
