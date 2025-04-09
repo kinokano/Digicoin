@@ -30,11 +30,7 @@ function enviarDadosParaApi(form = null) {
     if (form != null) {
         const DadosFormulario = new FormData(form);
         DadosFormulario.forEach((value, key) => {
-            if (key === 'tipo_entrega') {
-                dadosCompra['entrega'] = value === 'digix' ? 'Retirar' : 'Entrega';
-            } else {
-                dadosCompra[key] = value;
-            }
+            dadosCompra[key] = value;
         });
     }
 
@@ -74,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="form-group">
             <div class="input-container">
                 <label>
-                    <input checked class="input-radio" id="option1" type="radio" name="tipo_entrega" value="digix">
+                    <input checked class="input-radio" id="option1" type="radio" name="tipo_entrega" value="Retirar">
                     Retirar na Digix
                 </label>
             </div>
             <div class="input-container">
                 <label>
-                    <input class="input-radio" id="option2" type="radio" name="tipo_entrega" value="endereco">
+                    <input class="input-radio" id="option2" type="radio" name="tipo_entrega" value="Entrega">
                     Entregar no endereço
                 </label>
             </div>
