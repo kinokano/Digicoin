@@ -6,7 +6,7 @@ from django.db import models
 class CustomUser(AbstractUser):
     is_adm = models.BooleanField(default=False)
     ra = models.CharField(max_length=30, null=False, blank=False, default=False)
-    imgPerfil = models.CharField(max_length=100, default=False)
+    imgPerfil = models.ImageField(upload_to='usuarios/', null=True, blank=True)
     saldo = models.IntegerField(default=0)
 
 class Campanha(models.Model):
@@ -14,27 +14,37 @@ class Campanha(models.Model):
     is_active = models.BooleanField(default=True)
     dataInicio = models.DateField(default=False)
     dataFim = models.DateField(default=False)
-    descricao = models.TextField()
+    descricao = models.TextField(default=False)
+
+    def __str__(self):
+        return self.nome
 
 class Produto(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
-    img1 =  models.CharField(max_length=100, null=False, blank=False)
-    img2 =  models.CharField(max_length=100)
-    img3 =  models.CharField(max_length=100)
+    img1 =  models.ImageField(upload_to='produtos/', null=True, blank=True)
+    img2 =  models.ImageField(upload_to='produtos/', null=True, blank=True)
+    img3 =  models.ImageField(upload_to='produtos/', null=True, blank=True)
     valor = models.IntegerField(null=False, blank=False)
     quantidade = models.IntegerField(null=False, blank=False)
     tipo_choices = [("Físico", "Físico"), ("Virtual","Virtual")]
     tipo = models.CharField(max_length=10, choices=tipo_choices)
     is_active = models.BooleanField(default=True)
-    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, default=False)
+    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
 
 class Desafio(models.Model):
     nome = models.CharField(max_length=100, null=False, blank=False)
     valor = models.IntegerField(null=False, blank=False)
     dataInicio = models.DateField(default=False)
+    descricao = models.TextField(default=False)
     dataFim = models.DateField(default=False)
     is_active = models.BooleanField(default=True)
-    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, default=False)
+    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
 
 class Compra(models.Model):
     total = models.IntegerField(null=False, blank=False)
@@ -48,8 +58,10 @@ class Compra(models.Model):
     numero = models.CharField(max_length=100, default=False)
     pedido_choices = [("Pendente", "Pendente"), ("Concluído","Concluído")]
     pedido = models.CharField(max_length=10, choices=pedido_choices, default='Pendente')
+    complemento = models.CharField(max_length=100, default=False)
+    idUsuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, blank=False)
 
 class ItensCompra(models.Model):
     qtdProduto = models.IntegerField(null=False, blank=False)
-    idProduto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    idCompra = models.ForeignKey(Compra, on_delete=models.CASCADE)
+    idProduto = models.ForeignKey(Produto, on_delete=models.CASCADE, null=False, blank=False)
+    idCompra = models.ForeignKey(Compra, on_delete=models.CASCADE, null=False, blank=False) 

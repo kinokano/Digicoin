@@ -245,7 +245,24 @@ input[type="file"] {
     justify-content: center;
 }
 
+.input-container {
+    display: flex;
+    align-items: center;
 
+    background:  #FFFFFF;
+}
+
+.prefixo {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: rgb(147, 147, 147);
+}
+
+.input-container input {
+    border: none;
+    outline: none;
+    width: 100px;
+}
 
 footer, .rodaPeModal {
     position: absolute;
@@ -265,6 +282,32 @@ footer, .rodaPeModal {
 .fim{
     text-align: end;
 } 
+
+.FormPreco {
+    position: relative;
+    
+    display: inline-block;
+    width: 100%;
+  }
+
+.FormPreco::before {
+    content: "D$";
+    display: flex;
+    position: absolute;
+    margin-top: 3px;
+    margin-right: 2px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #979797;
+    font-weight: bold;
+    pointer-events: none;
+  }
+  
+.FormPreco input {
+    padding-left: 30px; /* Deixa espaço para o "R$" */
+    box-sizing: border-box;
+  }
 
 @media screen and (max-width: 375px) {
     .temaCampanhaCorpo{
@@ -336,41 +379,12 @@ footer, .rodaPeModal {
         overflow-x: hidden;
     
     }
+   
 }
 
-
-/* TABLETS MAIORES (768px - 1024px) */
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    body{
-        background-color: black;
-    }
-    
-    dialog { 
-        width: 65%;
-        height: 700px;
-        padding: 30px;
-    }
-
-    .headerLogo > img {
-        width: 120px;
-        
-    }
-
-    .cadastroEvento{
-        width: 100%;
-    }
-    .temaCampanhaCorpo{
-        height: 450px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    
-    }
-
-}
 
 /* DESKTOPS PEQUENOS (1024px - 1440px) */
-@media (min-width: 1024px) and (max-width: 1440px) {
+@media (min-width: 768px) and (max-width: 1439px) {
 
     dialog { 
         width: 800px;
@@ -513,7 +527,7 @@ footer, .rodaPeModal {
 
     .rodaPeBotao{
         display: inline-block;
-        margin: 8px 47px; /* Margem lateral */
+        margin: 6px 47px; /* Margem lateral */
     }
 
     .temaCampanhaCorpo{
@@ -760,7 +774,7 @@ footer, .rodaPeModal {
 
     .rodaPeBotao{
         display: inline-block;
-        margin: 4px 39px; /* Margem lateral */
+        margin: 2px 39px; /* Margem lateral */
     }
 
     .temaCampanhaCorpo{

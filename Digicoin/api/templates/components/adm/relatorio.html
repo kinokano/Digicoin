@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
+{% include 'components/adm/menuAdm.html' %}
 
 
 <link rel="stylesheet" href="{% static 'css/AdmCss/relatorio.css' %}">
-<div class="menu-adm">{% include 'components/adm/menuAdm.html' %}</div>
-
 <div class="container">
     <div class="cabecalho">
         <div class="cabecalho_titulo">
