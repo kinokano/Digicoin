@@ -285,30 +285,32 @@ footer, .rodaPeModal {
 
 .FormPreco {
     position: relative;
-    
-    display: inline-block;
     width: 100%;
   }
-
-.FormPreco::before {
+  
+  .FormPreco input {
+    padding-left: 35px; /* espaço para o "D$" */
+    height: 40px;
+    line-height: 40px;
+    top: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .FormPreco::before {
     content: "D$";
-    display: flex;
     position: absolute;
-    margin-top: 3px;
-    margin-right: 2px;
+    top: 60%;
     left: 10px;
-    top: 50%;
     transform: translateY(-50%);
     color: #979797;
     font-weight: bold;
     pointer-events: none;
+    font-size: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
-  
-.FormPreco input {
-    padding-left: 30px; /* Deixa espaço para o "R$" */
-    box-sizing: border-box;
-  }
-
 @media screen and (max-width: 375px) {
     .temaCampanhaCorpo{
         height: 400px;
