@@ -105,3 +105,26 @@ class CompraViewSet(viewsets.ModelViewSet):
 class ItensCompraViewSet(viewsets.ModelViewSet):
     queryset = ItensCompra.objects.all()
     serializer_class = ItensCompraSerializer
+
+class CadastrarCompraView(APIView):
+    def post(self, request):
+        dadosCompra = request.data.get('compra')
+        itensCompra = request.data.get('itens')
+
+        # Cria a compra
+        compraSerializer = CompraSerializer(data=dadosCompra)
+        if compraSerializer.is_valid():
+            compra = compraSerializer.save()
+        else:
+            return Response(compraSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        # Cria os itens de compra
+        for item in itensCompra:
+            item['idCompra'] = compra.id
+            itemSerializer = ItensCompraSerializer(data=item)
+            if itemSerializer.is_valid():
+                itemSerializer.save()
+            else:
+                return Response(itemSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "Compra e itens criados com sucesso!"}, status=status.HTTP_201_CREATED)
