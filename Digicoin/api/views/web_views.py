@@ -12,7 +12,7 @@ def home(request):
    
     users = CustomUser.objects.all().order_by("-saldo")[:4]
     
-    desafio_list = Desafio.objects.all()
+    desafio_list = Desafio.objects.filter(idCampanha__isnull=True)
     desafio_paginator = Paginator(desafio_list, 5) 
     desafio_page = request.GET.get('desafio_page') 
     desafios = desafio_paginator.get_page(desafio_page)  
@@ -94,8 +94,11 @@ def teste(request):
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
 
-def editarUsuario(request):
-    return render(request, 'AdmHtml/editarUsuario.html')
+def editarUsuario(request, id):
+    
+    userId = CustomUser.objects.filter(id=id).first()
+    return render(request, 'AdmHtml/editarUsuario.html', {'userId': userId})
+
 
 def adicionarMoedas(request):
     return render(request, 'AdmHtml/adicionarMoedas.html')
