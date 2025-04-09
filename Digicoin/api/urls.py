@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/user/', User.as_view(), name='usuarios'),
     path('api/user/<int:id>', User.as_view(), name="usuarioDetalhe"),
     path('api/login/', Login.as_view(), name='loginAPI'),
+    path('api/cadastrarCompra/', CadastrarCompraView.as_view(), name='CadastrrarCompra'),
     path('api/GetDadosUsuarioLogado', GetDadosUsuarioLogado.as_view(), name='GetDadosUsuarioLogado'),
     path('', login, name="login"),
     path('home/', home, name="home"),
@@ -32,7 +33,7 @@ urlpatterns = [
     path('campanhas/', campanhas, name="campanhas"),
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
-    path('editarUsuario/', editarUsuario, name='editarUsuario'),
+    path('editarUsuario/<int:id>/', editarUsuario, name='editarUsuario'),
     path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
 
 
