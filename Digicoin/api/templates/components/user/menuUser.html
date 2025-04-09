@@ -2,55 +2,37 @@
 
 <link rel="stylesheet" href="{% static 'css/UserCss/menuUser.css' %}">
 
-<div class="menuColaborador" id="menuColaborador">
-    <div class="menuEsquerda">
-        <img src=" {% static 'img/logo.png' %}" alt="logoDigix" class="logo">
+<div class="menu">
+
+
+
+        <div class="group">
+            <img src="{% static 'img/group.png'%}" alt="" class="imgGroup">
+        </div>
         
-        <a href="" class="buttonNavBar">Home</a>
-        <a href="" class="buttonNavBar">Produtos</a>
-        <a href="" class="buttonNavBar">Ranking</a>
-        <a href="" class="buttonNavBar">Carrinho</a>
-        <span></span>
-    </div>
-    <div class="perfilColaborador" id="perfilColaborador">
-        
-            <img src=" {% static 'img/iconeUsuario.png' %} " alt="" class="iconeUsuario">
-            <div class="userInfo">
-                <h1>Fulano</h1>
-                <h1 class="saldo"><strong class="digicoin">DG$</strong> 9999</h1>
-            </div>
-            <img src="{% static 'img/sino.png' %}" alt="" class="sino">
-        
-            <img src="{% static 'img/flecha.png' %}" alt="" class="flecha" id="flecha">
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="" class="imgLogo">
+        </div>
+
+        <div class="navbar">
+            <a href="">Home</a>
+            <a href="">Produtos</a>
+            <a href="">Ranking</a>
+            <a href="">Carrinho</a>
+        </div>
+
+        <div class="perfil">
+            <img src="{% static 'img/icone.png'%}" alt="" class="imgPerfil">
             
-            <img src="{% static 'img/flechaCima.png' %}" alt="" class="flechaCima displayOff" id="flechaCima">
-        
-            <div class="dropMenu displayOff" id="dropMenu">
-
-                <div class="dropMenuConteudo">
-                    <div class="itemMenu">
-
-                        <img src="{% static 'img/visualizarPerfil.png' %}" alt="">
-                        <a href="">Visualizar perfil</a>
-
-                    </div>
-
-                    <div class="itemMenu">
-                        <img src="{% static 'img/historicoCompra.png' %}" alt="">
-                        <a href="">Histórico de compras</a>
-
-                    </div>
-
-                    <div class="itemMenu">
-                        <img src="{% static 'img/sair.png' %}" alt="">
-                        <a href="">Sair</a>
-
-                    </div>
-                    
-                </div>
-                
+            <div class="usuario">
+                <p>Fulano</p>
+                <p class="digicoin">DG$ <spam class="valor">9999</spam> </p>
             </div>
+            <img src="{% static 'img/sino.png'%}" alt="" class="imgSino">
+            <img src="{% static 'img/flecha.png'%}" alt="" class="imgFlecha">
 
-    </div>
-    
+        </div>
+
+
+
 </div>

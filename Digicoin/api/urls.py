@@ -26,15 +26,15 @@ urlpatterns = [
     path('cadastrarDesafio', cadastrarDesafio, name="cadastrarDesafio"),
     path('ranking', ranking, name="ranking"),
     path('homeListaDeUsuarios', homeListaDeUsuarios, name="homeListaDeUsuarios"),
-    path('desafiosCampanha', desafiosCampanha, name="desafiosCampanha"),
+    path('desafiosCampanha/', desafiosCampanha, name="desafiosCampanha"),
     path('listaDePedidos', listaDePedidos, name='listaDePedidos'),
     path('carrinho/', carrinho, name="carrinho"),
-
     path('relatorio/', relatorio, name="relatorio"),
     path('campanhas/', campanhas, name="campanhas"),
-
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
-    path('teste/', teste, name='teste'),
+    path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
+    path('editarUsuario/', editarUsuario, name='editarUsuario'),
+    path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
 
 
 ]
