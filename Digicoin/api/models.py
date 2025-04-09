@@ -29,7 +29,7 @@ class Produto(models.Model):
     tipo_choices = [("Físico", "Físico"), ("Virtual","Virtual")]
     tipo = models.CharField(max_length=10, choices=tipo_choices)
     is_active = models.BooleanField(default=True)
-    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, default=False)
+    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.nome
@@ -41,7 +41,7 @@ class Desafio(models.Model):
     descricao = models.TextField(default=False)
     dataFim = models.DateField(default=False)
     is_active = models.BooleanField(default=True)
-    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, default=False)
+    idCampanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.nome
