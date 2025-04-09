@@ -25,43 +25,23 @@
                     <input class="searchBar" type="search">
                 </div>
             </div>
-
             <div class="imagensDigix">
+                {% for produto in produtos %}
                 <div class='imgD'>
                     <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}"
-                            alt='Copo Stanley'></button>
+                            alt={{produto.nome}}></button>
                 </div>
-                <div class='imgD'>
-                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/mouse pad.png' %}"
-                            alt='Mouse Pad'></button>
-                </div>
-                <div class='imgD'>
-                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/iphone.png' %}"
-                            alt='Iphone'></button>
-                </div>
-                <div class='imgD'>
-                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}"
-                            alt='Teclado'></button>
-                </div>
-                <div class='imgD'>
-                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/caderno5.png' %}"
-                            alt='Caderno'></button>
-                </div>
-                <div class='imgD'>
-                    <button id='imgbotao'><img class='imagensP' src="{% static 'img/imgProdutos/caderno 1.png' %}"
-                            alt='Caderno'></button>
-                </div>
+                {% endfor%}
             </div>
         </div>
 
-
+        {% for produto in produtos %}
         <dialog id="modal">
             <div class="container">
-                {% for produto in produtos %}
                 <div class="flip">
                     <div class="frente">
                         <div class="topo">
-                            <div class="NProduto">Copo Stanley</div>
+                            <div class="NProduto">{{produto.nome}}</div>
                             <button id="fechar" class="X">X</button>
                         </div>
                         <div class="imagemCard">
@@ -78,23 +58,23 @@
                     </div>
                     <div class="tras">
                         <div class="topo">
-                            <div class="NProduto">Copo Stanley</div>
+                            <div class="NProduto">{{produto.nome}}</div>
                             <button id="fechar2" class="X">X</button>
                         </div>
                         <div class="quantidade">
                             <p>Quantidade: </p>
-                            <span>{{produto.qtd}}</span>
+                            <span>{{produto.quantidade}}</span>
                         </div>
                         <div class="descricao">
                             <p>Sobre: </p>
                             <span>{{produto.descricao}}</span>
-                        </div>                       
+                        </div>
                         <i id="refresh2" class="fa fa-refresh" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </dialog>
+        {% endfor %}
     </div>
     <script src="{% static 'js/UserJs/listaProdutos.js' %}"></script>
 

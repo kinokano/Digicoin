@@ -9,13 +9,17 @@
 {% include "components/user/menuUser.html" %}
 
 <body>
+  {% comment %} <div>
+    {% include 'components/adm/menuAdm.html'%}
+</div> {% endcomment %}
+
     <div class="container">
         <div class="titulo">
-
-            Ranking
+            <span>Ran</span>king
+            
 
             <div class="icone">
-              Ranking
+              
           
             </div>
 
@@ -24,9 +28,9 @@
           <thead>
             <tr>
 
-              <th width="120px"><img src="{% static 'img/imgRanking/posicao.png' %}" alt="posicao"> Posicao</th>
+              <!-- <th width="120px"><img src="{% static 'img/imgRanking/posicao.png' %}" alt="posicao"> Posicao</th>
               <th>Nome <img onclick="ordenarItens(this,'nome')" class="sort-asc"></th>
-              <th width="100px">Valores</th>
+              <th width="100px">Valores</th> -->
 
             </tr>
           </thead>

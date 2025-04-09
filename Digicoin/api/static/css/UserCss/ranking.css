@@ -20,28 +20,39 @@ body{
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .container{
     margin-top: 100px;
-    margin-left: 20px;
+    margin-left: 280px;
+    margin-right: 280px;
+    display: flex;
+    justify-content: center;
+
+    
 }
 .titulo{
-    display: flex;
-    flex-direction: row;
     font-weight: bold;
+    margin-left: 0px;
+    font-size: 28px;
+    
+    
 }
 
-.icone{
-    width: 18px;
-    height: 18px;
-    border-bottom: 2px solid var(--laranja);
+
+.posicaocor{
+  color: #2c006a;
+  font-weight: bold;
+   
+
 }
-.icone img{
-    width: 100%;
+
+.titulo span {
+  border-bottom: #FC671D solid 2px;
 }
+
+
+
 .sort-desc {
   transform: none;
   cursor: pointer;
@@ -69,18 +80,30 @@ th img{
   height:50px;
 }
 
-th, td {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 20px;
-    text-align: left;
-    font-size: 16px;
+th {
+  padding: 20px;
+  text-align: left;
+  font-size: 22px;
   }
+
+td {
+  padding: 15px 0px 15px 0px;
+  width: 0px;
+  text-align: left;
+  font-size: 22px;
+  }
+
+.span_posicao{
+  margin-left: 30px;
+}
+
+
 
 .valor_tag{
   text-align: end;
-  box-sizing: border-box;
-  padding-right: 30px;
+  width: 200px;
+  padding-right: 50px;
+
 }
 
 
@@ -152,46 +175,13 @@ td input {
   color: var(--cinza-escuro);
   cursor: not-allowed;
 }
-/*     
+     
 @media screen and (max-width: 600px) {
-  table {
-    min-width: 400px;
-  }
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
+      .container{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
 
-  thead {
-    display: none;
-  }
-
-  tr {
-      margin-bottom: 1em;
-  }
-
-  td {
-    border: none;
-    position: relative;
-    padding-left: 50%;
-  }
-  .posicao1{
-    height:100%;
-  }
-
-  td:before {
-    content: attr(data-label);
-    position: absolute;
-    top: 50%;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    transform: translateY(-50%);
-    font-weight: bold;
-  }
-} */
+}} 
