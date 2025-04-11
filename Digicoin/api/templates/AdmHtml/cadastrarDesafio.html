@@ -17,40 +17,50 @@
 
         {% csrf_token %}
 
-        <div class="nomeDesafioDiv">
-            <label for="">Nome do desafio</label>
-            <input type="text" id="nomeDesafio" class="nomeDesafio" placeholder="nome do desafio">
-        </div>
+        <div class="form">
+            <div class="cima">
 
-        <div class="nomeDesafioDiv">          
-            <label for="">Valor do desafio</label>
-            <input type="number" id="valorDesafio" class="valorDesafio" placeholder="valor do desafio">
-        </div>
+                <div class='inputsNome'>
+                    <div class="nomeDesafioDiv">
+                        <label for="">Nome do desafio</label>
+                        <input type="text" id="nomeDesafio" class="nomeDesafio" placeholder="nome do desafio">
+                    </div>
+                    <div class="nomeDesafioDiv">
+                        <label for="">Valor do desafio</label>
+                        <input type="number" id="valorDesafio" class="valorDesafio" placeholder="valor do desafio">
+                    </div>
+                </div>
 
-        <div class='nomeDesafioDiv'>
-            <label for="">Descrição</label>
-            <textarea id="descricao" class="descricao" placeholder="Digite a descrição do desafio"></textarea>
-
-        </div>
-
-        <div class="statusDesafioDiv">
-            <input class="statusDesafio" name="statusDesafio" type="checkbox">
-            <span>Campanha</span>
-        </div>
-        
-        <div class="dataDesafioDiv"> 
-
-            <div class="dataDesafioInterno">
-                <label class="dataDesafio" for="">Inicio</label>
-                <input type="date"  id="inicioDesafio">
+                <div class="descricaoDesafioDiv">
+                    <label for="">Descrição</label>
+                    <textarea id="descricao" class="descricao" placeholder="Digite a descrição do desafio"></textarea>
+                </div>       
             </div>
-            <div class="dataDesafioInterno">
-                <label class="dataDesafio"  for="">Fim</label>
-                <input type="date" id="fimDesafio">
+            <div class="baixo">
+                <div class="statusDesafioDiv">
+                    <label for="">Status do desafio</label>
+                    <select name="campanha" id=" campanha ">                   
+                        <option value="">Sem campanha</option>
+                        {% for campanha in campanhas %}                    
+                            <option value="{{campanha.id}}">{{campanha.nome}}</option>
+                               
+                        {% endfor %}   
+                    </select>
+                </div>
+                <div >        
+                    <div class="dataDesafioDiv">
+                        <div class="dataDesafioInterno">
+                            <label class="dataDesafio" for="">Inicio</label>
+                            <input type="date"  id="inicioDesafio">
+                        </div>
+                        <div class="dataDesafioInterno">
+                            <label class="dataDesafio"  for="">Fim</label>
+                            <input type="date" id="fimDesafio">
+                        </div>
+                    </div>
+                </div>
             </div>
-           
-        </div> 
-    
+        </div>
         <button type="submit" class="cadastrarDesafio">Concluído</button>
    
     </form>
