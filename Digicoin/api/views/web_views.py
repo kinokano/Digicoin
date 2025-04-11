@@ -67,8 +67,8 @@ def listaEstoque(request):
 
 
 
-def homeListaDeUsuarios(request):
-    return render(request, 'AdmHtml/homeListaDeUsuarios.html')
+def listaDeUsuarios(request):
+    return render(request, 'AdmHtml/listaDeUsuarios.html')
 
 def desafiosCampanha(request):
 

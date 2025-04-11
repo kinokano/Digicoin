@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/AdmCss/listaDeUsuarios.css'%}">
+
+{% include "components/adm/menuAdm.html" %}
+
+<div class="mainListaUsuarios">
+    
+    <div class="barraPesquisa">
+        <img src="{% static 'img/iconeLupa.png' %}" alt="">
+        <input type="search">
+
+    </div>
+
+        <div class="botoesUsuario">
+
+            <h1><span>Usu</span>ários</h1>
+
+            <a href="">
+                <button class="addMoedas">
+                    <img src="{% static 'img/iconAdicionar.png' %}" alt="">
+                    Adicionar moedas
+                </button>
+            </a>
+
+            <a href="">
+                <button class="addUsuarios">
+                    <img src="{% static 'img/iconAdicionar.png' %}" alt="">
+                    Adicionar usuário
+                </button>
+            </a>
+
+        </div>
+
+        <div class="head">
+            <h3>Nome</h3>
+            <img src="{% static 'img/lista.png' %}" alt="">
+        </div>
+
+
+        <div class="user"> 
+            <input type="checkbox" class="checkbox">
+
+            <div class="infoUser">
+                <img src="{% static 'img/userBlack.png' %}" alt="">
+                <h3>Fulano Junior</h3>
+                <h3></h3>
+                <img src="{% static 'img/edit.png' %}" alt="">
+
+            </div>
+
+        </div>
+
+
+</div>
+
+
+{% endblock %}
