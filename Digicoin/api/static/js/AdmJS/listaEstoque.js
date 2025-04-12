@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const modalPrimeiro = document.querySelector("#popupEditarProduto");
+    const buttonOpen = document.querySelector(".buttonOpen");
+    buttonOpen.addEventListener("click", () => modalPrimeiro.showModal());
 
     // Função para exibir erros
     function ShowError(input, mensagem) {

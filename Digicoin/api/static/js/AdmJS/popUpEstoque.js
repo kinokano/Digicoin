@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalSegundo = document.querySelector("#popupConcluir");
     const modalTerceiro = document.querySelector("#CriacaoDeCampanha");
 
-    const buttonOpen = document.querySelector(".buttonOpen");
+    
     const buttonClose = document.querySelector(".buttonClose");
     const buttonConcluir = document.querySelector(".buttonConcluir");
     const buttonClose2 = document.querySelector(".buttonClose2");
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Eventos para abrir e fechar popups
-    buttonOpen.addEventListener("click", () => modalPrimeiro.showModal());
+    
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
         if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
