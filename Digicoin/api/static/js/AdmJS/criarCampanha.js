@@ -3,9 +3,16 @@ const modalTerceiro = document.querySelector("#CriacaoDeCampanha");
 const botaoTeste = document.querySelector(".buttonCriarCampanha");
 botaoTeste.addEventListener('click', () => modalTerceiro.showModal())
 
-const buttonClose3 = document.querySelector(".buttonClose3");
-buttonClose3.addEventListener("click", () => modalTerceiro.close());
 
+const buttonClose3 = document.querySelector(".buttonClose3");
+buttonClose3.addEventListener("click", () => {
+    document.getElementById('nomeCampanha').value = "";
+    document.getElementById('dataInicio').value = "";
+    document.getElementById('dataFim').value = "";
+    document.getElementById('descricaoCampanha').value = "";
+    document.getElementById('valorEditar').value = "";
+    modalTerceiro.close();
+});
 
 
 async function EventoCampanha(event) {
@@ -16,11 +23,11 @@ async function EventoCampanha(event) {
     let fim = new Date(document.getElementById('dataFim').value + "T00:00:00");
     let descricaoCampanha = document.getElementById('descricaoCampanha').value;
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
-
+    
     const hoje = new Date()
     hoje.setHours(0, 0, 0, 0);
-
-
+    
+    
     if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio || inicio.getTime() < hoje.getTime()) {
         alert("Preencha todos os campos corretamente.");
         return;
@@ -36,7 +43,7 @@ async function EventoCampanha(event) {
 
     let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
     let valorCampanhaId = document.getElementById('valorEditar').value;
-    console.log(valorCampanhaId)
+    
     
     let response
 
@@ -48,6 +55,12 @@ async function EventoCampanha(event) {
     } else {
         response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
     }
+
+    nomeInput.value = "";
+    dataInicioInput.value = "";
+    dataFimInput.value = "";
+    descricaoInput.value = "";
+    valorCampanhaId.value = "";
 
     window.location.href = '/campanhas/';
 }
@@ -63,11 +76,10 @@ async function Editar(idCampanha) {
     const dados = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, {
         'X-CSRFToken': csrf
     });
-    console.log(dados);
+   
 
     // Preenche os campos do formulário de edição
     document.getElementById('nomeCampanha').value = dados.nome;
-    console.log(document.getElementById('nomeCampanha'));
     document.getElementById('dataInicio').value = dados.dataInicio;
     document.getElementById('dataFim').value = dados.dataFim;
     document.getElementById('descricaoCampanha').value = dados.descricao;
@@ -88,15 +100,15 @@ async function inativar (elemento) {
     // }
 
     const id = elemento
-    console.log(id);
+   
 
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
 
     const campanha = await apiRequest(`/api/campanha/${id}/`, 'GET', null, { 'X-CSRFToken': csrf });
-    console.log(campanha);
+ 
 
     const status = campanha.is_active;
-    console.log(status);
+
 
     const novoStatus = !status
 
@@ -111,5 +123,5 @@ async function inativar (elemento) {
     const resultado = await apiRequest(`/api/campanha/${id}/`, 'PUT', campanhaAtualizada, { 'X-CSRFToken': csrf });
     window.location.reload();
 
-    console.log(resultado);
+
 }
