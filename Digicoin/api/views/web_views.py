@@ -50,7 +50,9 @@ def listaProdutos(request):
 
 
 def cadastrarDesafio(request):
-    return render(request, 'AdmHtml/cadastrarDesafio.html')
+    campanhas = Campanha.objects.filter(is_active=True)
+     
+    return render(request, 'AdmHtml/cadastrarDesafio.html', {'campanhas': campanhas})
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
 
