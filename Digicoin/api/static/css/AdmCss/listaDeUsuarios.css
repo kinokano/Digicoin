@@ -1,16 +1,156 @@
-.mainListaUsuarios{
+.mainListaUsuarios {
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    max-width: 800px;
     margin-left: 350px;
-    margin-right: 200px;
-    margin-top: 100px;
+    padding-left: 200px;
+
+    
+}
+
+.divPesquisa {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.barraPesquisa {
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+}
+
+.barraPesquisa input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.barraPesquisa img{
+    width: 30px;
+    height: 30px;
+}
+
+.primeiraLinha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.primeiraLinha h1 span {
+    border-bottom: 3px solid #6B1DC2;
+    padding-bottom: 2px;
 }
 
 .botoesUsuario{
-    width: 100%;
+    display: flex;
+}
+
+.botoesUsuario a{
+    text-decoration: none;
+}
+
+.botoesUsuario button {
+    
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-left: 10px;
     display: flex;
     align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.addMoedas {
+    background-color: #00C4CC;
+    color: white;
+}
+
+.addMoedas:hover{
+    background-color: #037b80;
+    transition: 0.5s ease-in-out;
+}
+
+.addUsuarios {
+    background-color: #DA3ADC;
+    color: white;
+}
+.addUsuarios:hover{
+    background-color: #b42fb6;
+    transition: 0.5s ease-in-out;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.listaUsuarios {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linhaUsuario {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-left: 5px solid #CA8EFF;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
     justify-content: space-between;
+}
+
+.linhaUsuario input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.infoUser {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.infoUser img{
+    width: 30px;
+    height: 30px;
+}
+
+.infoUser .nome {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.infoUser .status {
+    margin-left: auto;
+    color: #888;
+    font-size: 14px;
+}
+
+.iconeEditar {
+    cursor: pointer;
+}
+
+.status{
+    margin-right: 150px;
+    
+}
+
+.desativado {
+    opacity: 0.4;
+}
+
+.idUser{
+    display: none;
 }

@@ -53,6 +53,7 @@ def cadastrarDesafio(request):
     campanhas = Campanha.objects.filter(is_active=True)
      
     return render(request, 'AdmHtml/cadastrarDesafio.html', {'campanhas': campanhas})
+
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
 
@@ -68,7 +69,9 @@ def listaEstoque(request):
 
 
 def listaDeUsuarios(request):
-    return render(request, 'AdmHtml/listaDeUsuarios.html')
+    usuarios = CustomUser.objects.filter(is_adm=0)
+
+    return render(request, 'AdmHtml/listaDeUsuarios.html', {'usuarios': usuarios})
 
 def desafiosCampanha(request):
 
