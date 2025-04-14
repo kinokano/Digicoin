@@ -47,8 +47,6 @@ def listaProdutos(request):
     produtos = Produto.objects.filter(is_active=True)
     return render(request, 'UserHtml/listaProdutos.html', {"produtos": produtos})
 
-
-
 def cadastrarDesafio(request):
     campanhas = Campanha.objects.filter(is_active=True)
      
