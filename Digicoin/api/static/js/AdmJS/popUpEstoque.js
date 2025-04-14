@@ -333,3 +333,8 @@ function bloqueiaCaracteresIndesejados(event) {
         return false;
     }
 }
+
+// async function abriTerceiroModal() {
+//     modalTerceiro.showModal();
+//     alert("deu certo")
+// }

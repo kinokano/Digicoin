@@ -91,7 +91,10 @@ def relatorio(request):
     return render(request, 'components/adm/relatorio.html')
 
 def campanhas(request):
-    return render(request, 'components/adm/campanhas.html')
+
+    campanhas = Campanha.objects.all()
+
+    return render(request, 'components/adm/campanhas.html', {'campanhas': campanhas})
 
 def teste(request):
     return render(request, 'AdmHtml/teste.html')
