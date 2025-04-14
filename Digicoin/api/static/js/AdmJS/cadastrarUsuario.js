@@ -1,7 +1,7 @@
 async function cadastrar(evento) {
     evento.preventDefault();
     const nome = document.getElementById("nome").value
-    const email = document.getElementById("email").value 
+    var email = document.getElementById("email").value 
     const ra = document.getElementById("ra").value 
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
     const senha = document.getElementById("senha").value

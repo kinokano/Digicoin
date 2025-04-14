@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/AdmCss/editarUsuario.css'%}">
-<div class="main">
+<div class="body">
     <div class="header">
         <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
-        <img class="iconeX" src="{% static 'img/iconeX.png' %}" alt="">
+        <img class="iconeX" id="fecharEditar" src="{% static 'img/iconeX.png' %}" alt="">
     </div>
 
     <form class="formEditar">
@@ -13,20 +13,20 @@
         {% csrf_token %}
         <div class="left">
             
-            <input type="hidden" id="id"  value="{%if userId%}{{userId.id}}{%endif%}">
+            <input type="hidden" id="id"  value="{%if usuario.id %}{{usuario.id}}{%endif%}">
             <div class="input" type="hidden">
                 <label for="">Nome do Usuário</label>
-                <input type="text" id="nome" class="nome" placeholder="Digite o nome do usuário" {%if userId%}value="{{userId.first_name}}" {%endif%} >
+                <input type="text" id="nome" class="nome" placeholder="Digite o nome do usuário" {%if usuario.id %}value="{{usuario.first_name}}" {%endif%} >
             </div>
         
             <div class="input">          
                 <label for="">Email</label>
-                <input type="email" id="email" class="email" placeholder="Digite seu email" {%if userId%}value="{{userId.username}}" {%endif%} >
+                <input type="email" id="email" class="email" placeholder="Digite seu email" {%if usuario.id %}value="{{usuario.username}}" {%endif%} >
             </div>
         
             <div class="input">          
                 <label for="">RA do Usuário</label>
-                <input type="number" id="ra" class="ra" placeholder="23317444" {%if userId%}value="{{userId.ra}}" {%endif%} >
+                <input type="number" id="ra" class="ra" placeholder="23317444" {%if usuario.id %}value="{{usuario.ra}}" {%endif%} >
             </div>
         </div>
         <div class="right">
@@ -35,7 +35,7 @@
                 <div class="saldo">
                 <button class="adicionar">
                 <img src="{% static 'img/iconMais.png' %}" alt=""></button>
-                <input type="number" id="saldo" class="ra" placeholder="99999" {%if userId%}value="{{userId.saldo}}" {%endif%}>
+                <input type="number" id="saldo" class="ra" placeholder="99999" {%if usuario.id %}value="{{usuario.saldo}}" {%endif%}>
                 <button class="subtrair">
                 <img src="{% static 'img/iconMenos.png' %}" alt="" >
                 </button>
@@ -50,7 +50,7 @@
                 <button onclick="AtivarDesativarUser(event, true)" class="ativarButton botao">Ativar usuário</button>
             </div>
 
-            <div class="submit botao">
+            <div class="submit botao" id="concluido">
                 <button onclick="editar(event)" type="submit" class="buttonSubmit botao">Concluído</button>
             </div>
 

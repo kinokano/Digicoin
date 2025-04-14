@@ -16,11 +16,10 @@
   }
 
 
-body{
+.body{
     background: var(--roxo);
     margin: 0px 100px;
-    
-
+   
 }
 
 .header{
@@ -30,7 +29,7 @@ body{
       margin-top: 20px;
       margin-left: 20px;
       margin-right: 20px;
-      margin-bottom: 100px;
+      margin-bottom: 50px;
   }
 
 .botao{
@@ -45,7 +44,9 @@ body{
     height: 32px;
 }
 
-
+.iconeX:hover{
+    cursor: pointer;
+}
 
 .cadastrarUsuario{
     
@@ -58,6 +59,7 @@ body{
     width: 260px;
     height: 60px;
     margin-right: 25px;
+    margin-bottom: 20px;
     
 }
 
@@ -83,11 +85,6 @@ body{
 }
 
 
-span{
-    font-size: 15px;
-    color: var(--branco);
-    
-}
 
 label{
     color: var(--branco);

@@ -20,18 +20,18 @@
             <h1><span>Usu</span>ários</h1>
 
             <div class="botoesUsuario">
-                <a href="">
-                    <button class="addMoedas">
+            
+                    <button class="addMoedas" id="addMoedas">
                         <img src="{% static 'img/iconAdicionar.png' %}" alt="">
                         Adicionar moedas
                     </button>
-                </a>
-                <a href="">
-                    <button class="addUsuarios">
+          
+
+                    <button class="addUsuarios" id="addUsuarios">
                         <img src="{% static 'img/iconAdicionar.png' %}" alt="">
                         Adicionar usuário
                     </button>
-                </a>
+            
             </div>
 
         </div>
@@ -46,30 +46,41 @@
 
             {% for usuario in usuarios %}
 
+            <dialog id="popupEditarUsuario-{{usuario.id}}" class="popupEditarUsuario">
+               
+                {% include "AdmHtml/editarUsuario.html" %}
+            </dialog>
+
             {% if usuario.is_active %}
+            
+           
+
             <div class="linhaUsuario">
                 <input type="checkbox" class="checkbox">
                 <div class="infoUser">
                     <img src="{% static 'img/userBlack.png' %}" alt="">
                     <input type="text" class="idUser" value="{{usuario.id}}">
                     <span class="nome">{{usuario.first_name}}</span>
+                    <span>D$ {{usuario.saldo}} </span>
                     <span class="status"></span>
+                    
                 </div>
-                <img class="iconeEditar" src="{% static 'img/edit.png' %}" alt="">
+                <img class="iconeEditar" id="editar"
+                data-id="{{usuario.id}}"  src="{% static 'img/edit.png' %}" alt="">
             </div>
     
 
             {% else %}
 
                 <div class="linhaUsuario desativado">
-                    <input type="checkbox" class="checkbox">
+                    <input type="checkbox" class="checkbox" disabled>
                     <div class="infoUser">
                         <input type="text" class="idUser" value="{{usuario.id}}">
                         <img src="{% static 'img/userBlack.png' %}" alt="">
                         <span class="nome">{{usuario.first_name}}</span>
                         <span class="status">Desativado</span>
                     </div>
-                    <img class="iconeEditar" src="{% static 'img/edit.png' %}" alt="">
+                    <img class="iconeEditar" id="editar" data-id="{{usuario.id}}"  src="{% static 'img/edit.png' %}" alt="">
                 </div>
 
 
@@ -82,7 +93,17 @@
         
         </div>
 
+        
 </div>
 
+<dialog id="popupCadastrarUsuario" class="popupCadastrarUsuario">
+    {% include "AdmHtml/cadastrarUsuario.html" %}
+</dialog>
 
+<dialog id="popupAdicionarMoedas" class="popupAdicionarMoedas">
+    {% include "AdmHtml/adicionarMoedas.html" %}
+</dialog>
+
+
+<script src="{% static 'js/AdmJS/listaDeUsuarios.js' %}"></script>
 {% endblock %}

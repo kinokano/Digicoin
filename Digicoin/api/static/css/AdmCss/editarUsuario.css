@@ -14,7 +14,7 @@
     --cinzaDatas: #D9D9D9;
   }
 
-  body{
+.body{
     background: var(--roxo);
     margin: 0px 100px;
     
