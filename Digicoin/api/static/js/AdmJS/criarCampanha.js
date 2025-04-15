@@ -15,67 +15,15 @@ buttonClose3.addEventListener("click", () => {
 });
 
 
-async function EventoCampanha(event) {
-    event.preventDefault();
 
-    let nome = document.getElementById('nomeCampanha').value;
-    let inicio = new Date(document.getElementById('dataInicio').value + "T00:00:00"); // Garante o horário correto
-    let fim = new Date(document.getElementById('dataFim').value + "T00:00:00");
-    let descricaoCampanha = document.getElementById('descricaoCampanha').value;
-    const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
-    
-    const hoje = new Date()
-    hoje.setHours(0, 0, 0, 0);
-    
-    
-    if (!nome || dataInicio.value === "" || dataFim.value === "" || fim < inicio || inicio.getTime() < hoje.getTime()) {
-        alert("Preencha todos os campos corretamente.");
-        return;
-    }
-
-    const evento = {
-        nome: nome,
-        is_active: true,
-        dataInicio: dataInicio.value,
-        dataFim: dataFim.value,
-        descricao: descricaoCampanha
-    };
-
-    let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
-    let valorCampanhaId = document.getElementById('valorEditar').value;
-    
-    
-    let response
-
-    if (valorCampanhaId) {
-        
-        response = await apiRequest(`/api/campanha/${valorCampanhaId}/`, 'PUT', evento, { 'X-CSRFToken': csrf });
-
-
-    } else {
-        response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
-    }
-
-    nomeInput.value = "";
-    dataInicioInput.value = "";
-    dataFimInput.value = "";
-    descricaoInput.value = "";
-    valorCampanhaId.value = "";
-
-    window.location.href = '/campanhas/';
-}
-
-document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
-
-
-
-async function Editar(idCampanha) {
+async function EditarCampanhas(idCampanha) {
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     // Requisição para buscar os dados da campanha
     const dados = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, {
         'X-CSRFToken': csrf
     });
+    
    
 
     // Preenche os campos do formulário de edição
@@ -91,13 +39,8 @@ async function Editar(idCampanha) {
     
 }   
 
-async function inativar (elemento) {
+async function inativarCampanhas(elemento) {
 
-    // const confirmar = window.confirm('Tem certeza que deseja inativar este produto?');
-
-    // if(!confirmar){
-    //     return
-    // }
 
     const id = elemento
    
