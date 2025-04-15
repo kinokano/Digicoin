@@ -15,6 +15,7 @@ class Campanha(models.Model):
     dataInicio = models.DateField(default=False)
     dataFim = models.DateField(default=False)
     descricao = models.TextField(default=False)
+    predefinida = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome
