@@ -45,11 +45,11 @@
                         </div>
                         <div class="tabela_campanha_conteudo_dado2">
                             <h2>{{ campanha.dataFim}}</h2>
-                            <button onclick="Editar({{campanha.id}})">
+                            <button onclick="EditarCampanhas({{campanha.id}})">
 
                                 <img src="{% static 'img/edit.png' %}" alt="botao editar" />
                             </button>
-                            <button onclick="inativar({{campanha.id}})">
+                            <button onclick="inativarCampanhas({{campanha.id}})">
 
                                 <img src="{% static 'img/iconeDeletar.png' %}" alt="deletar">
                             </button>
@@ -91,11 +91,11 @@
                         </div>
                         <div class="tabela_campanha_conteudo_dado2">
                             <h2>{{ campanha.dataFim}}</h2>
-                            <button onclick="Editar({{campanha.id}})">
+                            <button onclick="EditarCampanhas({{campanha.id}})">
 
                                 <img src="{% static 'img/edit.png' %}" alt="botao editar" />
                             </button>
-                            <button onclick="inativar({{campanha.id}})">
+                            <button onclick="inativarCampanhas({{campanha.id}})">
 
                                 <img src="{% static 'img/iconeDeletar.png' %}" alt="deletar">
                             </button>
@@ -109,5 +109,5 @@
     </div>
 </div>
 <script src="{% static 'js/AdmJS/criarCampanha.js' %}"></script>
-<script src="{% static 'js/AdmJS/popUpEstoque.js' %}"></script>
+
 {% endblock content %}

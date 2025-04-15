@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.getElementById("produtoForm2").addEventListener("submit", handleSubmit);
 
-    async function EventoCampanha(event) {
+    async function EventoCampanhas(event) {
         event.preventDefault();
 
         let nome = document.getElementById('nomeCampanha').value;
@@ -248,11 +248,21 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
 
-        const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
+        let valorCampanhaId = document.getElementById('valorEditar').value;
+        console.log("vem do editar "+valorCampanhaId)
 
         let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
-        if (response.id) {
 
+        let response
+        if (valorCampanhaId) {
+
+            response = await apiRequest(`/api/campanha/${valorCampanhaId}/`, 'PUT', evento, { 'X-CSRFToken': csrf });
+
+
+
+
+        } else {
+            const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
             let novaCampanha = document.createElement("div");
 
 
@@ -270,16 +280,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             modalTerceiro.close();
             formCampanhaTerceiro.reset();
-
-
-
-
-        } else {
-            alert("Erro ao criar campanha.");
+            
         }
+        window.location.reload();
     }
 
-    document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
+    document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanhas);
 
 
 
@@ -334,7 +340,3 @@ function bloqueiaCaracteresIndesejados(event) {
     }
 }
 
-// async function abriTerceiroModal() {
-//     modalTerceiro.showModal();
-//     alert("deu certo")
-// }
