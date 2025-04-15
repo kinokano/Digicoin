@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalSegundo = document.querySelector("#popupConcluir");
     const modalTerceiro = document.querySelector("#CriacaoDeCampanha");
 
-    const buttonOpen = document.querySelector(".buttonOpen");
+    
     const buttonClose = document.querySelector(".buttonClose");
     const buttonConcluir = document.querySelector(".buttonConcluir");
     const buttonClose2 = document.querySelector(".buttonClose2");
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Eventos para abrir e fechar popups
-    buttonOpen.addEventListener("click", () => modalPrimeiro.showModal());
+    
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
         if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.getElementById("produtoForm2").addEventListener("submit", handleSubmit);
 
-    async function EventoCampanha(event) {
+    async function EventoCampanhas(event) {
         event.preventDefault();
 
         let nome = document.getElementById('nomeCampanha').value;
@@ -248,11 +248,22 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
 
-        const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
+        let valorCampanhaId = document.getElementById('valorEditar').value;
+        console.log("vem do editar "+valorCampanhaId)
 
         let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
-        if (response.id) {
 
+        let response
+        if (valorCampanhaId) {
+
+            response = await apiRequest(`/api/campanha/${valorCampanhaId}/`, 'PUT', evento, { 'X-CSRFToken': csrf });
+            window.location.reload();
+
+
+
+
+        } else {
+            const response = await apiRequest('/api/campanha/', 'POST', evento, { 'X-CSRFToken': csrf });
             let novaCampanha = document.createElement("div");
 
 
@@ -270,16 +281,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             modalTerceiro.close();
             formCampanhaTerceiro.reset();
-
-
-
-
-        } else {
-            alert("Erro ao criar campanha.");
+            
         }
     }
 
-    document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanha);
+    document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanhas);
 
 
 
@@ -333,3 +339,4 @@ function bloqueiaCaracteresIndesejados(event) {
         return false;
     }
 }
+

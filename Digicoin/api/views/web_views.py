@@ -47,8 +47,6 @@ def listaProdutos(request):
     produtos = Produto.objects.filter(is_active=True)
     return render(request, 'UserHtml/listaProdutos.html', {"produtos": produtos})
 
-
-
 def cadastrarDesafio(request):
     campanhas = Campanha.objects.filter(is_active=True)
      
@@ -91,7 +89,10 @@ def relatorio(request):
     return render(request, 'components/adm/relatorio.html')
 
 def campanhas(request):
-    return render(request, 'components/adm/campanhas.html')
+
+    campanhas = Campanha.objects.all()
+
+    return render(request, 'components/adm/campanhas.html', {'campanhas': campanhas})
 
 def teste(request):
     return render(request, 'AdmHtml/teste.html')

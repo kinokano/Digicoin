@@ -131,6 +131,8 @@ input[type="checkbox"] {
     position: relative;
 }
 
+
+
 .UploadBox .default-content {
     display: flex;
     flex-direction: column;
@@ -143,6 +145,7 @@ input[type="checkbox"] {
 .UploadBox img {
     width: 50px; /* Ajuste conforme necessário */
     height: 50px;
+    
     margin-bottom: 5px;
 }
 
@@ -159,6 +162,7 @@ input[type="checkbox"] {
     top: 0;
     left: 0;
     border-radius: 10px;
+    
 }
 
 /* imagem mudando dentro da caixa */
