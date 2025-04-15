@@ -12,7 +12,7 @@ def home(request):
    
     users = CustomUser.objects.all().order_by("-saldo")[:4]
     
-    desafio_list = Desafio.objects.all()
+    desafio_list = Desafio.objects.filter(idCampanha__isnull=True)
     desafio_paginator = Paginator(desafio_list, 5) 
     desafio_page = request.GET.get('desafio_page') 
     desafios = desafio_paginator.get_page(desafio_page)  
@@ -35,22 +35,23 @@ def perfilUsuario(request):
     return render(request, 'UserHtml/perfilUsuario.html')
 
 def listaProdutos(request):
-    produtos = [     
-
-    {
-        'id': 1,
-        'nome': "Produto 1 ",
-        'qtd': 2,
-        'valor': "200",
-        'descricao': "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    ]
+    # produtos = [ 
+    # {
+    #     'id': 1,
+    #     'nome': "Produto 1 ",
+    #     'qtd': 2,
+    #     'valor': "200",
+    #     'descricao': "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    # },
+    # ]
+    produtos = Produto.objects.filter(is_active=True)
     return render(request, 'UserHtml/listaProdutos.html', {"produtos": produtos})
 
-
-
 def cadastrarDesafio(request):
-    return render(request, 'AdmHtml/cadastrarDesafio.html')
+    campanhas = Campanha.objects.filter(is_active=True)
+     
+    return render(request, 'AdmHtml/cadastrarDesafio.html', {'campanhas': campanhas})
+
 def ranking(request):
     return render(request, 'UserHtml/ranking.html')
 
@@ -65,8 +66,10 @@ def listaEstoque(request):
 
 
 
-def homeListaDeUsuarios(request):
-    return render(request, 'AdmHtml/homeListaDeUsuarios.html')
+def listaDeUsuarios(request):
+    usuarios = CustomUser.objects.filter(is_adm=0)
+
+    return render(request, 'AdmHtml/listaDeUsuarios.html', {'usuarios': usuarios})
 
 def desafiosCampanha(request):
 
@@ -86,7 +89,10 @@ def relatorio(request):
     return render(request, 'components/adm/relatorio.html')
 
 def campanhas(request):
-    return render(request, 'components/adm/campanhas.html')
+
+    campanhas = Campanha.objects.all()
+
+    return render(request, 'components/adm/campanhas.html', {'campanhas': campanhas})
 
 def teste(request):
     return render(request, 'AdmHtml/teste.html')
@@ -94,8 +100,11 @@ def teste(request):
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
 
-def editarUsuario(request):
-    return render(request, 'AdmHtml/editarUsuario.html')
+def editarUsuario(request, id):
+    
+    userId = CustomUser.objects.filter(id=id).first()
+    return render(request, 'AdmHtml/editarUsuario.html', {'userId': userId})
+
 
 def adicionarMoedas(request):
     return render(request, 'AdmHtml/adicionarMoedas.html')

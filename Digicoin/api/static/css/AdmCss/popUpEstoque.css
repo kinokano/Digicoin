@@ -131,6 +131,8 @@ input[type="checkbox"] {
     position: relative;
 }
 
+
+
 .UploadBox .default-content {
     display: flex;
     flex-direction: column;
@@ -143,6 +145,7 @@ input[type="checkbox"] {
 .UploadBox img {
     width: 50px; /* Ajuste conforme necessário */
     height: 50px;
+    
     margin-bottom: 5px;
 }
 
@@ -159,6 +162,7 @@ input[type="checkbox"] {
     top: 0;
     left: 0;
     border-radius: 10px;
+    
 }
 
 /* imagem mudando dentro da caixa */
@@ -283,30 +287,37 @@ footer, .rodaPeModal {
     text-align: end;
 } 
 
+
+
+
+
 .FormPreco {
     position: relative;
-    
-    display: inline-block;
     width: 100%;
   }
-
+  
+.FormPreco input {
+    padding-left: 35px; 
+    height: 40px;
+    line-height: 40px;
+    top: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+  } 
+  
 .FormPreco::before {
     content: "D$";
-    display: flex;
     position: absolute;
-    margin-top: 3px;
-    margin-right: 2px;
+    top: 62%;
     left: 10px;
-    top: 50%;
     transform: translateY(-50%);
     color: #979797;
     font-weight: bold;
     pointer-events: none;
-  }
-  
-.FormPreco input {
-    padding-left: 30px; /* Deixa espaço para o "R$" */
-    box-sizing: border-box;
+    font-size: 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
 @media screen and (max-width: 375px) {
@@ -626,8 +637,12 @@ footer, .rodaPeModal {
     .buttonrodaPeModal{
         margin-bottom: 8px;
     }
+    .FormPreco::before {
+        top: 60%;
+        
+      }
 
-   
+    
 
 }
 
@@ -873,6 +888,10 @@ footer, .rodaPeModal {
     .produtoDivFormBotao{
         margin-right: -20px;
     }
+    .FormPreco::before {
+        top: 62%;
+        
+      }
 
 }
 

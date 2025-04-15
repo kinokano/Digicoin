@@ -25,7 +25,7 @@ urlpatterns = [
     path('listaProdutos', listaProdutos, name="listaProdutos"),
     path('cadastrarDesafio', cadastrarDesafio, name="cadastrarDesafio"),
     path('ranking', ranking, name="ranking"),
-    path('homeListaDeUsuarios', homeListaDeUsuarios, name="homeListaDeUsuarios"),
+    path('listaDeUsuarios', listaDeUsuarios, name="listaDeUsuarios"),
     path('desafiosCampanha/', desafiosCampanha, name="desafiosCampanha"),
     path('listaDePedidos', listaDePedidos, name='listaDePedidos'),
     path('carrinho/', carrinho, name="carrinho"),
@@ -33,7 +33,7 @@ urlpatterns = [
     path('campanhas/', campanhas, name="campanhas"),
     path('listaEstoque/', listaEstoque, name='listaEstoque'),
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
-    path('editarUsuario/', editarUsuario, name='editarUsuario'),
+    path('editarUsuario/<int:id>/', editarUsuario, name='editarUsuario'),
     path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
 
 

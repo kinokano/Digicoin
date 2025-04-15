@@ -7,20 +7,38 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnVirarFrente = document.getElementById("refresh2");
     const adquirirBtns = document.querySelectorAll(".Adquirir");
 
-    imgButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-            const img = this.querySelector("img");
-            const modalImg = document.querySelector(".ImProduto");
-            const nomeProduto = document.querySelectorAll(".NProduto"); 
-    
-            flipCard.classList.remove("virado", "virado2");
-    
-            modalImg.src = img.src;
-            nomeProduto.forEach(el => el.textContent = img.alt);
-    
             dialog.showModal();
+
+            if (!flipCard.dataset.listenersAdded) {
+                refresh.addEventListener("click", () => {
+                    flipCard.classList.remove("virado2");
+                    flipCard.classList.toggle("virado");
+                });
+
+                refresh2.addEventListener("click", () => {
+                    flipCard.classList.remove("virado");
+                    flipCard.classList.toggle("virado2");
+                    refresh2.click()
+                });
+
+                fecharBtns.forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        dialog.close();
+                        flipCard.classList.remove("virado", "virado2");
+                    });
+                });
+
+                dialog.addEventListener("click", (event) => {
+                    const container = dialog.querySelector(".container");
+                    if (!container.contains(event.target)) {
+                        dialog.close();
+                        flipCard.classList.remove("virado", "virado2");
+                    }
+                });
+
+                flipCard.dataset.listenersAdded = "true";
+            }
         });
-    });
 
     fecharBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -80,6 +98,5 @@ document.addEventListener("DOMContentLoaded", function () {
             dialog.close();
             flipCard.classList.remove("virado", "virado2");
         });
-    });
 });
 
