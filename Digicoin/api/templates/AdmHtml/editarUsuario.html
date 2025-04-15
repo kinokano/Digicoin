@@ -8,25 +8,45 @@
         <img class="iconeX" id="fecharEditar" src="{% static 'img/iconeX.png' %}" alt="">
     </div>
 
-    <form class="formEditar">
+    <form class="formEditar" id="formEditar" >
 
         {% csrf_token %}
         <div class="left">
             
-            <input type="hidden" id="id"  value="{%if usuario.id %}{{usuario.id}}{%endif%}">
-            <div class="input" type="hidden">
+            {% comment %} <input type="hidden" id="{{usuario.id}}" name="idUsuario" value="{{usuario.id}}">
+            <label for="">Nome do Usuário</label>
+                <input type="text" id="{{usuario.first_name}}" value='{{usuario.first_name}}' class="nome" placeholder="Digite o nome do usuário"   >
+
+                <label for="">Email</label>
+                <input type="email" id="{{usuario.username}}" value='{{usuario.username}}' class="email" placeholder="Digite seu email"   >
+
+                <label for="">RA do Usuário</label>
+                <input type="number" id="{{usuario.ra}}" class="ra" placeholder="23317444" value='{{usuario.ra}}'>
+
+                <label for="">Gerenciar Saldo</label>
+                <div class="saldo">
+                <button class="adicionar">
+                <img src="{% static 'img/iconMais.png' %}" alt=""></button>
+                <input type="number" id="{{usuario.saldo}}" class="ra" placeholder="99999" >
+                <button class="subtrair">
+                <img src="{% static 'img/iconMenos.png' %}" alt="" >
+                </button>
+                </div>
+            <button  type="submit" class="buttonSubmit botao">Concluído</button> {% endcomment %}
+
+           <div class="input" type="hidden">
                 <label for="">Nome do Usuário</label>
-                <input type="text" id="nome" class="nome" placeholder="Digite o nome do usuário" {%if usuario.id %}value="{{usuario.first_name}}" {%endif%} >
+                <input type="text" id="{{usuario.first_name}}" name='nome' value='{{usuario.first_name}}' class="nome" placeholder="Digite o nome do usuário"   >
             </div>
         
             <div class="input">          
                 <label for="">Email</label>
-                <input type="email" id="email" class="email" placeholder="Digite seu email" {%if usuario.id %}value="{{usuario.username}}" {%endif%} >
+                <input type="email" id="{{usuario.username}}" name='email' value='{{usuario.username}}' class="email" placeholder="Digite seu email"   >
             </div>
         
             <div class="input">          
                 <label for="">RA do Usuário</label>
-                <input type="number" id="ra" class="ra" placeholder="23317444" {%if usuario.id %}value="{{usuario.ra}}" {%endif%} >
+                <input type="number" id="{{usuario.ra}}" name='ra' class="ra" placeholder="23317444" value='{{usuario.ra}}'>
             </div>
         </div>
         <div class="right">
@@ -35,7 +55,7 @@
                 <div class="saldo">
                 <button class="adicionar">
                 <img src="{% static 'img/iconMais.png' %}" alt=""></button>
-                <input type="number" id="saldo" class="ra" placeholder="99999" {%if usuario.id %}value="{{usuario.saldo}}" {%endif%}>
+                <input type="number" id="{{usuario.saldo}}" class="ra" placeholder="99999" >
                 <button class="subtrair">
                 <img src="{% static 'img/iconMenos.png' %}" alt="" >
                 </button>
@@ -51,11 +71,11 @@
             </div>
 
             <div class="submit botao" id="concluido">
-                <button onclick="editar(event)" type="submit" class="buttonSubmit botao">Concluído</button>
+                <button  type="submit" class="buttonSubmit botao">Concluído</button>
             </div>
 
         </div>
     </form>
 </div>
-<script src="{% static 'js/AdmJS/cadastrarUsuario.js' %}"></script>
+<script src="{% static 'js/AdmJS/editarUsuario.js' %}"></script>
 {% endblock content %}

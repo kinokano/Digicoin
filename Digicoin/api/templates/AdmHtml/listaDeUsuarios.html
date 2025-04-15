@@ -48,7 +48,7 @@
 
             <dialog id="popupEditarUsuario-{{usuario.id}}" class="popupEditarUsuario">
                
-                {% include "AdmHtml/editarUsuario.html" %}
+                {% include "AdmHtml/editarUsuario.html" with usuarios=usuarios %}
             </dialog>
 
             {% if usuario.is_active %}
@@ -87,13 +87,8 @@
             {% endif %}
 
 
-            {% endfor%}
-            
-        
-        
+            {% endfor%} 
         </div>
-
-        
 </div>
 
 <dialog id="popupCadastrarUsuario" class="popupCadastrarUsuario">

@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = editar[i].getAttribute('data-id');
             const popupEditarUsuario = document.getElementById(`popupEditarUsuario-${id}`);
             popupEditarUsuario.showModal();
+            
         });
     }
 
@@ -63,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const dialog = botao.closest('dialog');
             if (dialog) {
                 dialog.close();
-                window.location.reload();
             }
+            window.location.reload();
         });
     });
    
@@ -87,3 +88,4 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
 });
+
