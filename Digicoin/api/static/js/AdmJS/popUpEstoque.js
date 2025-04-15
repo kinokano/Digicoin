@@ -257,6 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (valorCampanhaId) {
 
             response = await apiRequest(`/api/campanha/${valorCampanhaId}/`, 'PUT', evento, { 'X-CSRFToken': csrf });
+            window.location.reload();
 
 
 
@@ -282,7 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
             formCampanhaTerceiro.reset();
             
         }
-        window.location.reload();
     }
 
     document.getElementById("CriacaoDeCampanhaForm").addEventListener("submit", EventoCampanhas);
