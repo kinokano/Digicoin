@@ -58,6 +58,9 @@
         <dialog id="modal">
             <div class="container">
                 {% for produto in produtos %}
+                <input type="hidden" name="nomeProduto[{{produto.id}}]" value="{{produto.nome}}">
+                <input type="hidden" name="valorProduto[{{produto.id}}]" value="{{produto.valor}}">
+                <input type="hidden" name="tipoProduto[{{produto.id}}]" value="{{produto.tipo}}">
                 <div class="flip">
                     <div class="frente">
                         <div class="topo">
@@ -72,7 +75,7 @@
                             <span>{{produto.valor}}</span>
                         </div>
                         <div class="btn-refresh">
-                            <button class="Adquirir">adquirir</button>
+                            <button class="Adquirir" data-id="{{produto.id}}">adquirir</button>
                         </div>
                         <i id="refresh" class="fa fa-refresh" aria-hidden="true"></i>
                     </div>

@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function abrirPopup() {
         const titulo = 'Finalizar Pedido';
         const body = `<form class="form" id="formTipoEntraga"> 
+        
         <label class="input-label">Selecione o tipo de entrega</label>
         <div class="form-group">
             <div class="input-container">
