@@ -45,58 +45,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     document.querySelectorAll('.formEditar').forEach(form => {
-        form.addEventListener('submit',  function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Pega o ID do usuário a partir do diálogo pai
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Pega o ID do usuário a partir do diálogo pai
-                const dialog = this.closest('.editarUsuario');
-                const userId = dialog.id.split('-')[1]; // Extrai o ID do usuário do ID do diálogo
-                
-                // Dados do formulário
-                const nome = this.querySelector('.nome').value;
-                const email = this.querySelector('.email').value;
-                const ra = this.querySelector('.ra').value;
-                const saldo = this.querySelector('.saldo').value;
-                
-                const response = await apiRequest(`/api/user/${userId}`, "PUT", {username:email, ra:ra, first_name:nome , saldo:saldo});
-                
-                if(response.status == 200)
-                {
-                    console.log(response);
-                    
-                }
-                else{
-                    console.log("erro ao cadastrar" + response);
-                }
+            const dialog = this.closest('.editarUsuario');
+            const userId = dialog.id.split('-')[1]; // Extrai o ID do usuário do ID do diálogo
             
-        });
+            // Dados do formulário
+            const nome = this.querySelector('.nome').value;
+            const email = this.querySelector('.email').value;
+            const ra = this.querySelector('.ra').value;
+            const saldo = this.querySelector('.saldo').value;
+            
+            const response = await apiRequest(`/api/user/${userId}`, "PUT", {
+                username: email,
+                ra: ra,
+                first_name: nome,
+                saldo: saldo
+            });
+            
+            if (response.status == 200) {
+                console.log(response);
+                // Atualizar a interface, se necessário
+                location.reload(); // Recarrega a página (opcional)
+            } else {
+                console.log("Erro ao editar usuário: " + response);
+                alert("Erro ao editar usuário!");
+            }
         });
     });
 
-    
-
-
-    // document.querySelectorAll('.ativar, .desativar').forEach(button => {
-    //     button.addEventListener('click', function(e) {
-    //         e.preventDefault();
-            
-    //         const form = this.closest('.formEditar');
-    //         const dialog = form.closest('.editarUsuario');
-    //         const userId = dialog.id.split('-')[1];
-            
-    //         const action = this.classList.contains('ativar') ? 'ativar' : 'desativar';
-    //         console.log(`${action} usuário ${userId}`);
-            
-    //         // Aqui você pode fazer uma requisição AJAX para ativar/desativar
-    //     });
-    // });
-
-    
     const fecharEditars = document.querySelectorAll('#fecharEditar');
 
     fecharEditars.forEach(botao => {
