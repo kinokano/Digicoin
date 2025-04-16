@@ -14,10 +14,10 @@
     --cinzaDatas: #D9D9D9;
   }
 
-body{
+.body{
     background: var(--roxo);
     margin: 0px 100px;
-   
+    border-radius: 10px;
 }
 
 .header{
@@ -27,7 +27,7 @@ body{
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .iconeX{
@@ -90,6 +90,7 @@ body{
     color: white;
     font-weight: 800;
     font-size: 20px;
+    margin-bottom: 30px;
 }
 
 .adicionar{
@@ -113,3 +114,88 @@ body{
 }
 
 
+/* Adicione isso ao final do arquivo adicionarMoedas.css */
+
+@media (max-width: 768px) {
+    .body {
+        margin: 0 30px !important;
+        padding: 20px;
+    }
+
+    .header {
+        margin: 15px 0 30px 0;
+    }
+
+    .gerenciarDigicoins h1 {
+        font-size: 24px;
+        margin-bottom: 60px;
+    }
+
+    .gerenciar{
+        gap: 50px;
+    }
+
+    .quantidade {
+        font-size: 18px;
+        gap: 15px;
+    }
+
+    .quantidade input {
+        width: 100%;
+        max-width: 250px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+
+    .botoes {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .botoes button {
+        width: 100% !important;
+        max-width: 280px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .iconeX {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .body {
+        margin: 0 15px !important;
+        padding: 15px;
+    }
+
+    .gerenciarDigicoins h1 {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    .quantidade label {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .quantidade input {
+        height: 40px;
+        font-size: 14px;
+        max-width: 200px;
+    }
+
+    .botoes button {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .header img:first-child {
+        width: 150px;
+    }
+}
