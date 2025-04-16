@@ -22,14 +22,13 @@
                 </div>
                 <div class="search">
                     <i id="lupa" class="fa fa-search" aria-hidden="true"></i>
-                    <input class="searchBar" type="search">
+                    <input id="barraBusca" class="searchBar" type="search">
                 </div>
             </div>
             <div class="imagensDigix">
                 {% for produto in produtos %}
-                <div class='imgD'>
-                    <button id='imgbotao' data-valor="{{produto.id}}"><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}"
-                            alt={{produto.nome}}></button>
+                <div class='imgD' data-nome="{{ produto.nome|lower }}">
+                    <button id='imgbotao' data-valor="{{produto.id}}"><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}" alt={{produto.nome}}></button>
                 </div>
                 {% endfor%}
             </div>
@@ -45,7 +44,7 @@
                             <button id="fechar" class="fechar X">X</button>
                         </div>
                         <div class="imagemCard">
-                            <img class="ImProduto" src="{% static 'img/imgProdutos/copo.png' %}" alt="copo">
+                            <img class="ImProduto" src="{% static 'img/imgProdutos/copo.png' %}" alt="{{produto.nome}}">
                         </div>
                         <div class="preco">
                             <p>DG$</p>
