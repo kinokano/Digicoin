@@ -31,6 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
     fecharAdicionarMoedas.addEventListener('click', () => {
         popupAdicionarMoedas.close();
     });
+
+        // Selecionar todos os usuários ativos
+    const selecionarTodos = document.getElementById('selecionarTodos');
+    selecionarTodos.addEventListener('change', (e) => {
+        const checkboxes = document.querySelectorAll('.linhaUsuario:not(.desativado) .checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = e.target.checked;
+            checkbox.disabled = false; // Garante que estejam habilitados
+        });
+    });
+
+    // Atualizar o checkbox "Selecionar todos" quando checkboxes individuais forem alterados
+    document.querySelectorAll('.linhaUsuario:not(.desativado) .checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const allChecked = [...document.querySelectorAll('.linhaUsuario:not(.desativado) .checkbox')]
+                .every(checkbox => checkbox.checked);
+            selecionarTodos.checked = allChecked;
+        });
+    });
     
 
     const editar = document.querySelectorAll('[id="editar"]');
@@ -43,6 +62,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    document.querySelectorAll('.close-dialog').forEach(botao => {
+        botao.addEventListener('click', (e) => {
+            const dialog = botao.closest('dialog');
+            if (dialog) {
+                dialog.close();
+            }
+        });
+    });
+
+    document.querySelectorAll('.saldo-button').forEach(botao => {
+        botao.addEventListener('click', (e) => {
+            const saldoControl = botao.closest('.saldo-control');
+            const inputSaldo = saldoControl.querySelector('.saldo');
+            let valorAtual = parseInt(inputSaldo.value) || 0;
+    
+            if (botao.classList.contains('add')) {
+                valorAtual += 1;
+            } else if (botao.classList.contains('sub')) {
+                valorAtual = Math.max(0, valorAtual - 1); // Não permite valores negativos
+            }
+    
+            inputSaldo.value = valorAtual;
+        });
+    });
+
+    document.querySelectorAll('.action-button.desativar, .action-button.ativar').forEach(botao => {
+        botao.addEventListener('click', (e) => {
+            const dialog = botao.closest('dialog');
+            const form = dialog.querySelector('.formEditar');
+            const statusInput = form.querySelector('input[name="is_active"]');
+            
+            if (botao.classList.contains('desativar')) {
+                statusInput.value = 'false';
+                alert('Usuário desativado com sucesso!');
+            } else if (botao.classList.contains('ativar')) {
+                statusInput.value = 'true';
+                alert('Usuário ativado com sucesso!');
+            }
+            
+            // Opcional: feedback visual
+            dialog.querySelectorAll('.action-button').forEach(btn => btn.classList.remove('active'));
+            botao.classList.add('active');
+        });
+    });
 
     document.querySelectorAll('.formEditar').forEach(form => {
         form.addEventListener('submit', async function(e) {
@@ -57,12 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = this.querySelector('.email').value;
             const ra = this.querySelector('.ra').value;
             const saldo = this.querySelector('.saldo').value;
+            const status = this.querySelector('input[name="is_active"]').value;
             
             const response = await apiRequest(`/api/user/${userId}`, "PUT", {
                 username: email,
                 ra: ra,
                 first_name: nome,
-                saldo: saldo
+                saldo: saldo,
+                is_active: status
             });
             
             if (response.status == 200) {
@@ -76,18 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const fecharEditars = document.querySelectorAll('#fecharEditar');
-
-    fecharEditars.forEach(botao => {
-        botao.addEventListener('click', (e) => {
-            // Acha o <dialog> mais próximo na hierarquia
-            const dialog = botao.closest('dialog');
-            if (dialog) {
-                dialog.close();
-            }
-        });
-    });
-     
     const concluido = document.querySelectorAll('#concluido');
 
     concluido.forEach(botao => {
@@ -100,21 +153,83 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.reload();
         });
     });
-   
-    function getIdsSelecionados() {
-        const linhas = document.querySelectorAll('.linhaUsuario');
-        const idsSelecionados = [];
+
+    // Modifique o evento de clique do botão addMoedas
+addMoedas.addEventListener('click', () => {
+    popupAdicionarMoedas.showModal();
+    const usuariosSelecionados = getUsuariosSelecionados(); // Alteramos para pegar mais dados
     
-        linhas.forEach(linha => {
-            const checkbox = linha.querySelector('.checkbox');
-            const inputId = linha.querySelector('.idUser');
+    // Novo código para manipular o popup
+    const formAdicionarMoedas = document.getElementById('formAdicionarMoedas');
+    const inputQuantidade = document.getElementById('saldo');
     
-            if (checkbox && checkbox.checked && inputId) {
-                idsSelecionados.push(inputId.value);
+    // Função para enviar as moedas
+    const enviarMoedas = async (operacao) => {
+        const valor = parseInt(inputQuantidade.value);
+        if (isNaN(valor)) {
+            alert('Digite um valor válido!');
+            return;
+        }
+
+        try {
+            for (const usuario of usuariosSelecionados) {
+                const novoSaldo = operacao === 'adicionar' 
+                    ? usuario.saldo + valor 
+                    : Math.max(0, usuario.saldo - valor);
+                
+                const response = await apiRequest(`/api/user/${usuario.id}`, "PUT", {
+                    saldo: novoSaldo
+                });
+                
+                if (response.status !== 200) {
+                    throw new Error(`Falha ao atualizar usuário ${usuario.id}`);
+                }
             }
-        });
+            
+            alert('Operação realizada com sucesso!');
+            popupAdicionarMoedas.close();
+            location.reload();
+            
+        } catch (error) {
+            console.error('Erro:', error);
+            alert(`Erro na operação: ${error.message}`);
+        }
+    };
+
+    // Adiciona eventos aos botões
+    document.getElementById('adicionar').addEventListener('click', (e) => {
+        e.preventDefault();
+        enviarMoedas('adicionar');
+    });
+
+    document.getElementById('remover').addEventListener('click', (e) => {
+        e.preventDefault();
+        enviarMoedas('remover');
+    });
+});
+
+// Atualize a função para obter dados completos
+function getUsuariosSelecionados() {
+    const linhas = document.querySelectorAll('.linhaUsuario');
+    const usuarios = [];
+
+    linhas.forEach(linha => {
+        const checkbox = linha.querySelector('.checkbox');
+        const inputId = linha.querySelector('.idUser');
+        const saldoElement = linha.querySelector('span:not(.nome):not(.status)');
+
+        if (checkbox && checkbox.checked && inputId && saldoElement) {
+            const saldo = parseInt(saldoElement.textContent.replace('D$ ', '')) || 0;
+            usuarios.push({
+                id: inputId.value,
+                saldo: saldo
+            });
+        }
+    });
+
+    return usuarios;
+}
     
-        return idsSelecionados;
-    }
+   
 
 });

@@ -86,7 +86,7 @@
 
 
 
-label{
+.input label{
     color: var(--branco);
     font-size: 15px;
     margin-bottom: 15px;
@@ -108,3 +108,92 @@ label{
 
 }
 
+
+/* Adicione isso ao final do cadastrarUsuario.css */
+
+@media (max-width: 1200px){
+    .input input {
+        max-width: 600px;
+    }
+}
+@media (max-width: 900px)  {
+    .input input {
+        max-width: 400px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .body {
+        margin: 0 30px !important;
+        padding: 20px;
+    }
+
+    .header {
+        margin: 15px 0 30px 0;
+    }
+
+    .input input {
+        max-width: 300px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .cadastrarUsuario {
+        width: 220px;
+        height: 55px;
+        font-size: 20px;
+    }
+
+    .iconeX {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .body {
+        margin: 0 15px !important;
+        padding: 15px;
+    }
+
+    .input input {
+        max-width: 200px;
+        height: 45px;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .input label {
+        font-size: 14px;
+    }
+
+    .cadastrarUsuario {
+        width: 100%;
+        max-width: 280px;
+        height: 50px;
+        font-size: 18px;
+        margin-right: 0;
+    }
+
+    .header img:first-child {
+        width: 150px;
+    }
+
+    .iconeX {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 360px) {
+    .input input {
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .cadastrarUsuario {
+        height: 45px;
+        font-size: 16px;
+    }
+}
