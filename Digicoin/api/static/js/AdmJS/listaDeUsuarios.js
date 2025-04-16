@@ -37,11 +37,64 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < editar.length; i++) {
         editar[i].addEventListener('click', () => {
             const id = editar[i].getAttribute('data-id');
-            const popupEditarUsuario = document.getElementById(`popupEditarUsuario-${id}`);
+            const popupEditarUsuario = document.getElementById(`editarUsuario-${id}`);
             popupEditarUsuario.showModal();
             
         });
     }
+
+
+    document.querySelectorAll('.formEditar').forEach(form => {
+        form.addEventListener('submit',  function(e) {
+            e.preventDefault();
+            
+            // Pega o ID do usuário a partir do diálogo pai
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Pega o ID do usuário a partir do diálogo pai
+                const dialog = this.closest('.editarUsuario');
+                const userId = dialog.id.split('-')[1]; // Extrai o ID do usuário do ID do diálogo
+                
+                // Dados do formulário
+                const nome = this.querySelector('.nome').value;
+                const email = this.querySelector('.email').value;
+                const ra = this.querySelector('.ra').value;
+                const saldo = this.querySelector('.saldo').value;
+                
+                const response = await apiRequest(`/api/user/${userId}`, "PUT", {username:email, ra:ra, first_name:nome , saldo:saldo});
+                
+                if(response.status == 200)
+                {
+                    console.log(response);
+                    
+                }
+                else{
+                    console.log("erro ao cadastrar" + response);
+                }
+            
+        });
+        });
+    });
+
+    
+
+
+    // document.querySelectorAll('.ativar, .desativar').forEach(button => {
+    //     button.addEventListener('click', function(e) {
+    //         e.preventDefault();
+            
+    //         const form = this.closest('.formEditar');
+    //         const dialog = form.closest('.editarUsuario');
+    //         const userId = dialog.id.split('-')[1];
+            
+    //         const action = this.classList.contains('ativar') ? 'ativar' : 'desativar';
+    //         console.log(`${action} usuário ${userId}`);
+            
+    //         // Aqui você pode fazer uma requisição AJAX para ativar/desativar
+    //     });
+    // });
 
     
     const fecharEditars = document.querySelectorAll('#fecharEditar');
@@ -85,7 +138,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return idsSelecionados;
     }
 
-    
-
 });
-

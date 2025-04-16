@@ -46,15 +46,9 @@
 
             {% for usuario in usuarios %}
 
-            <dialog id="popupEditarUsuario-{{usuario.id}}" class="popupEditarUsuario">
-               
-                {% include "AdmHtml/editarUsuario.html" with usuarios=usuarios %}
-            </dialog>
-
+            
             {% if usuario.is_active %}
             
-           
-
             <div class="linhaUsuario">
                 <input type="checkbox" class="checkbox">
                 <div class="infoUser">
@@ -86,6 +80,29 @@
 
             {% endif %}
 
+                <dialog id="editarUsuario-{{usuario.id}}" class="editarUsuario">
+                    
+                    <form class="formEditar">
+                        {% csrf_token %}
+
+                        <input type="hidden" class="idUser" value="{{usuario.id}}">
+
+                        <input type="text" class="nome" value="{{usuario.first_name}}">
+
+                        <input type="email" class="email" value="{{usuario.username}}">
+
+                        <input type="number" class="ra" value="{{usuario.ra}}">
+
+                        <input type="number" class="saldo" value="{{usuario.saldo}}">
+
+                        <button class="desativar">Desativar Usuário</button>
+                        <button class="ativar">Ativar Usuário</button>
+
+                        <button type="submit">Concluído</button>
+
+                    </form>
+
+                </dialog>
 
             {% endfor%} 
         </div>
