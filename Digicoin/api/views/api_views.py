@@ -7,6 +7,9 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.hashers import make_password
 
+
+
+
 class User(APIView):
 
     def get(self, request, id=None):
@@ -129,3 +132,4 @@ class CadastrarCompraView(APIView):
                 return Response(itemSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "Compra e itens criados com sucesso!"}, status=status.HTTP_201_CREATED)
+
