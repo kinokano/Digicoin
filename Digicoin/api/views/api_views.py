@@ -11,6 +11,7 @@ from django.contrib.auth.hashers import make_password
 
 
 class User(APIView):
+
     def get(self, request, id=None):
         if id:
             usuario = get_object_or_404(CustomUser, pk=id)
@@ -39,7 +40,7 @@ class User(APIView):
             
             ra = ra
         )
-        return Response({"message":"Usuário criado com sucesso!", "id":usuario.id, "status": status.HTTP_201_CREATED}, status= status.HTTP_201_CREATED)
+        return Response({"message":"Usuário criado com sucesso!", "id":usuario.id, "status": status.HTTP_201_CREATED})
 
     def put(self, request, id):
         usuario = get_object_or_404(CustomUser, pk=id)
