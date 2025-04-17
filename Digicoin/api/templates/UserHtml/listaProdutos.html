@@ -28,7 +28,7 @@
             <div class="imagensDigix">
                 {% for produto in produtos %}
                 <div class='imgD' data-nome="{{ produto.nome|lower }}">
-                    <button id='imgbotao' data-valor="{{produto.id}}"><img class='imagensP' src="{% static 'img/imgProdutos/copo.png' %}" alt={{produto.nome}}></button>
+                    <button id='imgbotao' data-valor="{{produto.id}}"><img class='imagensP' src="{{ produto.img1.url }}" alt= "{{produto.nome}}"></button>
                 </div>
                 {% endfor%}
             </div>
@@ -44,7 +44,7 @@
                             <button id="fechar" class="fechar X">X</button>
                         </div>
                         <div class="imagemCard">
-                            <img class="ImProduto" src="{% static 'img/imgProdutos/copo.png' %}" alt="{{produto.nome}}">
+                            <img class="ImProduto" src="{{ produto.img1.url }}" alt="{{produto.nome}}">
                         </div>
                         <div class="preco">
                             <p>DG$</p>
