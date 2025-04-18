@@ -124,7 +124,9 @@ class CadastrarCompraView(APIView):
             itemSerializer = ItensCompraSerializer(data=item)
             if itemSerializer.is_valid():
                 itemSerializer.save()
+                print("Item criado com sucesso!")
             else:
+                print("deu erro")
                 return Response(itemSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({"message": "Compra e itens criados com sucesso!"}, status=status.HTTP_201_CREATED)
+        return Response({"message": "Compra e itens criados com sucesso!", "status": status.HTTP_201_CREATED})
