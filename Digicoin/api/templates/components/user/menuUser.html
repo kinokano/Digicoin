@@ -15,18 +15,18 @@
         </div>
 
         <div class="navbar">
-            <a href="">Home</a>
-            <a href="">Produtos</a>
-            <a href="">Ranking</a>
-            <a href="">Carrinho</a>
+            <a href="/home">Home</a>
+            <a href="/listaProdutos">Produtos</a>
+            <a href="/ranking">Ranking</a>
+            <a href="/carrinho">Carrinho</a>
         </div>
 
         <div class="perfil">
             <img src="{% static 'img/icone.png'%}" alt="" class="imgPerfil">
             
             <div class="usuario">
-                <p>Fulano</p>
-                <p class="digicoin">DG$ <spam class="valor">9999</spam> </p>
+                <p id='nomeUsuario'>Fulano</p>
+                <p class="digicoin">DG$ <spam class="valor" id='saldo'>9999</spam> </p>
             </div>
             <img src="{% static 'img/sino.png'%}" alt="" class="imgSino">
             <img src="{% static 'img/flecha.png'%}" alt="" class="imgFlecha">
@@ -36,3 +36,5 @@
 
 
 </div>
+
+<script src="{% static 'js/UserJs/menuUser.js' %}"></script>
