@@ -77,3 +77,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+document.getElementById('barraBusca').addEventListener('keyup', function () {
+    const termo = this.value.toLowerCase();
+    const produtos = document.querySelectorAll('.imgD');
+
+    produtos.forEach(function (produto) {
+        const nome = produto.getAttribute('data-nome');
+        if (nome.includes(termo)) {
+            produto.style.display = '';
+        } else {
+            produto.style.display = 'none';
+        }
+    });
+});

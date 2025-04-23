@@ -126,8 +126,10 @@ body {
 }
 
 .produtos .imagensP {
-    width: 190px;
-    height: auto;
+    display: block;
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
 }
 
 
@@ -136,8 +138,7 @@ dialog {
     left: 50%;
     transform: translate(-50%, -50%);
     border: none;
-    border-radius: 20px;
-    
+    border-radius: 20px;    
     padding: 0;
     margin: 0;
     background: transparent;
@@ -165,9 +166,11 @@ dialog::backdrop {
 }
 
 .frente .ImProduto {
-    width: 200px;
-    height: 200px;
-    padding: 20px 0 30px 0;
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+    display: block;
+    margin: 0 0 20px 0;
 }
 
 .frente .preco {
@@ -339,9 +342,9 @@ dialog::backdrop {
         border: none;
         border-radius: 20px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: white;
         padding: 0;
         margin: 0;  
+        background: transparent;
     }
 
     dialog::backdrop {

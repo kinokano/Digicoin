@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modalPrimeiro = document.querySelector("#popupEditarProduto");
     const buttonOpen = document.querySelector(".buttonOpen");
-    buttonOpen.addEventListener("click", () => modalPrimeiro.showModal());
+    buttonOpen.addEventListener("click", () => {
+        const uploadBox = document.querySelector(".UploadBox");
+        uploadBox.classList.remove("has-image");
+        uploadBox.style.backgroundImage = ""; // remove a imagem
+        document.getElementById("imagem").value = ""; // limpa o input file
+        modalPrimeiro.showModal();
+    });
 
     // Função para exibir erros
     function ShowError(input, mensagem) {
@@ -164,6 +170,12 @@ async function inativar (elemento) {
 }
 
 async function Editar(idProduto) {
+    const uploadBox = document.querySelector(".UploadBox");
+    uploadBox.classList.remove("has-image");
+    uploadBox.style.backgroundImage = ""; // remove a imagem
+    document.getElementById("imagem").value = ""; // limpa o input file
+
+
     const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const dados = await apiRequest(`/api/produto/${idProduto}/`, 'GET', null, { 'X-CSRFToken': csrf });
 
@@ -171,6 +183,12 @@ async function Editar(idProduto) {
     document.getElementById('Quantidade').value = aplicarMascaraMilhar(dados.quantidade.toString());
     document.getElementById('Preco').value = aplicarMascaraMilhar(dados.valor.toString());
     document.getElementById('Campanha').checked = true;
+    
+    uploadBox.classList.add("has-image");
+    uploadBox.style.backgroundImage = `url(${dados.img1})`;
+    uploadBox.style.backgroundSize = "contain";
+    uploadBox.style.backgroundRepeat = "no-repeat";
+    uploadBox.style.backgroundPosition = "center";
 
     if (dados.tipo.toLowerCase() === "físico") {
         document.getElementById('Fisico').checked = true;

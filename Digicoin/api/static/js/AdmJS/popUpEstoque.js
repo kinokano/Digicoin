@@ -1,5 +1,3 @@
-
-
 // Selecionando os elementos do popup e formulário
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -113,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonClose.addEventListener("click", () => modalPrimeiro.close());
     buttonConcluir.addEventListener("click", () => {
         if (checkRequired([produto, quantidade, preco]) && checkCampanhaRequired() && checkFisicoVirtualRequired()) {
-            console.log("passou, ou seja, entrou verdade");
 
 
 
@@ -127,40 +124,35 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonClose3.addEventListener("click", () => modalTerceiro.close());
 
 
-
     async function handleSubmit(event) {
         event.preventDefault();
-
-
+    
         let nome = document.getElementById('Produto').value;
-        let quantidade = document.getElementById('Quantidade').value; 
+        let quantidade = document.getElementById('Quantidade').value;
         quantidade = quantidade.replace(/\./g, '');
         quantidade = parseInt(quantidade);
-        
-
+    
         let preco = document.getElementById('Preco').value;
         preco = preco.replace(/\./g, '');
         preco = parseInt(preco);
-        
-        let imagem = document.getElementById('imagem');
-
-
+    
+        let imagemInput = document.getElementById('imagem');
+        let imagemFile = imagemInput.files[0];
+    
         let idCampanha = null;
-
         let checkboxes = document.getElementsByClassName('listaCampanha');
-
+    
         for (let i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].checked) {
                 idCampanha = checkboxes[i].value;
                 break;
             }
         }
-
-
+    
         let fisico = document.getElementById("Fisico");
         let virtual = document.getElementById("Virtual");
         let tipo = "";
-
+    
         if (fisico.checked) {
             tipo = "Físico";
         } else if (virtual.checked) {
@@ -168,55 +160,57 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             tipo = null;
         }
-
-
-
-        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value
-
+    
+        const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
         const chaveEstrangeira = await apiRequest(`/api/campanha/${idCampanha}/`, 'GET', null, { 'X-CSRFToken': csrf });
-
-
-
-
-
-        const produto = {
-
-            nome: nome,
-            img1: null,
-            img2: null,
-            img3: null,
-            valor: preco,
-            quantidade: quantidade,
-            tipo: tipo,
-            is_active: chaveEstrangeira.is_active,
-            idCampanha: chaveEstrangeira.id,
-            dataInicio: chaveEstrangeira.dataInicio,
-            dataFim: chaveEstrangeira.dataFim,
-            descricao: chaveEstrangeira.descricao
-
-
+    
+        // Criação do formData para envio com imagem
+        const formData = new FormData();
+        formData.append("nome", nome);
+        formData.append("valor", preco);
+        formData.append("quantidade", quantidade);
+        formData.append("tipo", tipo);
+        formData.append("idCampanha", chaveEstrangeira.id);
+        formData.append("dataInicio", chaveEstrangeira.dataInicio);
+        formData.append("dataFim", chaveEstrangeira.dataFim);
+        formData.append("descricao", chaveEstrangeira.descricao);
+        formData.append("is_active", chaveEstrangeira.is_active);
+    
+        if (imagemFile) {
+            formData.append("img1", imagemFile);
         }
-
-        let editarValor = document.getElementById("valorEditar").value
-
-        let response 
-
+    
+        let editarValor = document.getElementById("valorEditar").value;
+    
+        let response;
+    
         if (editarValor) {
-
-            response = await apiRequest(`/api/produto/${editarValor}/`, 'PUT', produto, { 'X-CSRFToken': csrf })
-            
-
-
+            // Atualização via PUT — mas precisa ver se seu back aceita multipart no PUT
+            response = await fetch(`/api/produto/${editarValor}/`, {
+                method: 'PUT',
+                headers: {
+                    'X-CSRFToken': csrf
+                    // sem Content-Type
+                },
+                body: formData
+            });
         } else {
-            response = await apiRequest('/api/produto/', 'POST', produto, { 'X-CSRFToken': csrf });
-
+            // Cadastro via POST com FormData e imagem
+            response = await fetch('/api/produto/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrf
+                    // sem Content-Type
+                },
+                body: formData
+            });
         }
-
-        
-        window.location.href = '/listaEstoque/';
-
-
+    
+        window.location.reload()
     }
+    
+
 
     
     document.getElementById("produtoForm2").addEventListener("submit", handleSubmit);
@@ -249,7 +243,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         let valorCampanhaId = document.getElementById('valorEditar').value;
-        console.log("vem do editar "+valorCampanhaId)
 
         let formCampanhaTerceiro = document.getElementById('CriacaoDeCampanhaForm');
 
@@ -309,7 +302,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const uploadBox = document.querySelector(".UploadBox");
                 uploadBox.classList.add("has-image");
                 uploadBox.style.backgroundImage = `url(${e.target.result})`;
-                uploadBox.style.backgroundSize = "cover";
+                uploadBox.style.backgroundSize = "contain";
+                uploadBox.style.backgroundRepeat = "no-repeat";
                 uploadBox.style.backgroundPosition = "center";
             };
             reader.readAsDataURL(file);
