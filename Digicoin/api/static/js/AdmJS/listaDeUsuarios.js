@@ -21,11 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addMoedas = document.getElementById('addMoedas');
     const fecharAdicionarMoedas = document.getElementById('fecharAdicionarMoedas');
 
-    addMoedas.addEventListener('click', () => {
-        popupAdicionarMoedas.showModal();
-        const ids = getIdsSelecionados();
-        
-    });
+   
     
 
     fecharAdicionarMoedas.addEventListener('click', () => {

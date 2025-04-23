@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="{% static 'css/AdmCss/listaDeUsuarios.css'%}">
 
+
 {% include "components/adm/menuAdm.html" %}
 
 <div class="mainListaUsuarios">
@@ -153,6 +154,22 @@
            
             {% endfor%} 
         </div>
+        <div class="pagination">
+            {% if usuarios.has_previous %}
+                <div>
+                    <a style="font-size: 20px; margin-right: 10px;" href="?user_page={{ usuarios.previous_page_number }}">Anterior</a>
+                </div>
+            {% endif %}
+        
+            {% if usuarios.has_next %}
+                <div>
+                    <a style="font-size: 20px; " href="?user_page={{ usuarios.next_page_number }}">Próxima</a>
+                </div>
+            {% endif %}
+            
+            <span>Página {{ usuarios.number }} de {{ usuarios.paginator.num_pages }}</span>
+        </div>
+        
 </div>
 
 <dialog id="popupCadastrarUsuario" class="popupCadastrarUsuario">
