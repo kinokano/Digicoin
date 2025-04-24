@@ -64,10 +64,21 @@ def listaEstoque(request):
     
     return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque, 'eventos': eventos})
 
+def listaDeDesafios(request):
+    desafio = Desafio.objects.all()
+    desafio_paginator = Paginator(desafio, 5)
+    desafio_page = request.GET.get('desafio_page')
+    desafios = desafio_paginator.get_page(desafio_page)
 
+    return render(request, 'AdmHtml/listaDeDesafios.html', {'desafios': desafios})
 
 def listaDeUsuarios(request):
-    usuarios = CustomUser.objects.filter(is_adm=0)
+    
+    user = CustomUser.objects.all()
+    user_paginator = Paginator(user, 5)
+    user_page = request.GET.get('user_page')
+    usuarios = user_paginator.get_page(user_page)
+    
 
     return render(request, 'AdmHtml/listaDeUsuarios.html', {'usuarios': usuarios})
 

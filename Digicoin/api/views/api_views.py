@@ -71,7 +71,7 @@ class Login(APIView):
         senha = request.data.get('senha')
 
         usuario = authenticate(username=nome, password=senha)
-        print(nome, senha)
+        
         if(usuario):
             login(request, usuario)
             return Response({"status": status.HTTP_200_OK})
