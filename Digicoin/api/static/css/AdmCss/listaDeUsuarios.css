@@ -42,7 +42,7 @@
 }
 
 .primeiraLinha h1 span {
-    border-bottom: 3px solid #6B1DC2;
+    border-bottom: 3px solid #FC671D;
     padding-bottom: 2px;
 }
 
@@ -92,6 +92,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 15px;
+    font-size: 22px;
 }
 
 .selecionar-todos {
@@ -689,5 +690,39 @@
     }
 
     
+    .pagination{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .pagination span{
+        text-align: center;
+    }
+}
 
+.pagination{
+    margin-bottom: 40px;
+    display: flex;
+}
+.pagination a {
+    font-size: 24px;
+    text-decoration: none;
+    
+}
+
+.pagination div{
+    margin-top: 20px;
+    display: flex;
+}
+
+.pagination img{
+    transform: rotate(180deg);
+    width: 32px;
+    height: 32px;
+}
+
+.pagination span{
+    margin-top: 23px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
