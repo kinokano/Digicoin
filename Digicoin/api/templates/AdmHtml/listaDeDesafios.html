@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/AdmCss/listaDeDesafios.css'%}">
+
+{% include 'components/adm/menuAdm.html' %}
+
+<div class="mainListaDesafios">
+    
+    <div class="divPesquisa">
+        <div class="barraPesquisa">
+            <img src="{% static 'img/iconeLupa.png' %}" alt="">
+            <input type="search" placeholder="Pesquisar usuário">
+        </div>
+    </div>
+
+        <div class="primeiraLinha">
+
+            <h1><span>Des</span>afios</h1>
+
+            <div class="botoesDesafio">
+            
+                    <button class="addDesafio" id="addDesafio">
+                        <img src="{% static 'img/iconAdicionar.png' %}" alt="">
+                        Adicionar desafio
+                    </button>
+            
+            </div>
+
+        </div>
+
+        <div class="head">
+            <p>Nome</p>
+            <img src="{% static 'img/lista.png' %}" alt="">
+            <p class='recompensa'>Recompensa $</p>
+        </div>
+
+        <div class="listaDesafios">
+        {% for desafio in desafios %}
+
+        <div class='desafio'>
+
+            <div class="desafioLeft">
+                <img src="{% static 'img/alvoCampanha.png' %}" alt="">
+                <p class='nomeDesafio'>{{ desafio.nome }}</p>
+            </div>
+
+            <div class="desafioRight">
+                <p class="dg">DG$ <span class="valor">{{desafio.valor}}</span></p>
+                <div class="botoesEditar">
+                    <img src="{% static 'img/edit.png' %}" alt="">
+                    <img src="{% static 'img/lixeira.png' %}" alt="">
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="pagination">
+        {% if desafios.has_previous %}
+            <div>
+                <a style="font-size: 20px; margin-right: 10px;" href="?desafui_page={{ desafios.previous_page_number }}">Anterior</a>
+            </div>
+        {% endif %}
+    
+        {% if desafios.has_next %}
+            <div>
+                <a style="font-size: 20px; " href="?desafio_page={{ desafios.next_page_number }}">Próxima</a>
+            </div>
+        {% endif %}
+        
+        <span>Página {{ desafios.number }} de {{ desafios.paginator.num_pages }}</span>
+    </div>
+        
+</div>
+
+
+<script src="{% static 'js/AdmJs/listaDeDesafios.js' %}"></script>
+{% endblock content %}

@@ -35,6 +35,7 @@ urlpatterns = [
     path('cadastrarUsuario/', cadastrarUsuario, name='cadastrarUsuario'),
     path('editarUsuario/<int:id>/', editarUsuario, name='editarUsuario'),
     path('adicionarMoedas/', adicionarMoedas, name='adicionarMoedas'),
+    path('listaDeDesafios/', listaDeDesafios, name='listaDeDesafios')
     
 
 ]
