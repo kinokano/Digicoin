@@ -16,7 +16,7 @@
   }
 
 
-body{
+.body{
     background: var(--roxo);
     margin: 0px 100px;
     
@@ -74,6 +74,9 @@ form{
     height: 32px;
 }
 
+.iconeX:hover{
+    cursor: pointer;
+}
 
 
 
@@ -124,11 +127,7 @@ form{
     
 }
 
-span{
-    font-size: 15px;
-    color: var(--branco);
-    
-}
+
 
 label{
     color: var(--branco);
