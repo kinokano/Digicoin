@@ -30,6 +30,9 @@ async function enviarDadosParaApi(form = null) {
         DadosFormulario.forEach((value, key) => {
             dadosCompra[key] = value;
         });
+    }else{
+        console.log('Produto virtual');
+        dadosCompra['entrega'] = 'Retirar';
     }
     dadosCompra['idUsuario'] = 1;
 
@@ -39,7 +42,7 @@ async function enviarDadosParaApi(form = null) {
     let totalProduto = 0;
 
     grid.forEach(item => {
-        totalProduto += parseFloat(item.valorProduto) * parseInt(item.qtdProduto);
+        totalProduto += parseInt(item.valorProduto) * parseInt(item.qtdProduto);
         itensCompra.push({
             qtdProduto: item.qtdProduto || 1,
             idProduto: item.idProduto
@@ -58,8 +61,20 @@ async function enviarDadosParaApi(form = null) {
         console.log(response.status);
         if (response.status == 201) {
             localStorage.removeItem('listaProdutos');
+            // limpa o grid
+            const grid = document.getElementById('itensGrid');
+            grid.innerHTML = '';
+
+            // remove o popup
+            const popup = new Popup();
+            popup.hidePopup();
+
+            // limpa o total
+            const total = document.getElementById('valorTotal');
+            total.innerHTML = '0';
+    
             // redireciona para a home
-            window.location.href = '/home/';
+            //window.location.href = '/home/';
         } else {
             console.log('erro ao cadastrar');
         }
