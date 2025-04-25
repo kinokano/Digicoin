@@ -9,6 +9,7 @@ class CustomUser(AbstractUser):
     imgPerfil = models.ImageField(upload_to='usuarios/', null=True, blank=True)
     saldo = models.IntegerField(default=0)
     pontuacao = models.IntegerField(default=0)
+    primeiroAcesso = models.BooleanField(default=True)
 
 class Campanha(models.Model):
     nome = models.CharField(max_length=30, null=False, blank=False)
