@@ -1,7 +1,18 @@
 import Grid from '../grid.js';
 
 document.addEventListener("DOMContentLoaded", () => {
-  //localStorage.clear();
+  // localStorage.clear();
+  // // cria um produto de exemplo
+  //  const produto = {id: 1, idProduto: 1, nomeProduto: "Produto 1", valorProduto: 100, qtdProduto: 1, fisicoProduto: false};
+  //  const produto2 = {id: 2, idProduto: 2, nomeProduto: "Produto 2", valorProduto: 150, qtdProduto: 1, fisicoProduto: false};
+
+
+  // // Adiciona o produto ao localStorage
+  //  const listaProdutos = JSON.parse(localStorage.getItem('listaProdutos')) || { listaGrid: [] };
+  //  listaProdutos.listaGrid.push(produto);
+  //  listaProdutos.listaGrid.push(produto2);
+  //  localStorage.setItem('listaProdutos', JSON.stringify(listaProdutos));
+  
 
   // Recupera a lista de produtos do local storage
   const storedData = JSON.parse(localStorage.getItem('listaProdutos')) || {};
