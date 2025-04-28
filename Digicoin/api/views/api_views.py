@@ -134,3 +134,17 @@ class CadastrarCompraView(APIView):
                 return Response(itemSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "Compra e itens criados com sucesso!", "status": status.HTTP_201_CREATED})
+    
+class HistoricoSaldoUsuarioView(APIView):
+    """Retorna as últimas 5 alterações de saldo do usuário logado"""
+    def get(self, request):
+        usuario = request.user
+        serializer = UsuarioComHistoricoSerializer(usuario)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class HistoricoSaldoPorIdView(APIView):
+    """Retorna as últimas 5 alterações de saldo de um usuário pelo ID"""
+    def get(self, request, id):
+        usuario = get_object_or_404(CustomUser, pk=id)
+        serializer = UsuarioComHistoricoSerializer(usuario)
+        return Response(serializer.data, status=status.HTTP_200_OK)
