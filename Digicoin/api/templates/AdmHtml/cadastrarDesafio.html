@@ -3,13 +3,14 @@
     {% load static %}
     {% block content %}
     <link rel="stylesheet" href="{% static 'css/AdmCss/cadastrarDesafio.css'%}">
-    <body>
-    <dialog>
+
+    
+    <div class='body'>
     <div class="header">
         <img src="{% static 'img/logoAdmin.png' %}" alt="LogoAdmin">
         <div class="botao">
             
-            <img class="iconeX" src="{% static 'img/iconeX.png' %}" alt="">
+            <img class="iconeX" id='iconeX' src="{% static 'img/iconeX.png' %}" alt="">
         </div>
     </div>
 
@@ -21,9 +22,9 @@
             <div class="cima">
 
                 <div class='inputsNome'>
-                    <div class="nomeDesafioDiv">
+                    <div class="nomeDesafioDiv" >
                         <label for="">Nome do desafio</label>
-                        <input type="text" id="nomeDesafio" class="nomeDesafio" placeholder="nome do desafio">
+                        <input type="text" id="nomeDesafio" class="nomeDesafio" placeholder="nome do desafio" >
                     </div>
                     <div class="nomeDesafioDiv">
                         <label for="">Valor do desafio</label>
@@ -65,7 +66,7 @@
    
     </form>
  
-</body>
+</div>
 
 <script src="{% static 'js/AdmJS/cadastrarDesafio.js' %}"> </script>
 {% endblock content %}
