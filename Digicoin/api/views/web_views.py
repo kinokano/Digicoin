@@ -108,7 +108,7 @@ def campanhas(request):
     return render(request, 'components/adm/campanhas.html', {'campanhas': campanhas})
 
 def teste(request):
-    return render(request, 'AdmHtml/teste.html')
+    return render(request, 'UserHtml/teste.html')
 
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
