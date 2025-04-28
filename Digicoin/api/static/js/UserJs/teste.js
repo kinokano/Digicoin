@@ -31,6 +31,7 @@ async function historicoSaldoByUserLogado(params) {
         const url = '/api/user/historico-saldo/';
         const data = await apiRequest(url, 'GET', null, {});
         if(data){
+            console.log(data.ultimas_alteracoes)
             return data.ultimas_alteracoes;
         }else{
             console.error('Nenhum dado retornado.');
@@ -45,5 +46,5 @@ var historico = await historicoSaldoByUserLogado();
 var divhistorico = document.getElementById("historico");
 
 historico.forEach(element => {
-    divhistorico.innerHTML += `<p>${element.diferenca}</p>`
+  divhistorico.innerHTML += `<p>Saldo adicionado = ${element.diferenca}</p>`
 });
