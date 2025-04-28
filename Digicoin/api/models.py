@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
     imgPerfil = models.ImageField(upload_to='usuarios/', null=True, blank=True)
     saldo = models.IntegerField(default=0)
     pontuacao = models.IntegerField(default=0)
+    primeiroAcesso = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         # Ao salvar, detecta mudança de saldo
