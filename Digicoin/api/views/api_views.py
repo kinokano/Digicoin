@@ -28,7 +28,7 @@ class User(APIView):
         ra = request.data.get('ra')
         fistName = request.data.get('first_name')
         # isAdm = request.data.get('is_adm')
-        
+
         if not nome or not senha:
             return Response({"error": "Todos os campos são obrigatórios!", "status": status.HTTP_400_BAD_REQUEST}, status= status.HTTP_400_BAD_REQUEST)
 
@@ -44,18 +44,37 @@ class User(APIView):
 
     def put(self, request, id):
         usuario = get_object_or_404(CustomUser, pk=id)
+        operacao = request.data.get('operacao')
 
-        senha = request.data.get('password', None)
+        data = request.data.copy()
 
-        if senha and usuario.password != senha: 
-            request.data['password'] = make_password(senha)
+        if operacao in ['adicionar', 'remover']:
+            try:
+                saldo = int(data.get("saldo", 0))
+            except (TypeError, ValueError):
+                return Response({"erro": "Saldo inválido."}, status=status.HTTP_400_BAD_REQUEST)
 
-        serializer = UserSerializer(usuario, data= request.data, partial = True)
+            # Remove campos que serão modificados manualmente
+            data.pop('saldo', None)
+            data.pop('pontuacao', None)
+
+            if operacao == 'adicionar':
+                usuario.pontuacao += saldo
+                usuario.saldo += saldo
+            elif operacao == 'remover':
+                if usuario.saldo < saldo:
+                    return Response({"erro": "Saldo insuficiente."}, status=status.HTTP_400_BAD_REQUEST)
+                usuario.saldo -= saldo
+
+            usuario.save()
+
+        serializer = UserSerializer(usuario, data=data, partial=True)
+
         if serializer.is_valid():
             serializer.save()
             return Response({"status": status.HTTP_200_OK})
 
-        return Response(serializer.errors, {"status": status.HTTP_400_BAD_REQUEST})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
         usuario = get_object_or_404(CustomUser, pk = id)
