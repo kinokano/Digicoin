@@ -59,7 +59,12 @@ def listaEstoque(request):
     eventos = Campanha.objects.filter(is_active=True)
              
 
-    estoque = Produto.objects.filter(is_active=True)
+    
+
+    estoque_list = Produto.objects.filter(is_active=True)
+    estoque_paginator = Paginator(estoque_list, 5) 
+    estoque_page = request.GET.get('estoque_page') 
+    estoque = estoque_paginator.get_page(estoque_page)  
 
     
     return render(request, 'AdmHtml/listaEstoque.html', {'estoque': estoque, 'eventos': eventos})
@@ -108,7 +113,7 @@ def campanhas(request):
     return render(request, 'components/adm/campanhas.html', {'campanhas': campanhas})
 
 def teste(request):
-    return render(request, 'AdmHtml/teste.html')
+    return render(request, 'UserHtml/teste.html')
 
 def cadastrarUsuario(request):
     return render(request, 'AdmHtml/cadastrarUsuario.html')
