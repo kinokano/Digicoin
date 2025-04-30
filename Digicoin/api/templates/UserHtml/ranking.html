@@ -1,45 +1,16 @@
-{% extends 'base.html'%}
-{% load static%}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
-
-
 <link rel="stylesheet" href="{% static 'css/UserCss/ranking.css' %}">
 
 {% include "components/user/menuUser.html" %}
 
-<body>
-  {% comment %} <div>
-    {% include 'components/adm/menuAdm.html'%}
-</div> {% endcomment %}
 
-    <div class="container">
-        <div class="titulo">
-            <span>Ran</span>king
-            
+    {% for user in top_usuarios%} 
 
-            <div class="icone">
-              
-          
-            </div>
+        <h1>{{user.first_name}}</h1>
+        
+    {% endfor %}
 
-        </div>
-        <table>
-          <thead>
-            <tr>
-
-              <!-- <th width="120px"><img src="{% static 'img/imgRanking/posicao.png' %}" alt="posicao"> Posicao</th>
-              <th>Nome <img onclick="ordenarItens(this,'nome')" class="sort-asc"></th>
-              <th width="100px">Valores</th> -->
-
-            </tr>
-          </thead>
-          <tbody id="cart-items">
-          </tbody>
-        </table>
-      </div>
-      <script src="{% static 'js/UserJs/ranking.js' %}"></script>
-</body>
-</html>
 
 {% endblock %}
