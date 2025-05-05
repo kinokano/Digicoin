@@ -1,0 +1,91 @@
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/AdmCss/menuAdm.css' %}">
+<div class="main">
+
+    <div class="menuMobile">
+        
+        <img src="{% static 'img/groupAdmin.png' %}" alt="" class="groupAdmin" id="groupAdmin">
+
+        <img src="{% static 'img/logoAdmin.png' %}" alt="" class="logoAdminMob">
+
+        <img src="{% static 'img/iconeUsuarioBranco.png' %}" alt="" class="iconeUser">
+
+    </div>
+
+    <div class="lateral displayOff" id="lateral">
+
+        <div class="arrowLeftDiv">
+            <img src="{% static 'img/arrow-left.png' %}" alt="" class="arrowLeft" id="arrowLeft">
+        </div>
+
+        <img src="{% static 'img/logoAdmin.png' %}" alt="" class="logoAdminDesk">
+
+        <hr>
+
+        <div class="buttons">
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/gerenciarUsuario.png' %}" alt="">
+                    <p>Gerenciar usuário</p>
+                </button>
+            </a>
+
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/gerenciarEstoque.png' %}" alt="">
+                    <p>Gerenciar estoque</p>
+                </button>
+            </a>
+
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/gerenciarDesafio.png' %}" alt="">
+                    <p>Gerenciar desafio</p>
+                </button>
+            </a>
+
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/verPedidos.png' %}" alt="">
+                    <p>Ver pedidos</p>
+                </button>
+            </a>
+
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/gerarRelatorio.png' %}" alt="">
+                    <p>Gerar relatório</p>
+                </button>
+            </a>
+
+            <a href="" class="menuA">
+                <button class="buttonL">
+                    <img src="{% static 'img/campanhas.png' %}" alt="">
+                    <p>Campanhas</p>
+                </button>
+            </a>
+
+        </div>
+
+        <a href="" class="sair">
+            <button class="buttonSair">
+                <img src="{% static 'img/sairAdmin.png'%}" alt="">
+                <p>Sair</p>
+            </button>
+        </a>
+
+
+    </div>
+
+
+</div>
+
+<div class="top">
+    <div class="perfil">
+        <img src="{% static 'img/iconeUsuario.png' %}" alt="">
+        <p>Fulano - ADM</p>
+    </div>
+
+</div>
+
+<script src="{% static 'js/AdmJs/menuAdm.js' %}"></script>

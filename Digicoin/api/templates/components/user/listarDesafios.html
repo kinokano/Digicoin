@@ -1,0 +1,31 @@
+{% load static %}
+
+{% for desafio in desafios  %}
+
+    <ul class="desafios">
+        <div class="desafiosFlex" id="desafiosFlex">
+            <!-- <li>{{desafio.id}}</li>  -->
+            <li>{{desafio.nome}}</li>
+            <p>Recompensa: DG${{desafio.valor}}</p>
+        </div>
+        
+    </ul> 
+
+{% endfor %}
+
+
+<div class="pagination">
+    {% if desafios.has_previous %}
+    <div >  
+        <a style="font-size: 20px; margin-right: 10px;" href="?desafio_page={{ desafios.previous_page_number }}">Anterior</a>
+    </div>      
+    {% endif %}
+ 
+    {% if desafios.has_next %}
+    <div >
+        <a style="font-size: 20px;" href="?desafio_page={{ desafios.next_page_number }}">Próxima</a>
+    </div>
+    {% endif %}
+    <span>Página {{ desafios.number }} de {{ desafios.paginator.num_pages }}</span class="span">
+
+</div>

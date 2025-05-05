@@ -1,0 +1,196 @@
+:root {
+    --laranja: #fc671d;
+    --magenta: #d34af4; /* cor do botão */
+    --cinza: #faf6f7;
+    --cinza-escuro: #888;
+    --ciano: #0bc0d3;
+    --base: #2c006a;
+    --branco: #fff;
+    --preto: #000;
+    --roxo: #4d2c87; /* fundo roxo */
+    --sombra-base: rgba(44, 0, 106, 0.4);
+    --sombra-preta: rgba(0, 0, 0, 0.4);
+    --cinzaPlaceHolder: #9e9e9e;
+    --cinzaDatas: #d9d9d9;
+}
+
+
+textarea:focus,
+input:focus,
+select:focus {
+    outline: 0;
+}
+
+.campo_pesquisar {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.pesquisar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: solid 1px;
+    border-radius: 50px;
+    width: 300px;
+    padding: 5px 15px;
+    margin-bottom: 40px;
+}
+
+.pesquisar_campanha {
+    background-color: transparent;
+    font-size: 18px;
+    border: none;
+    height: 32px;
+    width: 260px;
+    font-family: "K2D", sans-serif;
+}
+
+.lupa {
+    width: 30px;
+    height: 30px;
+}
+
+.container {
+    margin-left: 35%;
+    margin-top: 6.5em;
+    width: auto;
+    margin-right: 20.5em;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.cabecalho_titulo {
+    color: var(--preto);
+
+    font-family: "K2D", sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.cabecalho_btnexportar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 261px;
+    height: 53px;
+    border-radius: 15px;
+    background: var(--magenta);
+    border: none;
+    color: var(--branco);
+
+    font-family: "K2D", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.linha {
+    width: 47px;
+    height: 4px;
+    background-color: var(--laranja);
+}
+
+.campanha {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tabela_campanha {
+    width: 100%;
+    
+}
+
+.tabela_campanha_conteudo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: "K2D", sans-serif;
+    border-radius: 10px;
+    background: #fdfdfd;
+    box-shadow: 5px 5px 10px 0px rgba(77, 44, 135, 0.45);
+    padding: 12px 20px;
+}
+
+.tabela_campanha_conteudo_dado1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.tabela_campanha_conteudo_dado2 {
+    width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tabela_campanha_conteudo_dado1 h2,
+.tabela_campanha_conteudo_dado2 h2 {
+    width: 20vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabela_campanha_cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "K2D", sans-serif;
+    margin-bottom: 20px;
+}
+
+.tabela_campanha_cabecalho_nome {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tabela_campanha_cabecalho_termino {
+    display: flex;
+    align-items: center;
+    margin-right: 190px;
+}
+
+.campanhas_pre {
+    margin-bottom: 50px;
+}
+
+button img {
+    width: 25px;
+    height: auto;
+}
+
+.tabela_campanha {
+    height: 500px; 
+}
+
+.cabecalho-campanha{
+    display: flex;
+    justify-content: space-between;
+}
+
+tr{
+    display: flex;
+    margin-bottom: 30px;
+}

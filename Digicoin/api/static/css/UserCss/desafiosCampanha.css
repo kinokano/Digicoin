@@ -1,0 +1,162 @@
+:root {
+    --laranja: #FC671D;
+    --magenta: #D34AF4;
+    --cinza: #faf6f7;
+    --cinza-escuro:#888;
+    --ciano: #0BC0D3;
+    --base: #2c006a;
+    --branco: #fff;
+    --preto: #000;
+    --roxo: #4D2C87;
+    --sombra-base:rgba(44, 0, 106, 0.4);
+    --sombra-preta:rgba(0, 0, 0, 0.4);
+  }
+  
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'K2D', sans-serif;   
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+}
+
+.ondeVaiFicarOMenu{
+    height: 200px;
+}
+
+.line{
+    width: 50px;
+    border: 1px solid var(--laranja);
+    margin-left: 20px;
+}
+
+.textDecoratinDesafios
+{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+
+
+ .desafiosFlex{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FDFDFD;
+    width: 799px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 10px 4px 8px var(--sombra-base);/* Desloca a sombra 10px para a direita */
+    transition: 0.4s;
+ }
+
+ .desafiosFlex:hover{
+    scale: 1.03;
+    cursor: pointer;
+ }
+
+
+
+ .desafiosFlex li{
+    margin-left:10px ;
+    font-size: x-large;
+} 
+
+ .desafiosFlex span{
+    margin-right: 60px;
+    font-size: large;
+}    
+
+
+.alvo {
+    width: 34px;
+    height: 34px;
+    margin: auto 0px;
+}
+.alvoCampanha{
+    display: flex;
+    margin-left: 20px;
+}
+
+
+.recompensa{
+    font-family: 'K2D';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 31px;
+display: flex;
+align-items: center;
+
+color: #FC671D;
+}
+.listaDesafios{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0px;
+    
+}
+
+.central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vector{
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.cabecalhoMissoes{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+}
+.cabecalhoMissoes img{
+    width: 24px;
+    height: 24px;
+}
+
+.cabecalhoMissoes .cabecalhoMissoesRecompensa{
+    margin-right: 80px;
+}
+
+.centralizar{
+    display: flex;
+    margin-left: 20px;
+}
+
+.laranja{
+    color: #FC671D;
+}
+
+.azul{
+    color: #0BC0D3;
+}
+
+
+.sort{margin-left: 5px;}
+.voltar{
+    display: flex;
+    align-items: center;
+width: 91px;
+height: 40px;
+margin-bottom: 100px;
+margin-top: 50px;
+margin-left: 20px;
+border: none;
+background-color: #FDFDFD;
+cursor: pointer;
+}

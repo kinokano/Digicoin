@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/UserCss/perfilUsuario.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="perfil">
+            <i class="fa-solid fa-user-circle" style="font-size: 50px; color: #5a2d82;"></i>
+            <h2>Fulano Silva</h2>
+        </div>
+        <div class="cartoes">
+            <div class="cartao">
+                <h3><i class="fa-solid fa-wallet" style="color: #00e5ff;"></i> Carteira</h3>
+                <p class="saldo">DG$ <span>9999</span></p>
+            </div>
+            <div class="cartao">
+                <h3><i class="fa-solid fa-money-bill" style="color: #00e5ff;"></i> Pagamento</h3>
+                <div class="lista-pagamentos">
+                    <p><i class="fa-solid fa-dollar-sign" ></i> Missão concluída! +<span id="dgs" >DG$</span><span id="valor" >1500</span></p>
+                    <p><i class="fa-solid fa-dollar-sign" ></i> Missão concluída! +<span id="dgs" >DG$</span><span id="valor" >1500</span></p>
+                    <p><i class="fa-solid fa-dollar-sign" ></i> Missão concluída! +<span id="dgs" >DG$</span><span id="valor" >1500</span></p>
+                    <p><i class="fa-solid fa-dollar-sign" ></i> Missão concluída! +<span id="dgs" >DG$</span><span id="valor" >1500</span></p>
+                    <p><i class="fa-solid fa-dollar-sign" ></i> Missão concluída! +<span id="dgs" >DG$</span><span id="valor" >1500</span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock  %}

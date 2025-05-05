@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% include 'components/adm/menuAdm.html' %}
+
+
+<link rel="stylesheet" href="{% static 'css/AdmCss/relatorio.css' %}">
+<div class="container">
+    <div class="cabecalho">
+        <div class="cabecalho_titulo">
+            <h1>Relatórios</h1>
+            <div class="linha"></div>
+        </div>
+        <div class="cabecalho_btnexportar">           
+            <button><img src="{% static 'img/export.png' %}" alt="Exportar">Exportar</button>
+        </div>
+    </div>
+    <div class="relatorio">
+        <table class="tabela_relatorio">
+            <tr>
+                <td class="tabela_relatorio_conteudo">
+                    <div class="tabela_relatorio_conteudo_checkbox">
+                        <input type="checkbox" id="checkbox" name="checkbox" />
+                        <label for="checkbox"></label>
+                    </div>
+                    <div class="tabela_relatorio_conteudo_dado">
+                        <img src="{% static 'img/relatorio.png' %}" alt="Relatório">
+                        <h2>Vendas</h2>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

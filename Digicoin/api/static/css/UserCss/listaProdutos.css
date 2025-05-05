@@ -1,0 +1,385 @@
+:root {
+    --laranja: #FC671D;
+    --magenta: #D34AF4;
+    --cinza: #faf6f7;
+    --cinza-escuro: #888;
+    --ciano: #0BC0D3;
+    --base: #2c006a;
+    --branco: #fff;
+    --preto: #000;
+    --sombra-base: rgba(44, 0, 106, 0.4);
+    --sombra-preta: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: "Arial", "Open Sans";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.ProdBarra h1 {
+    margin: 0px;
+}
+
+.ProdBarra {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    background-color: var(--branco);
+    border: black solid 2px;
+    border-radius: 20px;
+    margin: 0px;
+    height: 50px;
+}
+
+.searchBar {
+    border-radius: 30px;
+    width: 400px;
+    border: none;
+    padding: 10px;
+    font-size: 25px;
+}
+
+#lupa {
+    width: 40px;
+    padding-left: 10px;
+    font-size: 25px;
+    color: var(--laranja);
+}
+
+.searchBar:focus {
+    outline: none;
+}
+
+.produtos {
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-left: 350px;
+}
+
+.produtosDigix {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.produtosDigix h1 {
+    margin: 0px;
+}
+
+.barra {
+    width: 40px;
+    height: 0;
+    top: 273px;
+    left: 375px;
+    border: 2px var(--laranja) solid;
+}
+
+.imagensDigix,
+.imagensCampanha {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(2, 250px);
+    gap: 60px;
+    margin-bottom: 50px;
+    margin-top: 40px;
+}
+
+.imgD {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 4px var(--preto);
+    width: 240px;
+    height: 240px;
+    padding: 10px;
+    border-radius: 40px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.imgD button {
+    border: none;
+    background: var(--branco);
+}
+
+.imgD:hover {
+    scale: 1.2;
+}
+
+.produtos .imagensP {
+    display: block;
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+}
+
+
+dialog {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    border-radius: 20px;    
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.frente {
+    text-align: center;
+    box-shadow: 5px 5px 15px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+}
+
+.frente .NProduto {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.frente .imagemCard {
+    display: flex;
+    justify-content: center;
+}
+
+.frente .ImProduto {
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+    display: block;
+    margin: 0 0 20px 0;
+}
+
+.frente .preco {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    gap: 5px;
+    margin: 5px 0 10px;
+}
+
+.frente .preco p {
+    margin: 0px;
+    color: var(--laranja);
+    font-weight: bold;
+}
+
+.frente .preco span {
+    margin: 0px;
+    color: var(--ciano);
+    font-weight: bold;  
+}
+
+.frente .topo {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.topo .X {
+    border: none;
+    background: var(--branco);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.topo .X img {
+    width: 25px;
+    height: auto;
+}
+
+.Adquirir {
+    background-color: var(--magenta);
+    color: #fff;
+    font-size: 25px;
+    padding: 10px 0;
+    margin: 11px auto;
+    border: none;
+    border-radius: 25px;
+    width: 70%;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Adquirir:hover {
+    background-color: rgb(201, 1, 201);
+}
+
+.btn-refresh {
+    display: flex;
+    flex-direction: column;
+}
+
+#refresh {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+#refresh2 {
+    margin-top: 150px;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.tras {
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    box-shadow: 5px 5px 15px 2px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    font-size: 25px;
+    transform: rotateY(180deg);
+}
+
+.tras .topo {
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 35px;
+}
+
+.tras .NProduto {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.tras .quantidade {
+    display: flex;
+    padding-left: 30px;
+}
+
+.tras .quantidade span {
+    margin: 0px;
+    padding: 25px 0px 0px 10px;
+}   
+
+.tras .descricao {
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 0px 30px;
+    gap: 5px;
+    width: 430px;
+    height: auto;
+}
+
+.descricao span {
+    display: block;
+    white-space: normal; 
+    word-break: break-word;
+    overflow-wrap: break-word; 
+}
+
+.tras .quantidade p {
+    font-weight: bold;
+    color: var(--laranja);
+}
+
+.tras .descricao p {
+    font-weight: bold;
+    color: var(--laranja);
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+
+    .imagensDigix,
+    .imagensCampanha {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .produtos {
+        margin: 0 auto;
+        padding-left: 70px;
+    }
+
+    .produtosDigix {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        width: 370px;
+        margin: 0 70px 0 70px;
+    }
+
+    dialog {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        margin: 0;  
+        background: transparent;
+    }
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.virado {
+    transform: rotateY(180deg);
+}
+.virado2{
+    transform: rotateY(180deg);
+}
+
+.flip {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: .6s;
+    border: none;
+}
+
+.frente, .tras {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px black;
+    backface-visibility: hidden;
+    background-color: white;
+}
